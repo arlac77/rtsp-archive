@@ -1,0 +1,65 @@
+{
+  "name": "rtsp-archive",
+  "version": "0.0.0-semantic-release",
+  "description": "archive rtsp stream with openRTSP",
+  "module": "src/module.js",
+  "main": "dist/module.js",
+  "keywords": ["npm-package-template"],
+  "scripts": {
+    "precover": "npm run prepublish",
+    "cover": "nyc npm test",
+
+    "pretest": "npm run prepublish",
+    "test": "mocha tests/*_test.js",
+    "posttest": "markdown-doctest",
+
+    "prepublish": "rollup --output=dist/module.js -c -- src/module.js",
+    "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js >README.md",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arlac77/rtsp-archive.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arlac77/rtsp-archive/issues"
+  },
+  "homepage": "https://github.com/arlac77/rtsp-archive#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "jsdoc": "-",
+    "istanbul": "-",
+    "cz-conventional-changelog": "^1.2.0",
+    "jsdoc-to-markdown": "^2.0.1",
+    "markdown-doctest": "^0.9.1",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "nyc": "^10.1.2",
+    "rollup": "^0.41.4",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "semantic-release": "^6.3.6"
+  },
+  "contributors": [{
+    "name": "Markus Felten",
+    "email": "markus.felten@gmx.de"
+  }],
+  "license": "BSD-2-Clause",
+  "engines": {
+    "node": ">=6.9.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "nyc": {
+    "include": [
+      "dist/**/*.js"
+    ],
+    "reporter": [
+      "lcov"
+    ],
+    "report-dir": "./coverage"
+  }
+}
