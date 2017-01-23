@@ -4,15 +4,15 @@
   "description": "archive rtsp stream with openRTSP",
   "module": "src/module.js",
   "main": "dist/module.js",
-  "keywords": ["npm-package-template"],
+  "keywords": [
+    "npm-package-template"
+  ],
   "scripts": {
     "precover": "npm run prepublish",
     "cover": "nyc npm test",
-
     "pretest": "npm run prepublish",
     "test": "mocha tests/*_test.js",
     "posttest": "markdown-doctest",
-
     "prepublish": "rollup --output=dist/module.js -c -- src/module.js",
     "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js >README.md",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
@@ -25,10 +25,10 @@
     "url": "https://github.com/arlac77/rtsp-archive/issues"
   },
   "homepage": "https://github.com/arlac77/rtsp-archive#readme",
-  "dependencies": {},
+  "dependencies": {
+    "config-expander": "^6.2.5"
+  },
   "devDependencies": {
-    "jsdoc": "-",
-    "istanbul": "-",
     "cz-conventional-changelog": "^1.2.0",
     "jsdoc-to-markdown": "^2.0.1",
     "markdown-doctest": "^0.9.1",
@@ -40,10 +40,12 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "semantic-release": "^6.3.6"
   },
-  "contributors": [{
-    "name": "Markus Felten",
-    "email": "markus.felten@gmx.de"
-  }],
+  "contributors": [
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
+  ],
   "license": "BSD-2-Clause",
   "engines": {
     "node": ">=6.9.4"
