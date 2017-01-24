@@ -16,7 +16,7 @@
     "pretest": "npm run prepublish",
     "test": "mocha tests/*_test.js",
     "posttest": "markdown-doctest",
-    "prepublish": "rollup --output=bin/rtsp-archive -c -- src/rtsp-archive.js && chmod +x bin/rtsp-archive",
+    "prepublish": "rollup --output=bin/rtsp-archive -c -- src/module.js && chmod +x bin/rtsp-archive",
     "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js >README.md",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
