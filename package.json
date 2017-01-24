@@ -2,8 +2,8 @@
   "name": "rtsp-archive",
   "version": "0.0.0-semantic-release",
   "description": "archive rtsp stream with openRTSP",
-  "module": "src/module.js",
-  "main": "dist/module.js",
+  "module": "src/rtsp-archive.js",
+  "main": "dist/rtsp-archive.js",
   "keywords": [
     "npm-package-template"
   ],
