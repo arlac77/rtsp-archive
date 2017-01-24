@@ -52,7 +52,7 @@ expand(program.config ? "${include('" + path.basename(program.config) + "')}"
     if(!videoPriorities[videoType]) return;
 
     let recorder = recorders[recorderName];
-    if(!recorder) recorder = recorders[recorderName] = { fileFormat : "mp4", width: 640, height: 480, framerate:15 };
+    if(!recorder) recorder = recorders[recorderName] = { fileFormat : 'mp4', width: 640, height: 480, framerate:15 };
     if(!recorder.videoTypes) recorder.videoTypes = {};
 
     for(let vT in recorder.videoTypes)
@@ -86,7 +86,6 @@ expand(program.config ? "${include('" + path.basename(program.config) + "')}"
    });
 
    browser.start();
-
  });
 
  function startRecording(config,recorderName) {
@@ -108,7 +107,7 @@ expand(program.config ? "${include('" + path.basename(program.config) + "')}"
  			if(recorder.child) {
  				recorder.child.kill();
  			}
- 			setTimeout(function() { startRecording(recorderName); }, 1000);
+ 			setTimeout(() => startRecording(recorderName), 1000);
  			return;
  		}else
  			return;
@@ -127,10 +126,8 @@ expand(program.config ? "${include('" + path.basename(program.config) + "')}"
  		if(recorder.recordingType != videoType) return;
 
  		async.map( [ recorder.file, recorder.file + '.err'],
- 			(arg,callback) => {
- 				fs.open(arg,'w+',callback);
- 				},
- 			(error,results) => {
+ 			(arg, callback) => fs.open(arg,'w+',callback),
+ 			(error, results) => {
  			if(error) { return; }
 
  			const options = [
@@ -160,17 +157,16 @@ expand(program.config ? "${include('" + path.basename(program.config) + "')}"
 
  			options.push(recorder.url);
 
- 			let child = child_process.spawn(openrtsp, options, { stdio: ['ignore', results[0], results[1]] });
- 			recorder.child = child;
+ 			recorder.child = child_process.spawn(openrtsp, options, { stdio: ['ignore', results[0], results[1]] });
  			recorder.child.on('exit', code => {
- 				child = null;
+ 				delete recorder.child;
  				delete recorder.recordingType;
  				startRecording(recorderName);
  			});
 
  			setTimeout(() => {
- 				if(child) {
- 					child.kill('SIGTERM');
+ 				if(recorder.child) {
+ 					recorder.child.kill('SIGTERM');
  					}
  				}, (config.record.duration + 3) * 1000);
  		});
