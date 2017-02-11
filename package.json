@@ -31,7 +31,7 @@
   "dependencies": {
     "async": "^2.1.4",
     "commander": "^2.9.0",
-    "config-expander": "^6.2.8",
+    "config-expander": "^6.3.0",
     "mdns": "^2.3.3",
     "mkdirp": "^0.5.1",
     "pkginfo": "^0.4.0"
