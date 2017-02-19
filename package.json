@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/arlac77/rtsp-archive#readme",
   "dependencies": {
-    "async": "^2.1.4",
+    "async": "^2.1.5",
     "commander": "^2.9.0",
     "config-expander": "^6.3.0",
     "mdns": "^2.3.3",
