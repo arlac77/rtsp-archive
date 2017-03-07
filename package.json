@@ -5,7 +5,7 @@
   "module": "src/rtsp-archive.js",
   "main": "dist/rtsp-archive.js",
   "keywords": [
-    "npm-package-template"
+    "rtsp"
   ],
   "bin": {
     "rtsp-archive": "bin/rtsp-archive"
@@ -57,7 +57,7 @@
   }],
   "license": "BSD-2-Clause",
   "engines": {
-    "node": ">=6.10.0"
+    "node": ">=7.7.1"
   },
   "config": {
     "commitizen": {
