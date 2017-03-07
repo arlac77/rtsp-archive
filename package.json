@@ -30,11 +30,10 @@
   "homepage": "https://github.com/arlac77/rtsp-archive#readme",
   "dependencies": {
     "async": "^2.1.5",
-    "commander": "^2.9.0",
+    "caporal": "^0.3.0",
     "config-expander": "^7.0.0",
     "mdns": "^2.3.3",
-    "mkdirp": "^0.5.1",
-    "pkginfo": "^0.4.0"
+    "mkdirp": "^0.5.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -48,12 +47,10 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "semantic-release": "^6.3.6"
   },
-  "contributors": [
-    {
-      "name": "Markus Felten",
-      "email": "markus.felten@gmx.de"
-    }
-  ],
+  "contributors": [{
+    "name": "Markus Felten",
+    "email": "markus.felten@gmx.de"
+  }],
   "license": "BSD-2-Clause",
   "engines": {
     "node": ">=6.10.0"
