@@ -12,9 +12,9 @@
   },
   "scripts": {
     "precover": "npm run prepublish",
-    "cover": "nyc npm test",
-    "pretest": "npm run prepublish",
-    "test": "mocha tests/*_test.js",
+    "cover": "nyc ava",
+    "test": "ava",
+    "pretest": "rollup -c rollup.config.test.js",
     "posttest": "markdown-doctest",
     "prepublish": "rollup --output=bin/rtsp-archive -c -- src/rtsp-archive.js && chmod +x bin/rtsp-archive",
     "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js >README.md",
@@ -36,13 +36,17 @@
     "mkdirp": "^0.5.1"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
+    "ava": "^0.18.2",
+    "ava": "^0.18.2",
+    "babel-preset-es2015-rollup": "^3.0.0",
     "cz-conventional-changelog": "^2.0.0",
+    "execa": "^0.6.0",
     "jsdoc-to-markdown": "^3.0.0",
     "markdown-doctest": "^0.9.1",
-    "mocha": "^3.2.0",
     "nyc": "^10.1.2",
     "rollup": "^0.41.4",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-multi-entry": "^2.0.1",
     "rollup-plugin-commonjs": "^7.0.0",
     "rollup-plugin-node-resolve": "^2.0.0",
     "semantic-release": "^6.3.6"
@@ -60,9 +64,18 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "ava": {
+    "files": [
+      "build/test-bundle.js"
+    ],
+    "require": [
+      "babel-register"
+    ]
+  },
   "nyc": {
     "include": [
-      "dist/**/*.js"
+      "build/test-bundle.js",
+      "src/**/*.js"
     ],
     "reporter": [
       "lcov"
