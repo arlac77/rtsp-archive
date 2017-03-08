@@ -37,7 +37,6 @@
   },
   "devDependencies": {
     "ava": "^0.18.2",
-    "ava": "^0.18.2",
     "babel-preset-es2015-rollup": "^3.0.0",
     "cz-conventional-changelog": "^2.0.0",
     "execa": "^0.6.0",
