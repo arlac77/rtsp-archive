@@ -45,15 +45,17 @@
     "nyc": "^10.1.2",
     "rollup": "^0.41.4",
     "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^7.1.0",
     "rollup-plugin-multi-entry": "^2.0.1",
-    "rollup-plugin-commonjs": "^7.0.2",
     "rollup-plugin-node-resolve": "^2.0.0",
     "semantic-release": "^6.3.6"
   },
-  "contributors": [{
-    "name": "Markus Felten",
-    "email": "markus.felten@gmx.de"
-  }],
+  "contributors": [
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
+  ],
   "license": "BSD-2-Clause",
   "engines": {
     "node": ">=7.7.1"
