@@ -20,65 +20,69 @@ program
   .version(require(path.join(__dirname, '..', 'package.json')).version)
   .description('archive rtsp stream with openRTSP')
   .option('-c, --config <file>', 'use config from file')
-  .action((args, options, logger) => {
-    expand(options.config ? "${include('" + path.basename(options.config) + "')}" : {}).then(config => {
+  .action(async(args, options, logger) => {
+    const constants = {
+      basedir: path.dirname(options.config || process.cwd()),
+      installdir: path.resolve(__dirname, '..')
+    };
 
-      const recorders = config.recorders || {};
-
-      const browser = mdns.createBrowser(mdns.tcp('rtsp'));
-      browser.on('serviceUp', service => {
-        const m = service.name.match(/^([^\s]+)\s+(.*)/);
-
-        if (m) {
-          const recorderName = m[1];
-          const videoType = m[2];
-
-          if (!videoPriorities[videoType]) return;
-
-          let recorder = recorders[recorderName];
-          if (!recorder) recorder = recorders[recorderName] = {
-            fileFormat: 'mp4',
-            width: 640,
-            height: 480,
-            framerate: 15
-          };
-          if (!recorder.videoTypes) recorder.videoTypes = {};
-
-          for (let vT in recorder.videoTypes)
-            if (vT === videoType)
-              return;
-
-          for (let i in service.addresses) {
-            const a = service.addresses[i];
-            if (a.match(/^[0-9\.]+$/)) {
-              recorder.address = a;
-              break;
-            }
-          }
-
-          recorder.port = service.port;
-          recorder.videoTypes[videoType] = service.txtRecord.path;
-          startRecording(recorderName);
-        }
-      });
-
-      browser.on('serviceDown', service => {
-        const m = service.name.match(/^([^\s]+)\s+(.*)/);
-
-        if (m) {
-          const slot = m[1];
-          const type = m[2];
-
-          const recorder = recorders[slot];
-          if (recorder) {
-            if (recorder.child) recorder.child.kill('SIGHUP');
-            delete recorders[slot];
-          }
-        }
-      });
-
-      browser.start();
+    const config = await expand(options.config ? "${include('" + path.basename(options.config) + "')}" : {
+      constants
     });
+    const recorders = config.recorders || {};
+    const browser = mdns.createBrowser(mdns.tcp('rtsp'));
+    browser.on('serviceUp', service => {
+      const m = service.name.match(/^([^\s]+)\s+(.*)/);
+
+      if (m) {
+        const recorderName = m[1];
+        const videoType = m[2];
+
+        if (!videoPriorities[videoType]) return;
+
+        let recorder = recorders[recorderName];
+        if (!recorder) recorder = recorders[recorderName] = {
+          fileFormat: 'mp4',
+          width: 640,
+          height: 480,
+          framerate: 15
+        };
+        if (!recorder.videoTypes) recorder.videoTypes = {};
+
+        for (let vT in recorder.videoTypes)
+          if (vT === videoType)
+            return;
+
+        for (let i in service.addresses) {
+          const a = service.addresses[i];
+          if (a.match(/^[0-9\.]+$/)) {
+            recorder.address = a;
+            break;
+          }
+        }
+
+        recorder.port = service.port;
+        recorder.videoTypes[videoType] = service.txtRecord.path;
+        startRecording(recorderName);
+      }
+    });
+
+    browser.on('serviceDown', service => {
+      const m = service.name.match(/^([^\s]+)\s+(.*)/);
+
+      if (m) {
+        const slot = m[1];
+        const type = m[2];
+
+        const recorder = recorders[slot];
+        if (recorder) {
+          if (recorder.child) recorder.child.kill('SIGHUP');
+          delete recorders[slot];
+        }
+      }
+    });
+
+    browser.start();
   });
 
 program
