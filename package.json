@@ -31,7 +31,7 @@
   "dependencies": {
     "async": "^2.1.5",
     "caporal": "^0.3.0",
-    "config-expander": "^7.0.0",
+    "config-expander": "^7.0.1",
     "mdns": "^2.3.3",
     "mkdirp": "^0.5.1"
   },
