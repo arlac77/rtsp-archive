@@ -7,7 +7,7 @@ const program = require('caporal'),
   fs = require('fs'),
   child_process = require('child_process'),
   mdns = require('mdns'),
-  async = require('async'),
+  asyncModule = require('async'),
   mkdirp = require('mkdirp');
 
 
@@ -19,14 +19,14 @@ from 'config-expander';
 program
   .version(require(path.join(__dirname, '..', 'package.json')).version)
   .description('archive rtsp stream with openRTSP')
-  .option('-c, --config <file>', 'use config from file')
+  .option('-c, --config <file>', 'use config file')
   .action(async(args, options, logger) => {
     const constants = {
       basedir: path.dirname(options.config || process.cwd()),
       installdir: path.resolve(__dirname, '..')
     };
 
-    const config = await expand(options.config ? "${include('" + path.basename(options.config) + "')}" : {
+    const config = await expand(options.config ? "${include('" + path.basename(options.config) + "')}" : {}, {
       constants
     });
     const recorders = config.recorders || {};
@@ -145,7 +145,8 @@ function startRecording(config, recorderName) {
     }
     if (recorder.recordingType != videoType) return;
 
-    async.map([recorder.file, recorder.file + '.err'], (arg, callback) => fs.open(arg, 'w+', callback), (error,
+    asyncModule.map([recorder.file, recorder.file + '.err'], (arg, callback) => fs.open(arg, 'w+', callback), (
+      error,
       results) => {
       if (error) {
         return;
