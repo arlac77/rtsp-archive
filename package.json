@@ -30,7 +30,7 @@
   "homepage": "https://github.com/arlac77/rtsp-archive#readme",
   "dependencies": {
     "async": "^2.2.0",
-    "caporal": "^0.3.0",
+    "caporal": "^0.4.0",
     "config-expander": "^7.0.1",
     "mdns": "^2.3.3",
     "mkdirp": "^0.5.1"
