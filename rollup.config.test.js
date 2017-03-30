@@ -16,5 +16,6 @@ export default {
   ],
   format: 'cjs',
   dest: 'build/test-bundle.js',
-  sourceMap: true
+  sourceMap: true,
+  external: ['config-expander', 'path', 'ava']
 };
