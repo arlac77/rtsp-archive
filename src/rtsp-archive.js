@@ -10,7 +10,6 @@ const program = require('caporal'),
   asyncModule = require('async'),
   mkdirp = require('mkdirp');
 
-
 import {
   expand
 }
@@ -31,10 +30,15 @@ program
     });
     const recorders = config.recorders || {};
     const browser = mdns.createBrowser(mdns.tcp('rtsp'));
+
+    logger.info(`waiting for services`);
+
     browser.on('serviceUp', service => {
+      logger.info(`got ${service}`);
+
       const m = service.name.match(/^([^\s]+)\s+(.*)/);
 
-      if (m) {
+      if (m !== undefined) {
         const recorderName = m[1];
         const videoType = m[2];
 
@@ -47,13 +51,15 @@ program
           height: 480,
           framerate: 15
         };
+
         if (!recorder.videoTypes) recorder.videoTypes = {};
 
-        for (let vT in recorder.videoTypes)
+        for (const vT in recorder.videoTypes) {
           if (vT === videoType)
             return;
+        }
 
-        for (let i in service.addresses) {
+        for (const i in service.addresses) {
           const a = service.addresses[i];
           if (a.match(/^[0-9\.]+$/)) {
             recorder.address = a;
@@ -70,12 +76,12 @@ program
     browser.on('serviceDown', service => {
       const m = service.name.match(/^([^\s]+)\s+(.*)/);
 
-      if (m) {
+      if (m !== undefined) {
         const slot = m[1];
         const type = m[2];
 
         const recorder = recorders[slot];
-        if (recorder) {
+        if (recorder !== undefined) {
           if (recorder.child) recorder.child.kill('SIGHUP');
           delete recorders[slot];
         }
@@ -96,29 +102,31 @@ const videoPriorities = {
 };
 
 const fileFormats = {
-  'avi': {
-    'openRTSP': '-i'
+  avi: {
+    openRTSP: '-i'
   },
-  'mp4': {
-    'openRTSP': '-4'
+  mp4: {
+    openRTSP: '-4'
   }
 };
 
 
 function startRecording(config, recorderName) {
-
-  let recorder = config.recorders[recorderName];
-  if (!recorder) return;
+  const recorder = config.recorders[recorderName];
+  if (recorder === undefined) return;
 
   let videoType = 'NONE';
-  for (let vT in recorder.videoTypes)
+
+  for (const vT in recorder.videoTypes) {
     if (videoPriorities[vT] > videoPriorities[videoType])
       videoType = vT;
+  }
+
   if (videoType === 'NONE') {
     return;
   }
 
-  if (recorder.recordingType) {
+  if (recorder.recordingType !== undefined) {
     if (recorder.recordingType != videoType) {
       delete recorder.recordingType;
       if (recorder.child) {
@@ -157,24 +165,24 @@ function startRecording(config, recorderName) {
         '-d', config.record.duration
       ];
 
-      if (recorder.width) {
+      if (recorder.width !== undefined) {
         options.push('-w', recorder.width);
       }
 
-      if (recorder.height) {
+      if (recorder.height !== undefined) {
         options.push('-h', recorder.height);
       }
 
-      if (recorder.framerate) {
+      if (recorder.framerate !== undefined) {
         options.push('-f', recorder.framerate);
       }
 
-      if (recorder.user) {
+      if (recorder.user !== undefined) {
         options.push('-u', recorder.user, recorder.password);
       }
 
-      if (!recorder.url) {
-        recorder.url = 'rtsp://' + recorder.address + ":" + recorder.port + "/" + recorder.videoTypes[videoType];
+      if (recorder.url === undefined) {
+        recorder.url = `rtsp://${recorder.address}:${recorder.port}/${recorder.videoTypes[videoType]}`;
       }
 
       options.push(recorder.url);
@@ -189,7 +197,7 @@ function startRecording(config, recorderName) {
       });
 
       setTimeout(() => {
-        if (recorder.child) {
+        if (recorder.child !== undefined) {
           recorder.child.kill('SIGTERM');
         }
       }, (config.record.duration + 3) * 1000);
