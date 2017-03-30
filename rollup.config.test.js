@@ -5,7 +5,7 @@ import multiEntry from 'rollup-plugin-multi-entry';
 
 export default {
   entry: 'tests/**/*_test.js',
-  external: ['ava'],
+  external: ['config-expander', 'path', 'ava'],
   plugins: [
     babel({
       babelrc: false,
@@ -16,6 +16,5 @@ export default {
   ],
   format: 'cjs',
   dest: 'build/test-bundle.js',
-  sourceMap: true,
-  external: ['config-expander', 'path', 'ava']
+  sourceMap: true
 };
