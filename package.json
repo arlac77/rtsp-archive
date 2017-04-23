@@ -11,10 +11,10 @@
     "rtsp-archive": "bin/rtsp-archive"
   },
   "scripts": {
-    "precover": "rollup -c rollup.config.test.js",
-    "cover": "nyc ava",
-    "test": "ava",
-    "pretest": "rollup -c rollup.config.test.js",
+    "precover": "npm run prepublish",
+    "cover": "nyc npm test",
+    "test": "mocha tests/*_test.js",
+    "pretest": "npm run prepublish",
     "posttest": "markdown-doctest",
     "prepublish": "rollup --output=bin/rtsp-archive -c -- src/rtsp-archive.js && chmod +x bin/rtsp-archive",
     "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js >README.md",
@@ -48,7 +48,9 @@
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-multi-entry": "^2.0.1",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "semantic-release": "^6.3.6"
+    "semantic-release": "^6.3.6",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
   },
   "contributors": [
     {
