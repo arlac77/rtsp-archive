@@ -17,7 +17,7 @@
     "pretest": "rollup -c rollup.config.test.js",
     "posttest": "markdown-doctest",
     "prepublish": "rollup --output=bin/rtsp-archive -c -- src/rtsp-archive.js && chmod +x bin/rtsp-archive",
-    "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js >README.md",
+    "docs": "jsdoc2md --configure doc/jsdoc.json -l off -t doc/README.hbs -f src/*.js >README.md",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -48,7 +48,9 @@
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-multi-entry": "^2.0.1",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "semantic-release": "^6.3.6"
+    "semantic-release": "^6.3.6",
+    "jsdoc-babel": "^0.3.0",
+    "babel-plugin-transform-async-generator-functions": "^6.24.1"
   },
   "contributors": [
     {
@@ -58,7 +60,7 @@
   ],
   "license": "BSD-2-Clause",
   "engines": {
-    "node": ">=7.9.0"
+    "node": ">=7.10.0"
   },
   "config": {
     "commitizen": {
