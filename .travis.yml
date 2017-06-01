@@ -2,6 +2,7 @@ os:
   - osx
 language: node_js
 node_js:
+  - 8
   - 7.10.0
 sudo: false
 branches:
