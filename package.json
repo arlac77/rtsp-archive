@@ -42,7 +42,7 @@
     "execa": "^0.6.3",
     "jsdoc-to-markdown": "^3.0.0",
     "markdown-doctest": "^0.9.1",
-    "nyc": "^10.3.2",
+    "nyc": "^11.0.1",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
@@ -50,8 +50,8 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "semantic-release": "^6.3.6",
     "jsdoc-babel": "^0.3.0",
-    "babel-plugin-transform-async-generator-functions": "^6.24.1",
-    "xo": "^0.19.0"
+    "xo": "^0.19.0",
+    "babel-preset-stage-3": "^6.24.1"
   },
   "contributors": [
     {
@@ -61,7 +61,7 @@
   ],
   "license": "BSD-2-Clause",
   "engines": {
-    "node": ">=7.10.0"
+    "node": ">=8.0.0"
   },
   "config": {
     "commitizen": {
