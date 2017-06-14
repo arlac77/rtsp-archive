@@ -11,10 +11,10 @@
     "rtsp-archive": "bin/rtsp-archive"
   },
   "scripts": {
-    "precover": "rollup -c rollup.config.test.js",
+    "precover": "rollup -c tests/rollup.config.js",
     "cover": "nyc ava",
     "test": "ava",
-    "pretest": "rollup -c rollup.config.test.js",
+    "pretest": "rollup -c tests/rollup.config.js",
     "posttest": "npm run prepublish && markdown-doctest",
     "prepublish": "rollup --output=bin/rtsp-archive -c -- src/rtsp-archive.js && chmod +x bin/rtsp-archive",
     "docs": "jsdoc2md --configure doc/jsdoc.json -l off -t doc/README.hbs -f src/*.js >README.md",
@@ -38,7 +38,6 @@
   "devDependencies": {
     "ava": "^0.19.1",
     "babel-preset-es2015-rollup": "^3.0.0",
-    "cz-conventional-changelog": "^2.0.0",
     "execa": "^0.7.0",
     "jsdoc-to-markdown": "^3.0.0",
     "markdown-doctest": "^0.9.1",
@@ -61,12 +60,7 @@
   ],
   "license": "BSD-2-Clause",
   "engines": {
-    "node": ">=8.0.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+    "node": ">=8.1.1"
   },
   "ava": {
     "files": [
