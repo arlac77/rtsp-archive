@@ -1,6 +1,7 @@
-/* jslint node: true, esnext: true */
-
-'use strict';
+import {
+  expand
+}
+from 'config-expander';
 
 const program = require('caporal'),
   path = require('path'),
@@ -10,10 +11,6 @@ const program = require('caporal'),
   asyncModule = require('async'),
   mkdirp = require('mkdirp');
 
-import {
-  expand
-}
-from 'config-expander';
 
 program
   .version(require(path.join(__dirname, '..', 'package.json')).version)
@@ -42,21 +39,27 @@ program
         const recorderName = m[1];
         const videoType = m[2];
 
-        if (!videoPriorities[videoType]) return;
+        if (!videoPriorities[videoType]) {
+          return;
+        }
 
         let recorder = recorders[recorderName];
-        if (!recorder) recorder = recorders[recorderName] = {
-          fileFormat: 'mp4',
-          width: 640,
-          height: 480,
-          framerate: 15
-        };
-
-        if (!recorder.videoTypes) recorder.videoTypes = {};
+        if (!recorder) {
+          recorder = recorders[recorderName] = {
+            fileFormat: 'mp4',
+            width: 640,
+            height: 480,
+            framerate: 15
+          };
+        }
+        if (!recorder.videoTypes) {
+          recorder.videoTypes = {};
+        }
 
         for (const vT in recorder.videoTypes) {
-          if (vT === videoType)
+          if (vT === videoType) {
             return;
+          }
         }
 
         for (const i in service.addresses) {
@@ -78,11 +81,12 @@ program
 
       if (m !== undefined) {
         const slot = m[1];
-        const type = m[2];
 
         const recorder = recorders[slot];
         if (recorder !== undefined) {
-          if (recorder.child) recorder.child.kill('SIGHUP');
+          if (recorder.child) {
+            recorder.child.kill('SIGHUP');
+          }
           delete recorders[slot];
         }
       }
@@ -93,7 +97,6 @@ program
 
 program
   .parse(process.argv);
-
 
 const videoPriorities = {
   'H.264': 2,
@@ -110,16 +113,18 @@ const fileFormats = {
   }
 };
 
-
 function startRecording(config, recorderName) {
   const recorder = config.recorders[recorderName];
-  if (recorder === undefined) return;
+  if (recorder === undefined) {
+    return;
+  }
 
   let videoType = 'NONE';
 
   for (const vT in recorder.videoTypes) {
-    if (videoPriorities[vT] > videoPriorities[videoType])
+    if (videoPriorities[vT] > videoPriorities[videoType]) {
       videoType = vT;
+    }
   }
 
   if (videoType === 'NONE') {
@@ -127,15 +132,16 @@ function startRecording(config, recorderName) {
   }
 
   if (recorder.recordingType !== undefined) {
-    if (recorder.recordingType != videoType) {
-      delete recorder.recordingType;
-      if (recorder.child) {
-        recorder.child.kill();
-      }
-      setTimeout(() => startRecording(recorderName), 1000);
+    if (recorder.recordingType === videoType) {
       return;
-    } else
-      return;
+    }
+
+    delete recorder.recordingType;
+    if (recorder.child) {
+      recorder.child.kill();
+    }
+    setTimeout(() => startRecording(recorderName), 1000);
+    return;
   }
 
   recorder.recordingType = videoType;
@@ -151,7 +157,9 @@ function startRecording(config, recorderName) {
     if (error) {
       return;
     }
-    if (recorder.recordingType != videoType) return;
+    if (recorder.recordingType !== videoType) {
+      return;
+    }
 
     asyncModule.map([recorder.file, recorder.file + '.err'], (arg, callback) => fs.open(arg, 'w+', callback), (
       error,
@@ -190,7 +198,7 @@ function startRecording(config, recorderName) {
       recorder.child = child_process.spawn(openrtsp, options, {
         stdio: ['ignore', results[0], results[1]]
       });
-      recorder.child.on('exit', code => {
+      recorder.child.on('exit', () => {
         delete recorder.child;
         delete recorder.recordingType;
         startRecording(recorderName);
