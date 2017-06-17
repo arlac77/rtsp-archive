@@ -1,6 +1,6 @@
-import path from 'path';
 import test from 'ava';
 
+const path = require('path');
 const execa = require('execa');
 
 test('rtsp-archive', async t =>
