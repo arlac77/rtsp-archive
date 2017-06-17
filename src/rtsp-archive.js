@@ -11,7 +11,6 @@ const program = require('caporal'),
   asyncModule = require('async'),
   mkdirp = require('mkdirp');
 
-
 program
   .version(require(path.join(__dirname, '..', 'package.json')).version)
   .description('archive rtsp stream with openRTSP')
