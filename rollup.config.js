@@ -1,13 +1,16 @@
-import nodeResolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import babel from 'rollup-plugin-babel';
 import pkg from './package.json';
 
 export default {
-  banner: '#!/usr/bin/env node',
   targets: [{
-    dest: pkg.bin['rtsp-archive'],
+    dest: pkg.main,
     format: 'cjs'
   }],
-  plugins: [nodeResolve(), commonjs()],
-  external: ['config-expander']
+  plugins: [
+    babel({
+      babelrc: false,
+      presets: ['stage-3'],
+      exclude: 'node_modules/**'
+    })
+  ]
 };
