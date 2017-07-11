@@ -18,7 +18,7 @@
     "posttest": "npm run prepare && markdown-doctest",
     "docs": "jsdoc2md --configure doc/jsdoc.json -l off -t doc/README.hbs -f src/*.js >README.md",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "prepare": "rollup -c -- src/rtsp-archive.js && chmod +x bin/rtsp-archive"
+    "prepare": "rollup -c -- src/rtsp-archive.js"
   },
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
     "jsdoc-to-markdown": "^3.0.0",
     "markdown-doctest": "^0.9.1",
     "nyc": "^11.0.3",
-    "rollup": "^0.45.0",
+    "rollup": "^0.45.1",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-multi-entry": "^2.0.1",
