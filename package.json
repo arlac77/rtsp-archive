@@ -59,7 +59,7 @@
   ],
   "license": "BSD-2-Clause",
   "engines": {
-    "node": ">=8.2.0"
+    "node": ">=8.2.1"
   },
   "ava": {
     "files": [
