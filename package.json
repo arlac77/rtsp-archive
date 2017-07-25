@@ -29,27 +29,27 @@
   },
   "homepage": "https://github.com/arlac77/rtsp-archive#readme",
   "dependencies": {
-    "async": "^2.4.0",
+    "async": "2.5.0",
     "caporal": "^0.7.0",
-    "config-expander": "^7.1.1",
+    "config-expander": "7.1.2",
     "mdns": "^2.3.3",
     "mkdirp": "^0.5.1"
   },
   "devDependencies": {
-    "ava": "^0.21.0",
+    "ava": "0.21.0",
+    "babel-preset-stage-3": "^6.24.1",
     "execa": "^0.7.0",
+    "jsdoc-babel": "^0.3.0",
     "jsdoc-to-markdown": "^3.0.0",
     "markdown-doctest": "^0.9.1",
-    "nyc": "^11.0.3",
+    "nyc": "^11.1.0",
     "rollup": "^0.45.2",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-multi-entry": "^2.0.1",
     "rollup-plugin-node-resolve": "^3.0.0",
     "semantic-release": "^6.3.6",
-    "jsdoc-babel": "^0.3.0",
-    "xo": "^0.19.0",
-    "babel-preset-stage-3": "^6.24.1"
+    "xo": "^0.19.0"
   },
   "contributors": [
     {
