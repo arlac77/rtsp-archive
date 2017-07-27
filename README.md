@@ -17,13 +17,11 @@
 
 rtsp-archive
 =====
-archive rtsp stream with openRTSP
+archive rtsp stream(s) with openRTSP
 
-
-API Reference
-=====
-
-* * *
+```sh
+rtsp-archive -c config.json
+```
 
 install
 =======

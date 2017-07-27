@@ -1,6 +1,8 @@
 import { expand } from 'config-expander';
 
 const makeDir = require('make-dir');
+const del = require('del');
+
 const program = require('caporal'),
   path = require('path'),
   fs = require('fs'),
