@@ -32,8 +32,8 @@
     "async": "2.5.0",
     "caporal": "^0.7.0",
     "config-expander": "8.0.0",
-    "mdns": "^2.3.3",
-    "mkdirp": "^0.5.1"
+    "make-dir": "^1.0.0",
+    "mdns": "^2.3.3"
   },
   "devDependencies": {
     "ava": "0.21.0",

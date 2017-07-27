@@ -1,12 +1,12 @@
 import { expand } from 'config-expander';
 
+const makeDir = require('make-dir');
 const program = require('caporal'),
   path = require('path'),
   fs = require('fs'),
   child_process = require('child_process'),
   mdns = require('mdns'),
-  asyncModule = require('async'),
-  mkdirp = require('mkdirp');
+  asyncModule = require('async');
 
 program
   .version(require(path.join(__dirname, '..', 'package.json')).version)
@@ -61,8 +61,7 @@ program
           }
         }
 
-        for (const i in service.addresses) {
-          const a = service.addresses[i];
+        for (const a of service.addresses) {
           if (a.match(/^[0-9\.]+$/)) {
             recorder.address = a;
             break;
@@ -111,7 +110,7 @@ const fileFormats = {
   }
 };
 
-function startRecording(config, recorderName) {
+async function startRecording(config, recorderName) {
   const recorder = config.recorders[recorderName];
   if (recorder === undefined) {
     return;
@@ -159,67 +158,64 @@ function startRecording(config, recorderName) {
     Date.format(today, 'H-i-s') + '.' + recorder.fileFormat
   );
 
-  mkdirp(dir, '0755', error => {
-    if (error) {
-      return;
-    }
-    if (recorder.recordingType !== videoType) {
-      return;
-    }
+  if (recorder.recordingType !== videoType) {
+    return;
+  }
 
-    asyncModule.map(
-      [recorder.file, recorder.file + '.err'],
-      (arg, callback) => fs.open(arg, 'w+', callback),
-      (error, results) => {
-        if (error) {
-          return;
-        }
+  await makeDir(dir, '0755');
 
-        const options = [
-          '-t',
-          fileFormats[recorder.fileFormat].openRTSP,
-          '-d',
-          config.record.duration
-        ];
-
-        if (recorder.width !== undefined) {
-          options.push('-w', recorder.width);
-        }
-
-        if (recorder.height !== undefined) {
-          options.push('-h', recorder.height);
-        }
-
-        if (recorder.framerate !== undefined) {
-          options.push('-f', recorder.framerate);
-        }
-
-        if (recorder.user !== undefined) {
-          options.push('-u', recorder.user, recorder.password);
-        }
-
-        if (recorder.url === undefined) {
-          recorder.url = `rtsp://${recorder.address}:${recorder.port}/${recorder
-            .videoTypes[videoType]}`;
-        }
-
-        options.push(recorder.url);
-
-        recorder.child = child_process.spawn(openrtsp, options, {
-          stdio: ['ignore', results[0], results[1]]
-        });
-        recorder.child.on('exit', () => {
-          delete recorder.child;
-          delete recorder.recordingType;
-          startRecording(recorderName);
-        });
-
-        setTimeout(() => {
-          if (recorder.child !== undefined) {
-            recorder.child.kill('SIGTERM');
-          }
-        }, (config.record.duration + 3) * 1000);
+  asyncModule.map(
+    [recorder.file, recorder.file + '.err'],
+    (arg, callback) => fs.open(arg, 'w+', callback),
+    (error, results) => {
+      if (error) {
+        return;
       }
-    );
-  });
+
+      const options = [
+        '-t',
+        fileFormats[recorder.fileFormat].openRTSP,
+        '-d',
+        config.record.duration
+      ];
+
+      if (recorder.width !== undefined) {
+        options.push('-w', recorder.width);
+      }
+
+      if (recorder.height !== undefined) {
+        options.push('-h', recorder.height);
+      }
+
+      if (recorder.framerate !== undefined) {
+        options.push('-f', recorder.framerate);
+      }
+
+      if (recorder.user !== undefined) {
+        options.push('-u', recorder.user, recorder.password);
+      }
+
+      if (recorder.url === undefined) {
+        recorder.url = `rtsp://${recorder.address}:${recorder.port}/${recorder
+          .videoTypes[videoType]}`;
+      }
+
+      options.push(recorder.url);
+
+      recorder.child = child_process.spawn(openrtsp, options, {
+        stdio: ['ignore', results[0], results[1]]
+      });
+      recorder.child.on('exit', () => {
+        delete recorder.child;
+        delete recorder.recordingType;
+        startRecording(recorderName);
+      });
+
+      setTimeout(() => {
+        if (recorder.child !== undefined) {
+          recorder.child.kill('SIGTERM');
+        }
+      }, (config.record.duration + 5) * 1000);
+    }
+  );
 }
