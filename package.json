@@ -37,7 +37,7 @@
     "mdns": "^2.3.3"
   },
   "devDependencies": {
-    "ava": "0.21.0",
+    "ava": "^0.21.0",
     "babel-preset-stage-3": "^6.24.1",
     "execa": "^0.7.0",
     "jsdoc-babel": "^0.3.0",
