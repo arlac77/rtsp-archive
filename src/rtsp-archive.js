@@ -36,7 +36,7 @@ program
 
       const m = service.name.match(/^([^\s]+)\s+(.*)/);
 
-      if (m !== undefined) {
+      if (m) {
         const recorderName = m[1];
         const videoType = m[2];
 
@@ -45,7 +45,7 @@ program
         }
 
         let recorder = recorders[recorderName];
-        if (!recorder) {
+        if (recorder === undefined) {
           recorder = recorders[recorderName] = {
             fileFormat: 'mp4',
             width: 640,
@@ -53,7 +53,7 @@ program
             framerate: 15
           };
         }
-        if (!recorder.videoTypes) {
+        if (recorder.videoTypes === undefined) {
           recorder.videoTypes = {};
         }
 
