@@ -39,7 +39,7 @@
   "devDependencies": {
     "ava": "^0.21.0",
     "babel-preset-stage-3": "^6.24.1",
-    "execa": "^0.7.0",
+    "execa": "^0.8.0",
     "jsdoc-babel": "^0.3.0",
     "jsdoc-to-markdown": "^3.0.0",
     "markdown-doctest": "^0.9.1",
