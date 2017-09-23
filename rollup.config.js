@@ -3,11 +3,12 @@ import commonjs from 'rollup-plugin-commonjs';
 import pkg from './package.json';
 
 export default {
-  banner: '#!/usr/bin/env node',
-  targets: [{
-    dest: pkg.bin['rtsp-archive'],
-    format: 'cjs'
-  }],
+  output: {
+    file: pkg.bin['rtsp-archive'],
+    format: 'cjs',
+    banner: '#!/usr/bin/env node'
+  },
   plugins: [nodeResolve(), commonjs()],
-  external: ['config-expander']
+  external: ['config-expander'],
+  input: pkg.module
 };
