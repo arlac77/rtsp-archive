@@ -1,8 +1,9 @@
 import babel from 'rollup-plugin-babel';
 
 export default {
-  entry: 'tests/run-test.js',
+  input: 'tests/**/*-test.js',
   external: ['ava'],
+
   plugins: [
     babel({
       babelrc: false,
@@ -10,7 +11,10 @@ export default {
       exclude: 'node_modules/**'
     })
   ],
-  format: 'cjs',
-  dest: 'build/test-bundle.js',
-  sourceMap: true
+
+  output: {
+    file: 'build/test-bundle.js',
+    format: 'cjs',
+    sourcemap: true
+  }
 };
