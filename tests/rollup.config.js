@@ -1,7 +1,7 @@
 import babel from 'rollup-plugin-babel';
 
 export default {
-  input: 'tests/**/*-test.js',
+  input: 'tests/run-test.js',
   external: ['ava'],
 
   plugins: [
