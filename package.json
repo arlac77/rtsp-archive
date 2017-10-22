@@ -4,9 +4,7 @@
   "description": "archive rtsp stream with openRTSP",
   "module": "src/rtsp-archive.js",
   "main": "dist/rtsp-archive.js",
-  "keywords": [
-    "rtsp"
-  ],
+  "keywords": ["rtsp"],
   "bin": {
     "rtsp-archive": "bin/rtsp-archive"
   },
@@ -16,8 +14,10 @@
     "test": "ava",
     "pretest": "rollup -c tests/rollup.config.js",
     "posttest": "npm run prepare && markdown-doctest",
-    "docs": "jsdoc2md --configure doc/jsdoc.json -l off -t doc/README.hbs -f src/*.js >README.md",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "docs":
+      "jsdoc2md --configure doc/jsdoc.json -l off -t doc/README.hbs -f src/*.js >README.md",
+    "semantic-release":
+      "semantic-release pre && npm publish && semantic-release post",
     "prepare": "rollup -c && chmod +x bin/rtsp-archive"
   },
   "repository": {
@@ -61,21 +61,12 @@
     "node": ">=8.7.0"
   },
   "ava": {
-    "files": [
-      "build/test-bundle.js"
-    ],
-    "require": [
-      "babel-register"
-    ]
+    "files": ["build/*-test.js"],
+    "require": ["babel-register"]
   },
   "nyc": {
-    "include": [
-      "build/test-bundle.js",
-      "src/**/*.js"
-    ],
-    "reporter": [
-      "lcov"
-    ],
+    "include": ["build/*-test.js", "src/**/*.js"],
+    "reporter": ["lcov"],
     "report-dir": "./build/coverage"
   },
   "template": {
