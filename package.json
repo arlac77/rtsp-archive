@@ -37,7 +37,7 @@
     "mdns": "^2.3.3"
   },
   "devDependencies": {
-    "ava": "^0.22.0",
+    "ava": "^0.23.0",
     "execa": "^0.8.0",
     "jsdoc-babel": "^0.3.0",
     "jsdoc-to-markdown": "^3.0.0",
