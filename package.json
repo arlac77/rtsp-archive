@@ -12,7 +12,7 @@
   },
   "scripts": {
     "precover": "rollup -c tests/rollup.config.js",
-    "cover": "nyc ava",
+    "cover": "nyc --temp-directory build/nyc ava",
     "test": "ava",
     "pretest": "rollup -c tests/rollup.config.js",
     "posttest": "npm run prepare && markdown-doctest",
