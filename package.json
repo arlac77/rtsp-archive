@@ -31,7 +31,7 @@
   "dependencies": {
     "async": "2.6.0",
     "caporal": "^0.8.0",
-    "config-expander": "9.0.0",
+    "config-expander": "9.0.1",
     "del": "^3.0.0",
     "make-dir": "^1.0.0",
     "mdns": "^2.3.3"
