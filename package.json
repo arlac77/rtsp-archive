@@ -34,7 +34,7 @@
     "config-expander": "9.0.0",
     "del": "^3.0.0",
     "make-dir": "^1.0.0",
-    "mdns": "^2.3.3"
+    "mdns": "^2.3.4"
   },
   "devDependencies": {
     "ava": "^0.23.0",
