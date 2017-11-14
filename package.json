@@ -40,14 +40,15 @@
     "ava": "^0.23.0",
     "execa": "^0.8.0",
     "jsdoc-babel": "^0.3.0",
-    "jsdoc-to-markdown": "^3.0.1",
+    "jsdoc-to-markdown": "^3.0.2",
     "markdown-doctest": "^0.9.1",
     "nyc": "^11.3.0",
     "rollup": "^0.51.5",
     "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-node-resolve": "^3.0.0",
     "semantic-release": "^9.1.1",
-    "xo": "^0.19.0"
+    "xo": "^0.19.0",
+    "babel-preset-env": "^1.6.1"
   },
   "contributors": [
     {
