@@ -1,4 +1,5 @@
 import { expand } from 'config-expander';
+import { version } from '../package.json';
 
 const makeDir = require('make-dir');
 const del = require('del');
@@ -11,7 +12,7 @@ const program = require('caporal'),
   asyncModule = require('async');
 
 program
-  .version(require(path.join(__dirname, '..', 'package.json')).version)
+  .version(version)
   .description('archive rtsp stream with openRTSP')
   .option('-c, --config <file>', 'use config file')
   .action(async (args, options, logger) => {
@@ -198,8 +199,9 @@ async function startRecording(config, recorderName) {
       }
 
       if (recorder.url === undefined) {
-        recorder.url = `rtsp://${recorder.address}:${recorder.port}/${recorder
-          .videoTypes[videoType]}`;
+        recorder.url = `rtsp://${recorder.address}:${recorder.port}/${
+          recorder.videoTypes[videoType]
+        }`;
       }
 
       options.push(recorder.url);
