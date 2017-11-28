@@ -16,24 +16,27 @@ program
   .description('archive rtsp stream with openRTSP')
   .option('-c, --config <file>', 'use config file')
   .action(async (args, options, logger) => {
-    const config = await expand(
-      options.config
-        ? "${include('" + path.basename(options.config) + "')}"
-        : {},
-      {
-        constants: {
-          basedir: path.dirname(options.config || process.cwd()),
-          installdir: path.resolve(__dirname, '..')
+    const config = Object.assign(
+      await expand(
+        options.config
+          ? "${include('" + path.basename(options.config) + "')}"
+          : {},
+        {
+          constants: {
+            basedir: path.dirname(options.config || process.cwd()),
+            installdir: path.resolve(__dirname, '..')
+          }
         }
-      }
+      ),
+      { recorders: {}, record: { dir: '/tmp' } }
     );
-    const recorders = config.recorders || {};
+
     const browser = mdns.createBrowser(mdns.tcp('rtsp'));
 
     logger.info(`waiting for services`);
 
     browser.on('serviceUp', service => {
-      logger.info(`got ${service}`);
+      //logger.info(`got ${JSON.stringify(service)}`);
 
       const m = service.name.match(/^([^\s]+)\s+(.*)/);
 
@@ -45,9 +48,9 @@ program
           return;
         }
 
-        let recorder = recorders[recorderName];
+        let recorder = config.recorders[recorderName];
         if (recorder === undefined) {
-          recorder = recorders[recorderName] = {
+          recorder = config.recorders[recorderName] = {
             fileFormat: 'mp4',
             width: 640,
             height: 480,
@@ -73,7 +76,7 @@ program
 
         recorder.port = service.port;
         recorder.videoTypes[videoType] = service.txtRecord.path;
-        startRecording(recorderName);
+        startRecording(config, recorderName);
       }
     });
 
@@ -114,6 +117,7 @@ const fileFormats = {
 };
 
 async function startRecording(config, recorderName) {
+  //console.log(`start: ${recorderName}`);
   const recorder = config.recorders[recorderName];
   if (recorder === undefined) {
     return;
@@ -140,7 +144,7 @@ async function startRecording(config, recorderName) {
     if (recorder.child) {
       recorder.child.kill();
     }
-    setTimeout(() => startRecording(recorderName), 1000);
+    setTimeout(() => startRecording(config, recorderName), 1000);
     return;
   }
 
@@ -152,18 +156,17 @@ async function startRecording(config, recorderName) {
   const dir = path.join(
     config.record.dir,
     recorderName,
-    Date.format(today, 'Y'),
-    Date.format(today, 'm'),
-    Date.format(today, 'd')
-  );
-  recorder.file = path.join(
-    dir,
-    Date.format(today, 'H-i-s') + '.' + recorder.fileFormat
+    String(today.getFullYear()),
+    String(today.getMonth()),
+    String(today.getMinutes())
   );
 
-  if (recorder.recordingType !== videoType) {
-    return;
-  }
+  recorder.file = path.join(
+    dir,
+    `${today.getHours()}-${today.getMinutes()}-${today.getSeconds()}.${
+      recorder.fileFormat
+    }`
+  );
 
   await makeDir(dir, '0755');
 
@@ -212,7 +215,7 @@ async function startRecording(config, recorderName) {
       recorder.child.on('exit', () => {
         delete recorder.child;
         delete recorder.recordingType;
-        startRecording(recorderName);
+        startRecording(config, recorderName);
       });
 
       setTimeout(() => {
