@@ -76,7 +76,7 @@ program
 
         recorder.port = service.port;
         recorder.videoTypes[videoType] = service.txtRecord.path;
-        startRecording(config, recorderName);
+        startRecording(config, recorderName, logger);
       }
     });
 
@@ -116,8 +116,7 @@ const fileFormats = {
   }
 };
 
-async function startRecording(config, recorderName) {
-  //console.log(`start: ${recorderName}`);
+async function startRecording(config, recorderName, logger) {
   const recorder = config.recorders[recorderName];
   if (recorder === undefined) {
     return;
@@ -175,6 +174,7 @@ async function startRecording(config, recorderName) {
     (arg, callback) => fs.open(arg, 'w+', callback),
     (error, results) => {
       if (error) {
+        logger.error(error);
         return;
       }
 
@@ -215,7 +215,7 @@ async function startRecording(config, recorderName) {
       recorder.child.on('exit', () => {
         delete recorder.child;
         delete recorder.recordingType;
-        startRecording(config, recorderName);
+        startRecording(config, recorderName, logger);
       });
 
       setTimeout(() => {
