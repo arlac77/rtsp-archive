@@ -33,8 +33,6 @@ program
 
     const browser = mdns.createBrowser(mdns.tcp('rtsp'));
 
-    logger.info(`waiting for services`);
-
     browser.on('serviceUp', service => {
       //logger.info(`got ${JSON.stringify(service)}`);
 
@@ -95,6 +93,8 @@ program
         }
       }
     });
+
+    logger.info(`waiting for services`);
 
     browser.start();
   });
