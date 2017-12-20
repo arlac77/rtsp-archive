@@ -16,9 +16,10 @@
     "test": "ava",
     "pretest": "rollup -c tests/rollup.config.js",
     "posttest": "npm run prepare && markdown-doctest",
-    "docs": "jsdoc2md --configure doc/jsdoc.json -l off -t doc/README.hbs -f src/*.js >README.md",
+    "docs": "documentation readme src/rtsp-archive.js --section=API",
     "semantic-release": "semantic-release",
-    "prepare": "rollup -c && chmod +x bin/rtsp-archive"
+    "prepare": "rollup -c && chmod +x bin/rtsp-archive",
+    "lint": "documentation lint src/rtsp-archive.js"
   },
   "repository": {
     "type": "git",
@@ -38,10 +39,7 @@
   },
   "devDependencies": {
     "ava": "^0.24.0",
-    "babel-preset-env": "^1.6.1",
     "execa": "^0.8.0",
-    "jsdoc-babel": "^0.3.0",
-    "jsdoc-to-markdown": "^3.0.2",
     "markdown-doctest": "^0.9.1",
     "nyc": "^11.4.1",
     "rollup": "^0.52.3",
@@ -49,7 +47,8 @@
     "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "semantic-release": "^11.0.2",
-    "xo": "^0.19.0"
+    "xo": "^0.19.0",
+    "documentation": "^5.3.5"
   },
   "contributors": [
     {
