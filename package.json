@@ -1,12 +1,19 @@
 {
   "name": "rtsp-archive",
   "version": "0.0.0-semantic-release",
-  "description": "archive rtsp stream with openRTSP",
-  "module": "src/rtsp-archive.js",
   "main": "dist/rtsp-archive.js",
+  "module": "src/rtsp-archive.js",
+  "description": "archive rtsp stream with openRTSP",
   "keywords": [
     "rtsp"
   ],
+  "contributors": [
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
+  ],
+  "license": "BSD-2-Clause",
   "bin": {
     "rtsp-archive": "bin/rtsp-archive"
   },
@@ -21,14 +28,6 @@
     "prepare": "rollup -c && chmod +x bin/rtsp-archive",
     "lint": "documentation lint src/rtsp-archive.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/arlac77/rtsp-archive.git"
-  },
-  "bugs": {
-    "url": "https://github.com/arlac77/rtsp-archive/issues"
-  },
-  "homepage": "https://github.com/arlac77/rtsp-archive#readme",
   "dependencies": {
     "async": "2.6.0",
     "caporal": "^0.9.0",
@@ -50,16 +49,17 @@
     "xo": "^0.19.0",
     "documentation": "^5.3.5"
   },
-  "contributors": [
-    {
-      "name": "Markus Felten",
-      "email": "markus.felten@gmx.de"
-    }
-  ],
-  "license": "BSD-2-Clause",
   "engines": {
     "node": ">=8.9.3"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arlac77/rtsp-archive.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arlac77/rtsp-archive/issues"
+  },
+  "homepage": "https://github.com/arlac77/rtsp-archive#readme",
   "ava": {
     "files": [
       "build/*-test.js"
@@ -78,12 +78,12 @@
     ],
     "report-dir": "./build/coverage"
   },
+  "xo": {
+    "space": true
+  },
   "template": {
     "repository": {
       "url": "https://github.com/arlac77/npm-package-template.git"
     }
-  },
-  "xo": {
-    "space": true
   }
 }
