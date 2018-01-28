@@ -1,15 +1,13 @@
 import { expand } from 'config-expander';
 import { version } from '../package.json';
+import { join, basename, dirname, resolve } from 'path';
+import { open } from 'fs';
+import { spawn } from 'child_process';
 
+const { tcp, createBrowser } = require('mdns');
 const makeDir = require('make-dir');
-const del = require('del');
-
-const program = require('caporal'),
-  path = require('path'),
-  fs = require('fs'),
-  child_process = require('child_process'),
-  mdns = require('mdns'),
-  asyncModule = require('async');
+const program = require('caporal');
+const asyncModule = require('async');
 
 program
   .version(version)
@@ -18,20 +16,18 @@ program
   .action(async (args, options, logger) => {
     const config = Object.assign(
       await expand(
-        options.config
-          ? "${include('" + path.basename(options.config) + "')}"
-          : {},
+        options.config ? "${include('" + basename(options.config) + "')}" : {},
         {
           constants: {
-            basedir: path.dirname(options.config || process.cwd()),
-            installdir: path.resolve(__dirname, '..')
+            basedir: dirname(options.config || process.cwd()),
+            installdir: resolve(__dirname, '..')
           }
         }
       ),
       { recorders: {}, record: { dir: '/tmp' } }
     );
 
-    const browser = mdns.createBrowser(mdns.tcp('rtsp'));
+    const browser = createBrowser(tcp('rtsp'));
 
     browser.on('serviceUp', service => {
       //logger.info(`got ${JSON.stringify(service)}`);
@@ -152,7 +148,7 @@ async function startRecording(config, recorderName, logger) {
   const openrtsp = '/usr/local/bin/openRTSP';
 
   const today = new Date();
-  const dir = path.join(
+  const dir = join(
     config.record.dir,
     recorderName,
     String(today.getFullYear()),
@@ -160,7 +156,7 @@ async function startRecording(config, recorderName, logger) {
     String(today.getMinutes())
   );
 
-  recorder.file = path.join(
+  recorder.file = join(
     dir,
     `${today.getHours()}-${today.getMinutes()}-${today.getSeconds()}.${
       recorder.fileFormat
@@ -171,7 +167,7 @@ async function startRecording(config, recorderName, logger) {
 
   asyncModule.map(
     [recorder.file, recorder.file + '.err'],
-    (arg, callback) => fs.open(arg, 'w+', callback),
+    (arg, callback) => open(arg, 'w+', callback),
     (error, results) => {
       if (error) {
         logger.error(error);
@@ -209,7 +205,7 @@ async function startRecording(config, recorderName, logger) {
 
       options.push(recorder.url);
 
-      recorder.child = child_process.spawn(openrtsp, options, {
+      recorder.child = spawn(openrtsp, options, {
         stdio: ['ignore', results[0], results[1]]
       });
       recorder.child.on('exit', () => {

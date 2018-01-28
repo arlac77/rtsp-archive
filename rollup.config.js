@@ -10,6 +10,6 @@ export default {
     banner: '#!/usr/bin/env node'
   },
   plugins: [nodeResolve(), commonjs(), json()],
-  external: ['config-expander'],
+  external: ['fs', 'child_process', 'path', 'config-expander'],
   input: pkg.module
 };
