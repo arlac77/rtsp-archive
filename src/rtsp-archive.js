@@ -3,9 +3,9 @@ import { version } from '../package.json';
 import { join, basename, dirname, resolve } from 'path';
 import { open } from 'fs';
 import { spawn } from 'child_process';
+import makeDir from 'make-dir';
 
 const { tcp, createBrowser } = require('mdns');
-const makeDir = require('make-dir');
 const program = require('caporal');
 const asyncModule = require('async');
 
