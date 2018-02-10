@@ -4,7 +4,9 @@
   "main": "dist/rtsp-archive.js",
   "module": "src/rtsp-archive.js",
   "description": "archive rtsp stream with openRTSP",
-  "keywords": ["rtsp"],
+  "keywords": [
+    "rtsp"
+  ],
   "contributors": [
     {
       "name": "Markus Felten",
@@ -19,8 +21,7 @@
     "precover": "rollup -c tests/rollup.config.js",
     "cover": "nyc --temp-directory build/nyc ava",
     "test": "ava",
-    "pretest":
-      "rollup -c && chmod +x bin/rtsp-archive && rollup -c tests/rollup.config.js",
+    "pretest": "rollup -c tests/rollup.config.js && chmod +x bin/rtsp-archive && rollup -c tests/rollup.config.js",
     "posttest": "npm run prepare && markdown-doctest",
     "docs": "documentation readme src/rtsp-archive.js --section=API",
     "semantic-release": "semantic-release",
@@ -40,7 +41,7 @@
     "execa": "^0.9.0",
     "markdown-doctest": "^0.9.1",
     "nyc": "^11.4.1",
-    "rollup": "^0.55.3",
+    "rollup": "^0.55.4",
     "rollup-plugin-commonjs": "^8.3.0",
     "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-node-resolve": "^3.0.2",
@@ -60,12 +61,21 @@
   },
   "homepage": "https://github.com/arlac77/rtsp-archive#readme",
   "ava": {
-    "files": ["build/*-test.js"],
-    "require": ["babel-register"]
+    "files": [
+      "build/*-test.js"
+    ],
+    "require": [
+      "babel-register"
+    ]
   },
   "nyc": {
-    "include": ["build/*-test.js", "src/**/*.js"],
-    "reporter": ["lcov"],
+    "include": [
+      "build/*-test.js",
+      "src/**/*.js"
+    ],
+    "reporter": [
+      "lcov"
+    ],
     "report-dir": "./build/coverage"
   },
   "xo": {
