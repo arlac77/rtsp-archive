@@ -33,7 +33,7 @@
     "async": "2.6.0",
     "caporal": "^0.9.0",
     "config-expander": "9.1.2",
-    "make-dir": "^1.1.0",
+    "make-dir": "^1.2.0",
     "mdns": "^2.3.4"
   },
   "devDependencies": {
