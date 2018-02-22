@@ -30,7 +30,6 @@
     "travis-deploy-once": "travis-deploy-once"
   },
   "dependencies": {
-    "async": "2.6.0",
     "caporal": "^0.9.0",
     "config-expander": "9.1.2",
     "make-dir": "^1.2.0",

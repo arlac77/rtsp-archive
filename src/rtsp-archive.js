@@ -2,12 +2,13 @@ import { expand } from 'config-expander';
 import { version } from '../package.json';
 import { join, basename, dirname, resolve } from 'path';
 import { open } from 'fs';
+import { promisify } from 'util';
 import { spawn } from 'child_process';
 import makeDir from 'make-dir';
 
 const { tcp, createBrowser } = require('mdns');
 const program = require('caporal');
-const asyncModule = require('async');
+const openFile = promisify(open);
 
 program
   .version(version)
@@ -165,60 +166,52 @@ async function startRecording(config, recorderName, logger) {
 
   await makeDir(dir, '0755');
 
-  asyncModule.map(
-    [recorder.file, recorder.file + '.err'],
-    (arg, callback) => open(arg, 'w+', callback),
-    (error, results) => {
-      if (error) {
-        logger.error(error);
-        return;
-      }
+  const stdout = await openFile(recorder.file, 'w+');
+  const stderr = await openFile(recorder.file + '.err', 'w+');
 
-      const options = [
-        '-t',
-        fileFormats[recorder.fileFormat].openRTSP,
-        '-d',
-        config.record.duration
-      ];
+  const options = [
+    '-t',
+    fileFormats[recorder.fileFormat].openRTSP,
+    '-d',
+    config.record.duration
+  ];
 
-      if (recorder.width !== undefined) {
-        options.push('-w', recorder.width);
-      }
+  const properties = {
+    width: '-w',
+    height: '-h',
+    framerate: '-f'
+  };
 
-      if (recorder.height !== undefined) {
-        options.push('-h', recorder.height);
-      }
-
-      if (recorder.framerate !== undefined) {
-        options.push('-f', recorder.framerate);
-      }
-
-      if (recorder.user !== undefined) {
-        options.push('-u', recorder.user, recorder.password);
-      }
-
-      if (recorder.url === undefined) {
-        recorder.url = `rtsp://${recorder.address}:${recorder.port}/${
-          recorder.videoTypes[videoType]
-        }`;
-      }
-
-      options.push(recorder.url);
-
-      recorder.child = spawn(openrtsp, options, {
-        stdio: ['ignore', results[0], results[1]]
-      });
-      recorder.child.on('exit', () => {
-        delete recorder.child;
-        delete recorder.recordingType;
-        startRecording(config, recorderName, logger);
-      });
-
-      setTimeout(() => {
-        if (recorder.child !== undefined) {
-          recorder.child.kill('SIGTERM');
-        }
-      }, (config.record.duration + 5) * 1000);
+  Object.keys(properties).forEach(o => {
+    if (recorder[o] !== undefined) {
+      options.push(properties[o], recorder[o]);
     }
-  );
+  });
+
+  if (recorder.user !== undefined) {
+    options.push('-u', recorder.user, recorder.password);
+  }
+
+  if (recorder.url === undefined) {
+    recorder.url = `rtsp://${recorder.address}:${recorder.port}/${
+      recorder.videoTypes[videoType]
+    }`;
+  }
+
+  options.push(recorder.url);
+
+  recorder.child = spawn(openrtsp, options, {
+    stdio: ['ignore', stdout, stderr]
+  });
+  recorder.child.on('exit', () => {
+    delete recorder.child;
+    delete recorder.recordingType;
+    startRecording(config, recorderName, logger);
+  });
+
+  setTimeout(() => {
+    if (recorder.child !== undefined) {
+      recorder.child.kill('SIGTERM');
+    }
+  }, (config.record.duration + 5) * 1000);
 }
