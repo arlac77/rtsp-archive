@@ -1,12 +1,17 @@
-export default {
-  input: 'tests/run-test.js',
-  external: ['ava'],
+import base from '../rollup.config.js';
 
-  plugins: [],
+export default [
+  base,
+  {
+    input: 'tests/run-test.js',
+    external: ['ava'],
 
-  output: {
-    file: 'build/run-test.js',
-    format: 'cjs',
-    sourcemap: true
+    plugins: [],
+
+    output: {
+      file: 'build/run-test.js',
+      format: 'cjs',
+      sourcemap: true
+    }
   }
-};
+];
