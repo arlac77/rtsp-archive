@@ -46,7 +46,7 @@
     "rollup-plugin-executable": "^1.2.0",
     "rollup-plugin-json": "^3.0.0",
     "rollup-plugin-node-resolve": "^3.3.0",
-    "semantic-release": "^15.4.0",
+    "semantic-release": "^15.4.1",
     "travis-deploy-once": "^5.0.0"
   },
   "engines": {
