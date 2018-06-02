@@ -1,6 +1,9 @@
 {
   "name": "rtsp-archive",
   "version": "0.0.0-semantic-release",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/rtsp-archive.js",
   "module": "src/rtsp-archive.js",
   "description": "archive rtsp stream with openRTSP",
