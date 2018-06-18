@@ -7,9 +7,7 @@
   "main": "dist/rtsp-archive.js",
   "module": "src/rtsp-archive.js",
   "description": "archive rtsp stream with openRTSP",
-  "keywords": [
-    "rtsp"
-  ],
+  "keywords": ["rtsp"],
   "contributors": [
     {
       "name": "Markus Felten",
@@ -53,7 +51,7 @@
     "travis-deploy-once": "^5.0.0"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=10.4.1"
   },
   "repository": {
     "type": "git",
@@ -64,21 +62,12 @@
   },
   "homepage": "https://github.com/arlac77/rtsp-archive#readme",
   "ava": {
-    "files": [
-      "build/*-test.js"
-    ],
-    "require": [
-      "babel-register"
-    ]
+    "files": ["build/*-test.js"],
+    "require": ["babel-register"]
   },
   "nyc": {
-    "include": [
-      "build/*-test.js",
-      "src/**/*.js"
-    ],
-    "reporter": [
-      "lcov"
-    ],
+    "include": ["build/*-test.js", "src/**/*.js"],
+    "reporter": ["lcov"],
     "report-dir": "./build/coverage"
   },
   "xo": {

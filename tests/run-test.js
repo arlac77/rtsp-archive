@@ -1,13 +1,11 @@
 import test from 'ava';
-
-const path = require('path');
-const execa = require('execa');
+import { join } from 'path';
+import execa from 'execa';
 
 test('rtsp-archive', async t => {
-  const result = await execa(
-    path.join(__dirname, '..', 'bin', 'rtsp-archive'),
-    ['-h']
-  );
+  const result = await execa(join(__dirname, '..', 'bin', 'rtsp-archive'), [
+    '-h'
+  ]);
   t.regex(result.stdout, /--config <file>/);
 });
 

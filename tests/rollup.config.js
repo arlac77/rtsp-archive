@@ -4,14 +4,15 @@ export default [
   base,
   {
     input: 'tests/run-test.js',
-    external: ['ava'],
+    external: ['ava', 'path', 'execa'],
 
     plugins: [],
 
     output: {
       file: 'build/run-test.js',
       format: 'cjs',
-      sourcemap: true
+      sourcemap: true,
+      interop: false
     }
   }
 ];

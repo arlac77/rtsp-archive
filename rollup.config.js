@@ -8,7 +8,8 @@ export default {
   output: {
     file: pkg.bin['rtsp-archive'],
     format: 'cjs',
-    banner: '#!/usr/bin/env node'
+    banner: '#!/usr/bin/env node',
+    interop: false
   },
   plugins: [nodeResolve(), commonjs(), json(), executable()],
   external: ['fs', 'util', 'child_process', 'path', 'config-expander'],
