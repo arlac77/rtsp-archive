@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
-    "documentation": "^8.0.0",
+    "documentation": "^8.0.1",
     "execa": "^0.10.0",
     "markdown-doctest": "^0.9.1",
     "nyc": "^13.0.0",
@@ -49,7 +49,7 @@
     "rollup-plugin-executable": "^1.2.0",
     "rollup-plugin-json": "^3.0.0",
     "rollup-plugin-node-resolve": "^3.3.0",
-    "semantic-release": "^15.7.1",
+    "semantic-release": "^15.7.2",
     "travis-deploy-once": "^5.0.1"
   },
   "engines": {
