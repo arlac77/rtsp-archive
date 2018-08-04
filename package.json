@@ -55,7 +55,7 @@
     "rollup-plugin-istanbul": "^2.0.1"
   },
   "engines": {
-    "node": ">=8.11"
+    "node": ">=10.8"
   },
   "repository": {
     "type": "git",
