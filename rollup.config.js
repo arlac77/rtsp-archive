@@ -12,7 +12,7 @@ export default {
     banner: '#!/usr/bin/env node',
     interop: false
   },
-  plugins: [resolve(), commonjs(), json(), executable()],
+  plugins: [resolve(), commonjs(), json(), cleanup(), executable()],
   external: ['fs', 'util', 'child_process', 'path', 'config-expander'],
   input: pkg.module
 };
