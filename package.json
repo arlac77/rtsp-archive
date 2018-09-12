@@ -56,7 +56,7 @@
     "rollup-plugin-cleanup": "^3.0.0"
   },
   "engines": {
-    "node": ">=10.8"
+    "node": ">=10.9"
   },
   "repository": {
     "type": "git",
@@ -67,6 +67,8 @@
   },
   "homepage": "https://github.com/arlac77/rtsp-archive#readme",
   "ava": {
+    "babel": false,
+    "compileEnhancements": false,
     "files": [
       "build/*-test.js"
     ],
