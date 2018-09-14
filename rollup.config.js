@@ -9,7 +9,7 @@ export default {
   output: {
     file: pkg.bin["rtsp-archive"],
     format: "cjs",
-    banner: "#!/usr/bin/env node --experimental-modules --experimental-worker",
+    banner: "#!/usr/bin/env -S node --experimental-modules --experimental-worker",
     interop: false
   },
   plugins: [resolve(), commonjs(), json(), cleanup(), executable()],
