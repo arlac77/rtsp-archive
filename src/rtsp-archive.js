@@ -1,14 +1,13 @@
 import { expand } from 'config-expander';
 import { version } from '../package.json';
 import { join, basename, dirname, resolve } from 'path';
-import { open } from 'fs';
+import { open, promises } from 'fs';
 import { promisify } from 'util';
 import { spawn } from 'child_process';
 import makeDir from 'make-dir';
 
 const { tcp, createBrowser } = require('mdns');
 const program = require('caporal');
-const openFile = promisify(open);
 
 program
   .version(version)
@@ -166,8 +165,8 @@ async function startRecording(config, recorderName, logger) {
 
   await makeDir(dir, '0755');
 
-  const stdout = await openFile(recorder.file, 'w+');
-  const stderr = await openFile(recorder.file + '.err', 'w+');
+  const stdout = await promises.open(recorder.file, 'w+');
+  const stderr = await promises.open(recorder.file + '.err', 'w+');
 
   const options = [
     '-t',
