@@ -1,9 +1,10 @@
 import cleanup from "rollup-plugin-cleanup";
 import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
-import json from "rollup-plugin-json";
 import executable from "rollup-plugin-executable";
+import json from "rollup-plugin-json";
 import pkg from "./package.json";
+import babel from "rollup-plugin-babel";
 
 export default {
   output: {
@@ -20,6 +21,22 @@ export default {
       include: "package.json",
       preferConst: true,
       compact: true
+    }),
+    babel({
+      runtimeHelpers: false,
+      externalHelpers: true,
+      babelrc: false,
+      presets: [
+        [
+          "@babel/preset-env",
+          {
+            targets: {
+              safari: "tp"
+            }
+          }
+        ]
+      ],
+      exclude: "node_modules/**"
     }),
     cleanup(),
     executable()
