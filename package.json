@@ -6,7 +6,7 @@
   },
   "main": "dist/rtsp-archive.js",
   "module": "src/rtsp-archive.js",
-  "description": "archive rtsp stream with openRTSP",
+  "description": "archive RTSP stream(s) with openRTSP or ffmpeg",
   "keywords": [
     "rtsp"
   ],
