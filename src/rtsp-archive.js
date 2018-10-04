@@ -2,7 +2,6 @@ import { expand } from 'config-expander';
 import { version } from '../package.json';
 import { join, basename, dirname, resolve } from 'path';
 import { open, promises } from 'fs';
-import { promisify } from 'util';
 import { spawn } from 'child_process';
 import makeDir from 'make-dir';
 
