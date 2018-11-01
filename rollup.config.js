@@ -15,7 +15,6 @@ export default {
     interop: false
   },
   plugins: [
-    resolve(),
     commonjs(),
     json({
       include: "package.json",
@@ -41,6 +40,13 @@ export default {
     cleanup(),
     executable()
   ],
-  external: ["fs", "util", "child_process", "path", "config-expander"],
+  external: [
+    "fs",
+    "util",
+    "child_process",
+    "path",
+    "config-expander",
+    "caporal"
+  ],
   input: pkg.module
 };

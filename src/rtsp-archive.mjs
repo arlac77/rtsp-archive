@@ -1,17 +1,16 @@
-import { expand } from 'config-expander';
-import { version } from '../package.json';
-import { join, basename, dirname, resolve } from 'path';
-import { open, promises } from 'fs';
-import { spawn } from 'child_process';
-import makeDir from 'make-dir';
+import { expand } from "config-expander";
+import { version } from "../package.json";
+import { join, basename, dirname, resolve } from "path";
+import { open, promises } from "fs";
+import { spawn } from "child_process";
+import program from "caporal";
 
-const { tcp, createBrowser } = require('mdns');
-const program = require('caporal');
+const { tcp, createBrowser } = require("mdns");
 
 program
   .version(version)
-  .description('archive rtsp stream with openRTSP')
-  .option('-c, --config <file>', 'use config file')
+  .description("archive rtsp stream with openRTSP")
+  .option("-c, --config <file>", "use config file")
   .action(async (args, options, logger) => {
     const config = Object.assign(
       await expand(
@@ -19,16 +18,16 @@ program
         {
           constants: {
             basedir: dirname(options.config || process.cwd()),
-            installdir: resolve(__dirname, '..')
+            installdir: resolve(__dirname, "..")
           }
         }
       ),
-      { recorders: {}, record: { dir: '/tmp' } }
+      { recorders: {}, record: { dir: "/tmp" } }
     );
 
-    const browser = createBrowser(tcp('rtsp'));
+    const browser = createBrowser(tcp("rtsp"));
 
-    browser.on('serviceUp', service => {
+    browser.on("serviceUp", service => {
       //logger.info(`got ${JSON.stringify(service)}`);
 
       const m = service.name.match(/^([^\s]+)\s+(.*)/);
@@ -44,7 +43,7 @@ program
         let recorder = config.recorders[recorderName];
         if (recorder === undefined) {
           recorder = config.recorders[recorderName] = {
-            fileFormat: 'mp4',
+            fileFormat: "mp4",
             width: 640,
             height: 480,
             framerate: 15
@@ -73,7 +72,7 @@ program
       }
     });
 
-    browser.on('serviceDown', service => {
+    browser.on("serviceDown", service => {
       const m = service.name.match(/^([^\s]+)\s+(.*)/);
 
       if (m !== undefined) {
@@ -82,7 +81,7 @@ program
         const recorder = recorders[slot];
         if (recorder !== undefined) {
           if (recorder.child) {
-            recorder.child.kill('SIGHUP');
+            recorder.child.kill("SIGHUP");
           }
           delete recorders[slot];
         }
@@ -97,17 +96,17 @@ program
 program.parse(process.argv);
 
 const videoPriorities = {
-  'H.264': 2,
-  'MPEG-4': 1,
+  "H.264": 2,
+  "MPEG-4": 1,
   NONE: 0
 };
 
 const fileFormats = {
   avi: {
-    openRTSP: '-i'
+    openRTSP: "-i"
   },
   mp4: {
-    openRTSP: '-4'
+    openRTSP: "-4"
   }
 };
 
@@ -117,7 +116,7 @@ async function startRecording(config, recorderName, logger) {
     return;
   }
 
-  let videoType = 'NONE';
+  let videoType = "NONE";
 
   for (const vT in recorder.videoTypes) {
     if (videoPriorities[vT] > videoPriorities[videoType]) {
@@ -125,7 +124,7 @@ async function startRecording(config, recorderName, logger) {
     }
   }
 
-  if (videoType === 'NONE') {
+  if (videoType === "NONE") {
     return;
   }
 
@@ -144,7 +143,7 @@ async function startRecording(config, recorderName, logger) {
 
   recorder.recordingType = videoType;
 
-  const openrtsp = '/usr/local/bin/openRTSP';
+  const openrtsp = "/usr/local/bin/openRTSP";
 
   const today = new Date();
   const dir = join(
@@ -162,22 +161,22 @@ async function startRecording(config, recorderName, logger) {
     }`
   );
 
-  await makeDir(dir, '0755');
+  await promises.mkdir(dir, { recursive: true, mode: "0755" });
 
-  const stdout = await promises.open(recorder.file, 'w+');
-  const stderr = await promises.open(recorder.file + '.err', 'w+');
+  const stdout = await promises.open(recorder.file, "w+");
+  const stderr = await promises.open(recorder.file + ".err", "w+");
 
   const options = [
-    '-t',
+    "-t",
     fileFormats[recorder.fileFormat].openRTSP,
-    '-d',
+    "-d",
     config.record.duration
   ];
 
   const properties = {
-    width: '-w',
-    height: '-h',
-    framerate: '-f'
+    width: "-w",
+    height: "-h",
+    framerate: "-f"
   };
 
   Object.keys(properties).forEach(o => {
@@ -187,7 +186,7 @@ async function startRecording(config, recorderName, logger) {
   });
 
   if (recorder.user !== undefined) {
-    options.push('-u', recorder.user, recorder.password);
+    options.push("-u", recorder.user, recorder.password);
   }
 
   if (recorder.url === undefined) {
@@ -199,9 +198,9 @@ async function startRecording(config, recorderName, logger) {
   options.push(recorder.url);
 
   recorder.child = spawn(openrtsp, options, {
-    stdio: ['ignore', stdout, stderr]
+    stdio: ["ignore", stdout, stderr]
   });
-  recorder.child.on('exit', () => {
+  recorder.child.on("exit", () => {
     delete recorder.child;
     delete recorder.recordingType;
     startRecording(config, recorderName, logger);
@@ -209,7 +208,7 @@ async function startRecording(config, recorderName, logger) {
 
   setTimeout(() => {
     if (recorder.child !== undefined) {
-      recorder.child.kill('SIGTERM');
+      recorder.child.kill("SIGTERM");
     }
   }, (config.record.duration + 5) * 1000);
 }
