@@ -33,7 +33,6 @@
   "dependencies": {
     "caporal": "^1.1.0",
     "config-expander": "^9.1.8",
-    "isolated-vm": "^1.7.4",
     "mdns": "^2.3.4"
   },
   "devDependencies": {
