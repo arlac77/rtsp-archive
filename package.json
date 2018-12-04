@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "caporal": "^1.1.0",
-    "config-expander": "^9.1.8",
+    "config-expander": "^9.1.9",
     "mdns": "^2.3.4"
   },
   "devDependencies": {
