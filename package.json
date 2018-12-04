@@ -26,7 +26,8 @@
     "posttest": "npm run prepare && markdown-doctest",
     "docs": "documentation readme src/rtsp-archive.mjs --section=API",
     "semantic-release": "semantic-release",
-    "prepare": "rollup -c && npm-pkgbuild -d build",
+    "prepare": "rollup -c",
+    "prepublish": "npm-pkgbuild -w build",
     "lint": "documentation lint src/rtsp-archive.mjs",
     "travis-deploy-once": "travis-deploy-once"
   },
