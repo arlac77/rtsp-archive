@@ -26,7 +26,7 @@
     "docs": "documentation readme src/rtsp-archive.mjs --section=API",
     "semantic-release": "semantic-release",
     "prepare": "rollup -c",
-    "package": "npm-pkgbuild -w build -i /services",
+    "package": "npm-pkgbuild -w build -i /services/rtsp-archive",
     "lint": "documentation lint src/rtsp-archive.mjs",
     "travis-deploy-once": "travis-deploy-once"
   },
@@ -38,7 +38,7 @@
   "devDependencies": {
     "ava": "^1.0.1",
     "c8": "^3.2.1",
-    "documentation": "^9.0.0",
+    "documentation": "^9.1.0",
     "esm": "^3.0.84",
     "execa": "^1.0.0",
     "markdown-doctest": "^0.9.1",
@@ -49,7 +49,7 @@
     "rollup-plugin-executable": "^1.3.0",
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-node-resolve": "^4.0.0",
-    "semantic-release": "^15.13.0",
+    "semantic-release": "^15.13.1",
     "travis-deploy-once": "^5.0.11"
   },
   "engines": {
