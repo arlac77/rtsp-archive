@@ -4,6 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "main": "{{main}}",
   "module": "src/rtsp-archive.mjs",
   "description": "archive RTSP stream(s) with openRTSP or ffmpeg",
   "keywords": [
@@ -75,14 +76,14 @@
       "mjs"
     ]
   },
-  "pacman": {
-    "groups": "webhook",
-    "backup": "config/config.json",
-    "install": "pacman.install"
-  },
   "template": {
     "repository": {
       "url": "https://github.com/arlac77/npm-package-template.git"
     }
+  },
+  "pacman": {
+    "groups": "webhook",
+    "backup": "config/config.json",
+    "install": "pacman.install"
   }
 }
