@@ -1,0 +1,14 @@
+[Unit]
+Description=archive RTSP stream(s) with openRTSP or ffmpeg
+
+[Service]
+#Type=notify
+ExecStart=/services/rtsp-archive/bin/rtsp-archive
+TimeoutStartSec=20
+#Restart=always
+StandardOutput=syslog
+User=nobody
+Group=nobody
+
+[Install]
+WantedBy=multi-user.target
