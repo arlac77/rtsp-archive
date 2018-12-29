@@ -4,7 +4,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "{{main}}",
   "module": "src/rtsp-archive.mjs",
   "description": "archive RTSP stream(s) with openRTSP or ffmpeg",
   "keywords": [
@@ -26,7 +25,7 @@
     "posttest": "npm run prepare && markdown-doctest",
     "docs": "documentation readme src/rtsp-archive.mjs --section=API",
     "prepare": "rollup -c",
-    "package": "npm-pkgbuild -w build -i /services/rtsp-archive",
+    "package": "npm-pkgbuild -i /services/rtsp-archive",
     "lint": "documentation lint src/rtsp-archive.mjs"
   },
   "dependencies": {
@@ -41,7 +40,7 @@
     "esm": "^3.0.84",
     "execa": "^1.0.0",
     "markdown-doctest": "^0.9.1",
-    "npm-pkgbuild": "^1.2.2",
+    "npm-pkgbuild": "^1.3.4",
     "rollup": "^1.0.0",
     "rollup-plugin-cleanup": "^3.1.0",
     "rollup-plugin-commonjs": "^9.2.0",
@@ -75,6 +74,11 @@
       "js",
       "mjs"
     ]
+  },
+  "pacman": {
+    "groups": "webhook",
+    "backup": "config/config.json",
+    "install": "pacman.install"
   },
   "template": {
     "repository": {
