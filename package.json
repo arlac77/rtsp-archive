@@ -4,6 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "main": "{{main}}",
   "module": "src/rtsp-archive.mjs",
   "description": "archive RTSP stream(s) with openRTSP or ffmpeg",
   "keywords": [
@@ -76,8 +77,9 @@
     ]
   },
   "pacman": {
-    "groups": "webhook",
+    "groups": "home-automation",
     "backup": "config/config.json",
+    "install": "pacman.install"
     "services": {
       "rtsp-archive": "systemd/rtsp-archive*"
     }
