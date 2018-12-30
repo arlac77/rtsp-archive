@@ -76,17 +76,17 @@
       "mjs"
     ]
   },
+  "template": {
+    "repository": {
+      "url": "https://github.com/arlac77/npm-package-template.git"
+    }
+  },
   "pacman": {
     "groups": "home-automation",
     "backup": "config/config.json",
     "install": "pacman.install",
     "services": {
       "rtsp-archive": "systemd/rtsp-archive*"
-    }
-  },
-  "template": {
-    "repository": {
-      "url": "https://github.com/arlac77/npm-package-template.git"
     }
   }
 }
