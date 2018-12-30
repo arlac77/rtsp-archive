@@ -79,7 +79,7 @@
   "pacman": {
     "groups": "home-automation",
     "backup": "config/config.json",
-    "install": "pacman.install"
+    "install": "pacman.install",
     "services": {
       "rtsp-archive": "systemd/rtsp-archive*"
     }
