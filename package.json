@@ -40,7 +40,7 @@
     "esm": "^3.0.84",
     "execa": "^1.0.0",
     "markdown-doctest": "^0.9.1",
-    "npm-pkgbuild": "^1.3.4",
+    "npm-pkgbuild": "^1.4.1",
     "rollup": "^1.0.0",
     "rollup-plugin-cleanup": "^3.1.0",
     "rollup-plugin-commonjs": "^9.2.0",
@@ -78,7 +78,9 @@
   "pacman": {
     "groups": "webhook",
     "backup": "config/config.json",
-    "install": "pacman.install"
+    "services": {
+      "rtsp-archive": "systemd/rtsp-archive*"
+    }
   },
   "template": {
     "repository": {
