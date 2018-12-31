@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "{{main}}",
+  "main": "src/rtsp-archive.mjs",
   "module": "src/rtsp-archive.mjs",
   "description": "archive RTSP stream(s) with openRTSP or ffmpeg",
   "keywords": [
@@ -41,7 +41,7 @@
     "esm": "^3.0.84",
     "execa": "^1.0.0",
     "markdown-doctest": "^0.9.1",
-    "npm-pkgbuild": "^2.0.0",
+    "npm-pkgbuild": "^2.1.0",
     "rollup": "^1.0.0",
     "rollup-plugin-cleanup": "^3.1.0",
     "rollup-plugin-commonjs": "^9.2.0",
@@ -84,7 +84,7 @@
   "pacman": {
     "groups": "home-automation",
     "backup": "config/config.json",
-    "install": "pacman.install"
+    "install": "pacman/pacman.install"
   },
   "systemd": {
     "units": {

@@ -1,9 +1,9 @@
 [Unit]
-Description=archive RTSP stream(s) with openRTSP or ffmpeg
+Description={{description}}
 
 [Service]
 #Type=notify
-ExecStart=/services/rtsp-archive/bin/rtsp-archive
+ExecStart={{installdir}}/bin/{{name}}
 TimeoutStartSec=20
 #Restart=always
 StandardOutput=syslog
