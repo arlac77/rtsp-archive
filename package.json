@@ -26,7 +26,7 @@
     "posttest": "npm run prepare && markdown-doctest",
     "docs": "documentation readme src/rtsp-archive.mjs --section=API",
     "prepare": "rollup -c",
-    "package": "npm-pkgbuild -i /services/rtsp-archive",
+    "package": "npm-pkgbuild pkgbuild makepkg",
     "lint": "documentation lint src/rtsp-archive.mjs"
   },
   "dependencies": {
@@ -82,6 +82,7 @@
     }
   },
   "pacman": {
+    "installdir": "services/rtsp-archive",
     "groups": "home-automation",
     "backup": "config/config.json",
     "install": "pacman/pacman.install"
