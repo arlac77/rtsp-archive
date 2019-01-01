@@ -10,5 +10,9 @@ StandardOutput=syslog
 User=nobody
 Group=nobody
 
+RuntimeDirectory={{name}}
+StateDirectory={{name}}
+ConfigurationDirectory={{name}}
+
 [Install]
 WantedBy=multi-user.target
