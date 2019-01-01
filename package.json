@@ -85,7 +85,10 @@
     "installdir": "/services/rtsp-archive",
     "groups": "home-automation",
     "backup": "config/config.json",
-    "install": "pacman/pacman.install"
+    "install": "pacman/pacman.install",
+    "content": {
+      "/usr/lib/tmpfiles.d/{{name}}.conf": "pacman/tmpfiles.conf"
+    }
   },
   "systemd": {
     "units": {
