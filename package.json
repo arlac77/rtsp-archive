@@ -87,7 +87,7 @@
     "backup": "config/config.json",
     "install": "pacman/pacman.install",
     "content": {
-      "/usr/lib/tmpfiles.d/{{name}}.conf": "pacman/tmpfiles.conf"
+      "/usr/lib/tmpfiles.d/rtsp-archive.conf": "pacman/tmpfiles.conf"
     }
   },
   "systemd": {
