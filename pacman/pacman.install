@@ -1,19 +1,19 @@
 
 post_install() {
 	systemctl daemon-reload
-	systemctl enable {{unit}}
+	systemctl enable {{name}}
 }
 
 pre_upgrade() {
-	systemctl stop {{unit}}
+	systemctl stop {{name}}
 }
 
 post_upgrade() {
 	systemctl daemon-reload
-	systemctl start {{unit}}
+	systemctl start {{name}}
 }
 
 pre_remove() {
 	systemctl stop rtsp-archive
-	systemctl disable {{unit}}
+	systemctl disable {{name}}
 }
