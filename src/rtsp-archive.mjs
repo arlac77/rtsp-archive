@@ -28,7 +28,7 @@ program
     const browser = createBrowser(tcp("rtsp"));
 
     browser.on("serviceUp", service => {
-      //logger.info(`got ${JSON.stringify(service)}`);
+      console.log(`got ${JSON.stringify(service)}`);
 
       const m = service.name.match(/^([^\s]+)\s+(.*)/);
 
