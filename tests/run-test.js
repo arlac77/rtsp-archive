@@ -1,12 +1,12 @@
-import test from 'ava';
-import { join } from 'path';
-import execa from 'execa';
+import test from "ava";
+import { join } from "path";
+import execa from "execa";
 
-test('rtsp-archive', async t => {
-  const result = await execa(join(__dirname, '..', 'bin', 'rtsp-archive'), [
-    '-h'
+test("rtsp-archive", async t => {
+  const result = await execa(join(__dirname, "..", "bin", "rtsp-archive"), [
+    "-h"
   ]);
-  t.regex(result.stdout, /--config <file>/);
+  t.regex(result.stdout, /--config <dir>/);
 });
 
 /*

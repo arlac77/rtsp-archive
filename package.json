@@ -26,6 +26,7 @@
     "lint": "documentation lint src/rtsp-archive.mjs",
     "package": "npm-pkgbuild pkgbuild pacman makepkg",
     "posttest": "npm run prepare && markdown-doctest",
+    "pretest": "rollup -c",
     "prepare": "rollup -c",
     "test": "ava"
   },

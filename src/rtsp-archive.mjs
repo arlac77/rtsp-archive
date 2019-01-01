@@ -10,14 +10,15 @@ const { tcp, createBrowser } = require("mdns");
 program
   .version(version)
   .description("archive rtsp stream with openRTSP")
-  .option("-c, --config <file>", "use config file")
+  .option("-c, --config <dir>", "use config directory")
   .action(async (args, options, logger) => {
+    let configDir = process.env.CONFIGURATION_DIRECTORY || options.config;
     const config = Object.assign(
       await expand(
-        options.config ? "${include('" + basename(options.config) + "')}" : {},
+        configDir ? "${include('" + join(configDir, "config.json") + "')}" : {},
         {
           constants: {
-            basedir: dirname(options.config || process.cwd()),
+            basedir: configDir || process.cwd(),
             installdir: resolve(__dirname, "..")
           }
         }
