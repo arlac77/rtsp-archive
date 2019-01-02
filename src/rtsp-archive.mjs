@@ -13,6 +13,8 @@ program
   .option("-c, --config <dir>", "use config directory")
   .action(async (args, options, logger) => {
     const configDir = process.env.CONFIGURATION_DIRECTORY || options.config;
+
+    console.log(`configDir: ${configDir}`);
     const config = Object.assign(
       await expand(
         configDir ? "${include('" + join(configDir, "config.json") + "')}" : {},
