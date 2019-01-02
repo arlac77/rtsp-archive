@@ -16,3 +16,4 @@ SUMMARY.md
 
 pacman.install
 systemd/*
+config
