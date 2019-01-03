@@ -89,7 +89,7 @@
     "install": "pacman/install.sh",
     "content": {
       "/usr/lib/tmpfiles.d/${name}.conf": "pacman/tmpfiles.conf",
-      "/etc/${name}/config.conf": "config/config.json"
+      "/etc/${name}/config.json": "config/config.json"
     }
   },
   "systemd": {
