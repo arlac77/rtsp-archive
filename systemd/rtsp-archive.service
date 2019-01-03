@@ -10,7 +10,8 @@ TimeoutStartSec=20
 StandardOutput=syslog
 User=nobody
 Group=nobody
-
+PrivateTmp=true
+NoNewPrivileges=true
 RuntimeDirectory={{name}}
 StateDirectory={{name}}
 ConfigurationDirectory={{name}}
