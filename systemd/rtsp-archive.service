@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 #Type=notify
-ExecStart={{installdir}}/bin/{{name}}
+ExecStart={{installdir}}/bin/{{name}} --config=/etc/{{name}}
 TimeoutStartSec=20
 #Restart=always
 StandardOutput=syslog
