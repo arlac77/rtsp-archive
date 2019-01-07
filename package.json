@@ -85,7 +85,7 @@
   "pacman": {
     "installdir": "/services/${name}",
     "groups": "home-automation",
-    "backup": "/etc/${name}/config.conf",
+    "backup": "/etc/${name}/config.json",
     "install": "pacman/install.sh",
     "content": {
       "/usr/lib/tmpfiles.d/${name}.conf": "pacman/tmpfiles.conf",
