@@ -87,6 +87,9 @@
     "groups": "home-automation",
     "backup": "/etc/${name}/config.json",
     "install": "pacman/install.sh",
+    "depends": {
+      "systemd": ">=240.0"
+    },
     "content": {
       "/usr/lib/tmpfiles.d/${name}.conf": "pacman/tmpfiles.conf",
       "/etc/${name}/config.json": "config/config.json"
