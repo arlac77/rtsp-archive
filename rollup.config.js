@@ -23,13 +23,6 @@ export default {
     cleanup(),
     executable()
   ],
-  external: [
-    "fs",
-    "util",
-    "child_process",
-    "path",
-    "config-expander",
-    "caporal"
-  ],
+  external: ["fs", "util", "child_process", "path", "caporal"],
   input: pkg.module
 };
