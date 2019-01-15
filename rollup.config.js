@@ -47,7 +47,6 @@ const external = [
   "vm",
   "zlib",
 
-  "config_expander",
   "caporal"
 ];
 
