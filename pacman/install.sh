@@ -1,3 +1,7 @@
+pre_install() {
+	groupadd {{name}}
+	useradd -m -g {{name}} {{name}}
+}
 
 post_install() {
 	systemctl daemon-reload
@@ -16,4 +20,8 @@ post_upgrade() {
 pre_remove() {
 	systemctl stop {{name}}
 	systemctl disable {{name}}
+}
+
+post_remove() {
+	systemctl daemon-reload
 }

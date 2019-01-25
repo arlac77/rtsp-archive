@@ -1,5 +1,5 @@
 import { expand } from "config-expander";
-import { version } from "../package.json";
+import { version, description } from "../package.json";
 import { join, basename, dirname, resolve } from "path";
 import { open, promises } from "fs";
 import { spawn } from "child_process";
@@ -9,12 +9,11 @@ const { tcp, createBrowser } = require("mdns");
 
 program
   .version(version)
-  .description("archive rtsp stream with openRTSP")
+  .description(description)
   .option("-c, --config <dir>", "use config directory")
   .action(async (args, options, logger) => {
     const configDir = process.env.CONFIGURATION_DIRECTORY || options.config;
 
-    console.log(`configDir: ${configDir}`);
     const config = Object.assign(
       await expand(
         configDir ? "${include('" + join(configDir, "config.json") + "')}" : {},
