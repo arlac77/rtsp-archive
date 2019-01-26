@@ -8,8 +8,8 @@ ExecStart={{installdir}}/bin/{{name}} --config=/etc/{{name}}
 TimeoutStartSec=20
 #Restart=always
 StandardOutput=syslog
-User=nobody
-Group=nobody
+User={{name}}
+Group={{name}}
 PrivateTmp=true
 NoNewPrivileges=true
 RuntimeDirectory={{name}}
