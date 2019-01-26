@@ -1,5 +1,5 @@
 pre_install() {
-	useradd -U -l -M -r -g {{name}} -c "{{description}}" {{name}}
+	useradd -U -l -M -r -c "{{description}}" {{name}}
 }
 
 post_install() {
