@@ -20,7 +20,7 @@
 archive RTSP stream(s) with openRTSP or ffmpeg
 
 ```sh
-rtsp-archive -c config.json
+rtsp-archive -c configDir
 ```
 
 # API
