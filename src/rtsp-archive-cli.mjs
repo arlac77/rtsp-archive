@@ -3,7 +3,7 @@ import { version, description } from "../package.json";
 import { join, basename, dirname, resolve } from "path";
 import { open, promises } from "fs";
 import { spawn } from "child_process";
-import program from "caporal";
+import program from "commander";
 
 const { tcp, createBrowser } = require("mdns");
 
@@ -11,19 +11,16 @@ program
   .version(version)
   .description(description)
   .option("-c, --config <dir>", "use config directory")
-  .action(async (args, options, logger) => {
-    const configDir = process.env.CONFIGURATION_DIRECTORY || options.config;
+  .action(async () => {
+    const configDir = process.env.CONFIGURATION_DIRECTORY || program.config;
 
     const config = Object.assign(
-      await expand(
-        configDir ? "${include('" + join(configDir, "config.json") + "')}" : {},
-        {
-          constants: {
-            basedir: configDir || process.cwd(),
-            installdir: resolve(__dirname, "..")
-          }
+      await expand(configDir ? "${include('config.json')}" : {}, {
+        constants: {
+          basedir: configDir || process.cwd(),
+          installdir: resolve(__dirname, "..")
         }
-      ),
+      }),
       { recorders: {}, record: { dir: "/tmp" } }
     );
 
@@ -70,7 +67,7 @@ program
 
         recorder.port = service.port;
         recorder.videoTypes[videoType] = service.txtRecord.path;
-        startRecording(config, recorderName, logger);
+        startRecording(config, recorderName);
       }
     });
 
@@ -90,12 +87,11 @@ program
       }
     });
 
-    logger.info(`waiting for services`);
+    console.log(`waiting for services`);
 
     browser.start();
-  });
-
-program.parse(process.argv);
+  })
+  .parse(process.argv);
 
 const videoPriorities = {
   "H.264": 2,
@@ -112,7 +108,7 @@ const fileFormats = {
   }
 };
 
-async function startRecording(config, recorderName, logger) {
+async function startRecording(config, recorderName) {
   const recorder = config.recorders[recorderName];
   if (recorder === undefined) {
     return;
@@ -205,7 +201,7 @@ async function startRecording(config, recorderName, logger) {
   recorder.child.on("exit", () => {
     delete recorder.child;
     delete recorder.recordingType;
-    startRecording(config, recorderName, logger);
+    startRecording(config, recorderName);
   });
 
   setTimeout(() => {

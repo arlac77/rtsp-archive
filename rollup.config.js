@@ -45,9 +45,7 @@ const external = [
   "util",
   "v8",
   "vm",
-  "zlib",
-
-  "caporal"
+  "zlib"
 ];
 
 export default {

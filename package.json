@@ -4,8 +4,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "src/rtsp-archive.mjs",
-  "module": "src/rtsp-archive.mjs",
+  "main": "src/rtsp-archive-cli.mjs",
+  "module": "src/rtsp-archive-cli.mjs",
   "description": "archive RTSP stream(s) with openRTSP or ffmpeg",
   "keywords": [
     "rtsp"
@@ -22,8 +22,8 @@
   },
   "scripts": {
     "cover": "c8 --temp-directory build/coverage ava && c8 report -r lcov --temp-directory build/coverage",
-    "docs": "documentation readme src/rtsp-archive.mjs --section=API",
-    "lint": "documentation lint src/rtsp-archive.mjs",
+    "docs": "documentation readme src/rtsp-archive-cli.mjs --section=API",
+    "lint": "documentation lint src/rtsp-archive-cli.mjs",
     "package": "npm-pkgbuild -t /data/binaries/arch-linux/packages pkgbuild pacman makepkg",
     "posttest": "npm run prepare && markdown-doctest",
     "prepare": "rollup -c",
@@ -31,7 +31,7 @@
     "test": "ava"
   },
   "dependencies": {
-    "caporal": "^1.1.0",
+    "commander": "^2.19.0",
     "config-expander": "^10.0.2",
     "mdns": "^2.3.4"
   },
