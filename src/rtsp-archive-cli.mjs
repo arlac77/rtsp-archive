@@ -1,7 +1,7 @@
 import { expand } from "config-expander";
 import { version, description } from "../package.json";
-import { join, basename, dirname, resolve } from "path";
-import { open, promises } from "fs";
+import { join, dirname, resolve } from "path";
+import fs from "fs";
 import { spawn } from "child_process";
 import program from "commander";
 
@@ -159,10 +159,7 @@ async function startRecording(config, recorderName) {
     }`
   );
 
-  await promises.mkdir(dir, { recursive: true, mode: "0755" });
-
-  const stdout = await promises.open(recorder.file, "w+");
-  const stderr = await promises.open(recorder.file + ".err", "w+");
+  await fs.promises.mkdir(dir, { recursive: true, mode: "0755" });
 
   const options = [
     "-t",
@@ -195,9 +192,12 @@ async function startRecording(config, recorderName) {
 
   options.push(recorder.url);
 
-  recorder.child = spawn(openrtsp, options, {
+  recorder.child = spawn(
+    openrtsp,
+    options /*, {
     stdio: ["ignore", stdout, stderr]
-  });
+  }*/
+  );
   recorder.child.on("exit", () => {
     delete recorder.child;
     delete recorder.recordingType;
