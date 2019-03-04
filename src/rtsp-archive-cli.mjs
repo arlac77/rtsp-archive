@@ -12,6 +12,7 @@ program
   .description(description)
   .option("-c, --config <dir>", "use config directory")
   .action(async () => {
+    console.log(process.env);
     const configDir = process.env.CONFIGURATION_DIRECTORY || program.config;
 
     const config = Object.assign(
