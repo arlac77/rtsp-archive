@@ -5,7 +5,9 @@ import fs from "fs";
 import { spawn } from "child_process";
 import program from "commander";
 
-const { tcp, createBrowser } = require("mdns");
+const bonjour = require('nbonjour').create();
+
+//const { tcp, createBrowser } = require("mdns");
 
 program
   .version(version)
@@ -26,10 +28,13 @@ program
 
     console.log(config);
 
-    const browser = createBrowser(tcp("rtsp"));
+    bonjour.find({ type: 'rtsp' }, service => {
+      console.log('Found an RTSP server:', service);
 
-    browser.on("serviceUp", service => {
-      console.log(`got ${JSON.stringify(service)}`);
+    //});
+    //const browser = createBrowser(tcp("rtsp"));
+    //browser.on("serviceUp", service => {
+    //  console.log(`got ${JSON.stringify(service)}`);
 
       const m = service.name.match(/^([^\s]+)\s+(.*)/);
 
@@ -73,6 +78,7 @@ program
       }
     });
 
+/*
     browser.on("serviceDown", service => {
       const m = service.name.match(/^([^\s]+)\s+(.*)/);
 
@@ -88,10 +94,11 @@ program
         }
       }
     });
+*/
 
     console.log(`waiting for services`);
 
-    browser.start();
+    //browser.start();
   })
   .parse(process.argv);
 
