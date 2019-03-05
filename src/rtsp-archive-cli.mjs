@@ -12,7 +12,6 @@ program
   .description(description)
   .option("-c, --config <dir>", "use config directory")
   .action(async () => {
-    console.log(process.env);
     const configDir = process.env.CONFIGURATION_DIRECTORY || program.config;
 
     const config = Object.assign(
@@ -22,8 +21,10 @@ program
           installdir: resolve(__dirname, "..")
         }
       }),
-      { recorders: {}, record: { dir: "/tmp" } }
+      { recorders: {}, record: { dir: process.env.STATE_DIRECTORY || "/tmp" } }
     );
+
+    console.log(config);
 
     const browser = createBrowser(tcp("rtsp"));
 

@@ -1,32 +1,31 @@
 {
-	"record": {
-		"duration": 60,
-		"keepdays": 14,
-		"dir": "/tmp/camera"
-	},
-	"recorders": {
-		"INSTAR1": {
-			"fileFormat": "mp4",
-			"framerate": 15,
-			"width": 640,
-			"height": 480,
-			"user": "user",
-			"url": "rtsp://10.0.3.4:554/11",
-			"videoTypes": {
-				"H.264": {}
-			}
-		},
-		"AXIS1": {
-			"fileFormat": "avi",
-			"framerate": 15,
-			"width": 640,
-			"height": 480
-		},
-		"AXIS2": {
-			"fileFormat": "mp4",
-			"framerate": 15,
-			"width": 640,
-			"height": 480
-		}
-	}
+  "record": {
+    "duration": 60,
+    "keepdays": 14
+  },
+  "recorders": {
+    "INSTAR1": {
+      "fileFormat": "mp4",
+      "framerate": 15,
+      "width": 640,
+      "height": 480,
+      "user": "user",
+      "url": "rtsp://10.0.3.4:554/11",
+      "videoTypes": {
+        "H.264": {}
+      }
+    },
+    "AXIS1": {
+      "fileFormat": "avi",
+      "framerate": 15,
+      "width": 640,
+      "height": 480
+    },
+    "AXIS2": {
+      "fileFormat": "mp4",
+      "framerate": 15,
+      "width": 640,
+      "height": 480
+    }
+  }
 }
