@@ -7,8 +7,6 @@ import program from "commander";
 
 const bonjour = require('nbonjour').create();
 
-//const { tcp, createBrowser } = require("mdns");
-
 program
   .version(version)
   .description(description)
@@ -150,8 +148,6 @@ async function startRecording(config, recorderName) {
 
   recorder.recordingType = videoType;
 
-  const openrtsp = "/usr/local/bin/openRTSP";
-
   const today = new Date();
   const dir = join(
     config.record.dir,
@@ -170,11 +166,16 @@ async function startRecording(config, recorderName) {
 
   await fs.promises.mkdir(dir, { recursive: true, mode: "0755" });
 
+  recorder.url = "rtsp://10.0.3.2/mpeg4/1/media.amp";
+  
+//ffmpeg -i rtsp://10.0.3.2/mpeg4/1/media.amp -b 900k -vcodec copy -r 60 -y MyVdeoFFmpeg.avi
+
   const options = [
-    "-t",
-    fileFormats[recorder.fileFormat].openRTSP,
-    "-d",
-    config.record.duration
+    "-i", recorder.url,
+    "-b", "900k",
+    "-vcodec", "copy",
+    "-r", "60",
+    "-y", recorder.file
   ];
 
   const properties = {
@@ -189,6 +190,7 @@ async function startRecording(config, recorderName) {
     }
   });
 
+/*
   if (recorder.user !== undefined) {
     options.push("-u", recorder.user, recorder.password);
   }
@@ -198,15 +200,15 @@ async function startRecording(config, recorderName) {
       recorder.videoTypes[videoType]
     }`;
   }
+*/
 
-  options.push(recorder.url);
-
+  console.log("ffmpeg", options);
+  
   recorder.child = spawn(
-    openrtsp,
-    options /*, {
-    stdio: ["ignore", stdout, stderr]
-  }*/
+    "ffmpeg",
+    options
   );
+  
   recorder.child.on("exit", () => {
     delete recorder.child;
     delete recorder.recordingType;
