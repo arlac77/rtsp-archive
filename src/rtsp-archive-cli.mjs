@@ -29,11 +29,6 @@ program
     bonjour.find({ type: 'rtsp' }, service => {
       console.log('Found an RTSP server:', service);
 
-    //});
-    //const browser = createBrowser(tcp("rtsp"));
-    //browser.on("serviceUp", service => {
-    //  console.log(`got ${JSON.stringify(service)}`);
-
       const m = service.name.match(/^([^\s]+)\s+(.*)/);
 
       if (m) {
@@ -71,7 +66,6 @@ program
         }
 
         recorder.port = service.port;
-        recorder.videoTypes[videoType] = service.txtRecord.path;
         startRecording(config, recorderName);
       }
     });
@@ -93,10 +87,7 @@ program
       }
     });
 */
-
     console.log(`waiting for services`);
-
-    //browser.start();
   })
   .parse(process.argv);
 
