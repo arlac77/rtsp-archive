@@ -155,7 +155,7 @@ async function startRecording(config, recorderName) {
     recorderName,
     String(today.getFullYear()),
     String(today.getMonth()),
-    String(today.getMinutes())
+    String(today.getDate())
   );
 
   recorder.file = join(
@@ -174,12 +174,14 @@ async function startRecording(config, recorderName) {
   const options = [
     "-i",
     recorder.url,
-    "-b",
-    "900k",
+//    "-b",
+//    "900k",
+    "-acodec",
+    "copy",
     "-vcodec",
     "copy",
-    "-r",
-    "60",
+  //  "-r",
+  //  "60",
     "-y",
     recorder.file
   ];
@@ -221,9 +223,11 @@ async function startRecording(config, recorderName) {
     startRecording(config, recorderName);
   });
 
+/*
   setTimeout(() => {
     if (recorder.child !== undefined) {
       recorder.child.kill("SIGTERM");
     }
   }, (config.record.duration + 5) * 1000);
+  */
 }
