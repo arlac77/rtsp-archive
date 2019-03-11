@@ -174,14 +174,11 @@ async function startRecording(config, recorderName) {
   const options = [
     "-i",
     recorder.url,
-//    "-b",
-//    "900k",
     "-acodec",
     "copy",
     "-vcodec",
     "copy",
-  //  "-r",
-  //  "60",
+   "-timestamp", "now",
     "-y",
     recorder.file
   ];
