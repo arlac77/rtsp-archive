@@ -185,8 +185,8 @@ async function startRecording(config, recorderName) {
   ];
 
   const properties = {
-    width: "-w",
-    height: "-h",
+//    width: "-w",
+//    height: "-h",
     framerate: "-f"
   };
 
@@ -212,7 +212,7 @@ async function startRecording(config, recorderName) {
 
   recorder.child = spawn("ffmpeg", options);
 
-  console.log(recorder.child);
+  //console.log(recorder.child);
 
   recorder.child.on("exit", code => {
     console.log("EXIT", code);
