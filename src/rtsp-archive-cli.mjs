@@ -31,7 +31,7 @@ program
     console.log(config);
 
     bonjour.find({ type: "rtsp" }, service => {
-      console.log("Found an RTSP server:", service);
+      console.log("Found an RTSP server", service);
 
       const m = service.fqdn.match(/^([^\s]+)\s+(.*)/);
 
