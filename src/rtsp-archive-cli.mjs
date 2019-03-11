@@ -5,7 +5,7 @@ import fs from "fs";
 import { spawn } from "child_process";
 import program from "commander";
 
-const bonjour = require('nbonjour').create();
+const bonjour = require("nbonjour").create();
 
 program
   .version(version)
@@ -24,20 +24,24 @@ program
       { recorders: {}, record: { dir: process.env.STATE_DIRECTORY || "/tmp" } }
     );
 
+    if(process.env.STATE_DIRECTORY) {
+      config.record.dir = process.env.STATE_DIRECTORY;
+    }
+
     console.log(config);
 
-    bonjour.find({ type: 'rtsp' }, service => {
-      console.log('Found an RTSP server:', service);
+    bonjour.find({ type: "rtsp" }, service => {
+      console.log("Found an RTSP server:", service);
 
-      const m = service.name.match(/^([^\s]+)\s+(.*)/);
+      const m = service.fqdn.match(/^([^\s]+)\s+(.*)/);
 
       if (m) {
         const recorderName = m[1];
         const videoType = m[2];
 
-        if (!videoPriorities[videoType]) {
+        /*if (!videoPriorities[videoType]) {
           return;
-        }
+        }*/
 
         let recorder = config.recorders[recorderName];
         if (recorder === undefined) {
@@ -48,16 +52,18 @@ program
             framerate: 15
           };
         }
+
         if (recorder.videoTypes === undefined) {
           recorder.videoTypes = {};
         }
 
+/*
         for (const vT in recorder.videoTypes) {
           if (vT === videoType) {
             return;
           }
         }
-
+*/
         for (const a of service.addresses) {
           if (a.match(/^[0-9\.]+$/)) {
             recorder.address = a;
@@ -70,7 +76,7 @@ program
       }
     });
 
-/*
+    /*
     browser.on("serviceDown", service => {
       const m = service.name.match(/^([^\s]+)\s+(.*)/);
 
@@ -108,6 +114,8 @@ const fileFormats = {
 
 async function startRecording(config, recorderName) {
   const recorder = config.recorders[recorderName];
+
+  console.log("START RECORDING",recorderName, recorder);
   if (recorder === undefined) {
     return;
   }
@@ -120,6 +128,7 @@ async function startRecording(config, recorderName) {
     }
   }
 
+/*
   if (videoType === "NONE") {
     return;
   }
@@ -136,6 +145,7 @@ async function startRecording(config, recorderName) {
     setTimeout(() => startRecording(config, recorderName), 1000);
     return;
   }
+*/
 
   recorder.recordingType = videoType;
 
@@ -158,15 +168,20 @@ async function startRecording(config, recorderName) {
   await fs.promises.mkdir(dir, { recursive: true, mode: "0755" });
 
   recorder.url = "rtsp://10.0.3.2/mpeg4/1/media.amp";
-  
-//ffmpeg -i rtsp://10.0.3.2/mpeg4/1/media.amp -b 900k -vcodec copy -r 60 -y MyVdeoFFmpeg.avi
+
+  //ffmpeg -i rtsp://10.0.3.2/mpeg4/1/media.amp -b 900k -vcodec copy -r 60 -y MyVdeoFFmpeg.avi
 
   const options = [
-    "-i", recorder.url,
-    "-b", "900k",
-    "-vcodec", "copy",
-    "-r", "60",
-    "-y", recorder.file
+    "-i",
+    recorder.url,
+    "-b",
+    "900k",
+    "-vcodec",
+    "copy",
+    "-r",
+    "60",
+    "-y",
+    recorder.file
   ];
 
   const properties = {
@@ -181,7 +196,7 @@ async function startRecording(config, recorderName) {
     }
   });
 
-/*
+  /*
   if (recorder.user !== undefined) {
     options.push("-u", recorder.user, recorder.password);
   }
@@ -194,12 +209,9 @@ async function startRecording(config, recorderName) {
 */
 
   console.log("ffmpeg", options);
-  
-  recorder.child = spawn(
-    "ffmpeg",
-    options
-  );
-  
+
+  recorder.child = spawn("ffmpeg", options);
+
   recorder.child.on("exit", () => {
     delete recorder.child;
     delete recorder.recordingType;
