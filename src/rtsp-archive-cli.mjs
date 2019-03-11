@@ -212,7 +212,10 @@ async function startRecording(config, recorderName) {
 
   recorder.child = spawn("ffmpeg", options);
 
-  recorder.child.on("exit", () => {
+  console.log(recorder.child);
+
+  recorder.child.on("exit", code => {
+    console.log("EXIT", code);
     delete recorder.child;
     delete recorder.recordingType;
     startRecording(config, recorderName);
