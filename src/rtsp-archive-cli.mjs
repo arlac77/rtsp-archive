@@ -189,7 +189,7 @@ async function startRecording(config, recorderName) {
   const properties = {
 //    width: "-w",
 //    height: "-h",
-    framerate: "-f"
+//    framerate: "-r"
   };
 
   Object.keys(properties).forEach(o => {
