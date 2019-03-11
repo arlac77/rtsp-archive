@@ -222,13 +222,7 @@ async function startRecording(config, recorderName) {
 
   console.log("ffmpeg", options);
 
-  recorder.child = spawn("ffmpeg", options, (error, stdout, stderr) => {
-    if(error) {
-      console.log(error);
-    }
-    console.log("FFMPEG STDOUT", stdout);
-    console.log("FFMPEG STDERR", stderr);
-  });
+  recorder.child = spawn("ffmpeg", options, { stdio: "inherit" });
 
   //console.log(recorder.child);
 
