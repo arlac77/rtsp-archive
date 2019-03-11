@@ -33,7 +33,6 @@ program
     bonjour.find({ type: "rtsp" }, service => {
       console.log("Found an RTSP server:", service);
 
-
       const m = service.fqdn.match(/^([^\s]+)\s+(.*)/);
 
       if (m) {
@@ -73,7 +72,7 @@ program
           }
         }
 
-        recorder.url = `${service.type}:${service.address}/${service.txt.ath}`;
+        recorder.url = `${service.protocol}:${service.referer.address}/${service.txt.ath}`;
         //recorder.url = "rtsp://10.0.3.2/mpeg4/1/media.amp";
 
         recorder.port = service.port;
