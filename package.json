@@ -89,7 +89,7 @@
     "install": "pacman/install.sh",
     "depends": {
       "systemd": ">=241.0",
-      "ffmpeg": "4.1"
+      "ffmpeg": ">=4.1"
     },
     "content": {
       "/usr/lib/tmpfiles.d/${name}.conf": "pacman/tmpfiles.conf",
