@@ -24,7 +24,7 @@ program
       { recorders: {}, record: { dir: process.env.STATE_DIRECTORY || "/tmp" } }
     );
 
-    if(process.env.STATE_DIRECTORY) {
+    if (process.env.STATE_DIRECTORY) {
       config.record.dir = process.env.STATE_DIRECTORY;
     }
 
@@ -38,7 +38,6 @@ program
       if (m) {
         const recorderName = m[1];
         const videoType = m[2];
-
 
         /*if (!videoPriorities[videoType]) {
           return;
@@ -58,7 +57,7 @@ program
           recorder.videoTypes = {};
         }
 
-/*
+        /*
         for (const vT in recorder.videoTypes) {
           if (vT === videoType) {
             return;
@@ -72,7 +71,9 @@ program
           }
         }
 
-        recorder.url = `${service.protocol}:${service.referer.address}/${service.txt.ath}`;
+        recorder.url = `${service.protocol}:${service.referer.address}/${
+          service.txt.ath
+        }`;
         //recorder.url = "rtsp://10.0.3.2/mpeg4/1/media.amp";
 
         recorder.port = service.port;
@@ -119,8 +120,13 @@ const fileFormats = {
 async function startRecording(config, recorderName) {
   const recorder = config.recorders[recorderName];
 
-  console.log("START RECORDING",recorderName, recorder);
+  console.log("START RECORDING", recorderName, recorder);
   if (recorder === undefined) {
+    return;
+  }
+
+  if (recorder.child !== undefined) {
+    console.log("ALREDY RUNNING", recorderName, recorder.child.pid);
     return;
   }
 
@@ -132,7 +138,7 @@ async function startRecording(config, recorderName) {
     }
   }
 
-/*
+  /*
   if (videoType === "NONE") {
     return;
   }
@@ -176,22 +182,24 @@ async function startRecording(config, recorderName) {
 
   const options = [
     "-hide_banner",
-    "-loglevel", "panic",
+    "-loglevel",
+    "panic",
     "-i",
     recorder.url,
     "-acodec",
     "copy",
     "-vcodec",
     "copy",
-   "-timestamp", "now",
+    "-timestamp",
+    "now",
     "-y",
     recorder.file
   ];
 
   const properties = {
-//    width: "-w",
-//    height: "-h",
-//    framerate: "-r"
+    //    width: "-w",
+    //    height: "-h",
+    //    framerate: "-r"
   };
 
   Object.keys(properties).forEach(o => {
@@ -214,7 +222,13 @@ async function startRecording(config, recorderName) {
 
   console.log("ffmpeg", options);
 
-  recorder.child = spawn("ffmpeg", options);
+  recorder.child = spawn("ffmpeg", options, (error, stdout, stderr) => {
+    if(error) {
+      console.log(error);
+    }
+    console.log("FFMPEG STDOUT", stdout);
+    console.log("FFMPEG STDERR", stderr);
+  });
 
   //console.log(recorder.child);
 
@@ -225,7 +239,7 @@ async function startRecording(config, recorderName) {
     startRecording(config, recorderName);
   });
 
-/*
+  /*
   setTimeout(() => {
     if (recorder.child !== undefined) {
       recorder.child.kill("SIGTERM");
