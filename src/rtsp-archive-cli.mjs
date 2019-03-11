@@ -33,11 +33,13 @@ program
     bonjour.find({ type: "rtsp" }, service => {
       console.log("Found an RTSP server:", service);
 
+
       const m = service.fqdn.match(/^([^\s]+)\s+(.*)/);
 
       if (m) {
         const recorderName = m[1];
         const videoType = m[2];
+
 
         /*if (!videoPriorities[videoType]) {
           return;
@@ -70,6 +72,9 @@ program
             break;
           }
         }
+
+        recorder.url = `${service.type}:${service.address}/${service.txt.ath}`;
+        //recorder.url = "rtsp://10.0.3.2/mpeg4/1/media.amp";
 
         recorder.port = service.port;
         startRecording(config, recorderName);
@@ -167,8 +172,7 @@ async function startRecording(config, recorderName) {
 
   await fs.promises.mkdir(dir, { recursive: true, mode: "0755" });
 
-  recorder.url = "rtsp://10.0.3.2/mpeg4/1/media.amp";
-
+  //recorder.url = "rtsp://10.0.3.2/mpeg4/1/media.amp";
   //ffmpeg -i rtsp://10.0.3.2/mpeg4/1/media.amp -b 900k -vcodec copy -r 60 -y MyVdeoFFmpeg.avi
 
   const options = [
