@@ -160,19 +160,25 @@ async function startRecording(config, recorderName) {
   recorder.recordingType = videoType;
 
   const today = new Date();
+
+  function nts(n) {
+    const s = "00" + n;
+    return s.substring(s.length - 2);
+  }
+
   const dir = join(
     config.record.dir,
     recorderName,
     String(today.getFullYear()),
-    String(today.getMonth()),
-    String(today.getDate())
+    nts(today.getMonth()),
+    nts(today.getDate())
   );
 
   recorder.file = join(
     dir,
-    `${today.getHours()}-${today.getMinutes()}-${today.getSeconds()}.${
-      recorder.fileFormat
-    }`
+    `${nts(today.getHours())}-${nts(today.getMinutes())}-${nts(
+      today.getSeconds()
+    )}.${recorder.fileFormat}`
   );
 
   await fs.promises.mkdir(dir, { recursive: true, mode: "0755" });
