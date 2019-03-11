@@ -39,9 +39,15 @@ program
         const recorderName = m[1];
         const videoType = m[2];
 
-        /*if (!videoPriorities[videoType]) {
+        const encoding = videoEncoding(m[2]);
+
+        console.log("RECORDER", recorderName, encoding);
+
+        if (encoding === undefined) {
+          console.log("ERROR unsupported encodinf", m[2]);
+
           return;
-        }*/
+        }
 
         let recorder = config.recorders[recorderName];
         if (recorder === undefined) {
@@ -107,6 +113,14 @@ const videoPriorities = {
   "MPEG-4": 1,
   NONE: 0
 };
+
+function videoEncoding(type) {
+  if (type.startsWith("H.264")) {
+    return "H.264";
+  }
+
+  return undefined;
+}
 
 const fileFormats = {
   avi: {
