@@ -175,6 +175,8 @@ async function startRecording(config, recorderName) {
   //ffmpeg -i rtsp://10.0.3.2/mpeg4/1/media.amp -b 900k -vcodec copy -r 60 -y MyVdeoFFmpeg.avi
 
   const options = [
+    "-hide_banner",
+    "-loglevel", "panic",
     "-i",
     recorder.url,
     "-acodec",
