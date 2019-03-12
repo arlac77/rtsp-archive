@@ -22,7 +22,7 @@
       "height": 480
     },
     "AXIS2": {
-      "fileFormat": "mp4",
+      "fileFormat": "fragment-%03d.mp4",
       "framerate": 15,
       "width": 640,
       "height": 480

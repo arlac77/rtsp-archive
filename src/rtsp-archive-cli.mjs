@@ -52,7 +52,7 @@ program
         let recorder = config.recorders[recorderName];
         if (recorder === undefined) {
           recorder = config.recorders[recorderName] = {
-            fileFormat: "mp4",
+            fileFormat: "fragment-%03d.mp4",
             width: 640,
             height: 480,
             framerate: 15
@@ -122,15 +122,6 @@ function videoEncoding(type) {
   return undefined;
 }
 
-const fileFormats = {
-  avi: {
-    openRTSP: "-i"
-  },
-  mp4: {
-    openRTSP: "-4"
-  }
-};
-
 async function startRecording(config, recorderName) {
   const recorder = config.recorders[recorderName];
 
@@ -153,10 +144,6 @@ async function startRecording(config, recorderName) {
   }
 
   /*
-  if (videoType === "NONE") {
-    return;
-  }
-
   if (recorder.recordingType !== undefined) {
     if (recorder.recordingType === videoType) {
       return;
@@ -192,7 +179,7 @@ async function startRecording(config, recorderName) {
     dir,
     `${nts(today.getHours())}-${nts(today.getMinutes())}-${nts(
       today.getSeconds()
-    )}.${recorder.fileFormat}`
+    )}${recorder.fileFormat}`
   );
 
   await fs.promises.mkdir(dir, { recursive: true, mode: "0755" });
@@ -212,8 +199,17 @@ async function startRecording(config, recorderName) {
     "copy",
     "-timestamp",
     "now",
+
+    "-map", "0",
+    "-f", "segment",
+    "-segment_time", "600",
+    "-segment_format", "mp4",
+    recorder.file
+
+    /*
     "-y",
     recorder.file
+    */
   ];
 
   const properties = {
