@@ -171,7 +171,7 @@ async function startRecording(config, recorderName) {
     config.record.dir,
     recorderName,
     String(today.getFullYear()),
-    nts(today.getMonth()),
+    nts(today.getMonth() + 1),
     nts(today.getDate())
   );
 
@@ -202,7 +202,7 @@ async function startRecording(config, recorderName) {
 
     "-map", "0",
     "-f", "segment",
-    "-segment_time", "600",
+    "-segment_time", "900",
     "-segment_format", "mp4",
     recorder.file
 
