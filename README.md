@@ -7,7 +7,6 @@
 [![Coverage Status](https://coveralls.io/repos/arlac77/rtsp-archive/badge.svg)](https://coveralls.io/r/arlac77/rtsp-archive)
 [![Known Vulnerabilities](https://snyk.io/test/github/arlac77/rtsp-archive/badge.svg)](https://snyk.io/test/github/arlac77/rtsp-archive)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/rtsp-archive.svg?style=flat-square)](https://github.com/arlac77/rtsp-archive/issues)
-[![Stories in Ready](https://badge.waffle.io/arlac77/rtsp-archive.svg?label=ready&title=Ready)](http://waffle.io/arlac77/rtsp-archive)
 [![Dependency Status](https://david-dm.org/arlac77/rtsp-archive.svg)](https://david-dm.org/arlac77/rtsp-archive)
 [![devDependency Status](https://david-dm.org/arlac77/rtsp-archive/dev-status.svg)](https://david-dm.org/arlac77/rtsp-archive#info=devDependencies)
 [![docs](http://inch-ci.org/github/arlac77/rtsp-archive.svg?branch=master)](http://inch-ci.org/github/arlac77/rtsp-archive)
