@@ -13,7 +13,8 @@
       "url": "rtsp://10.0.3.4:554/11",
       "videoTypes": {
         "H.264": {}
-      }
+      },
+      "mapping": "0:a:0"
     },
     "AXIS1": {
       "fileFormat": "avi"
