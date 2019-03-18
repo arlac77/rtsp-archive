@@ -6,9 +6,10 @@
   },
   "main": "src/rtsp-archive-cli.mjs",
   "module": "src/rtsp-archive-cli.mjs",
-  "description": "archive RTSP stream(s) with openRTSP or ffmpeg",
+  "description": "archive RTSP stream(s) with ffmpeg",
   "keywords": [
-    "rtsp"
+    "rtsp",
+    "ffmpeg"
   ],
   "contributors": [
     {

@@ -17,7 +17,7 @@
 
 # rtsp-archive
 
-archive RTSP stream(s) with openRTSP or ffmpeg
+archive RTSP stream(s) with ffmpeg
 
 ```sh
 rtsp-archive -c configDir
