@@ -1,5 +1,6 @@
 {
   "record": {
+    "dir": "/backup/camera",
     "duration": 60,
     "keepdays": 14,
     "segmented": {
