@@ -15,13 +15,13 @@ program
     const configDir = process.env.CONFIGURATION_DIRECTORY || program.config;
 
     const config = Object.assign(
+      { recorders: {}, record: { dir: "/tmp" } },
       await expand(configDir ? "${include('config.json')}" : {}, {
         constants: {
           basedir: configDir || process.cwd(),
           installdir: resolve(__dirname, "..")
         }
-      }),
-      { recorders: {}, record: { dir: process.env.STATE_DIRECTORY || "/tmp" } }
+      })
     );
 
     if (process.env.STATE_DIRECTORY) {
@@ -200,10 +200,14 @@ async function startRecording(config, recorderName) {
     "-timestamp",
     "now",
 
-    "-map", "0",
-    "-f", "segment",
-    "-segment_time", "900",
-    "-segment_format", "mp4",
+    "-map",
+    "0",
+    "-f",
+    "segment",
+    "-segment_time",
+    "900",
+    "-segment_format",
+    "mp4",
     recorder.file
 
     /*
