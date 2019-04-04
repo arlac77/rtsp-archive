@@ -32,8 +32,8 @@
     "test": "ava"
   },
   "dependencies": {
-    "commander": "^2.19.0",
-    "config-expander": "^10.0.2",
+    "commander": "^2.20.0",
+    "config-expander": "^10.1.0",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
