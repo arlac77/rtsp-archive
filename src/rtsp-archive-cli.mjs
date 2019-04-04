@@ -14,15 +14,13 @@ program
   .action(async () => {
     const configDir = process.env.CONFIGURATION_DIRECTORY || program.config;
 
-    const config = Object.assign(
-      { recorders: {}, record: { dir: "/tmp" } },
-      await expand(configDir ? "${include('config.json')}" : {}, {
-        constants: {
-          basedir: configDir || process.cwd(),
-          installdir: resolve(__dirname, "..")
-        }
-      })
-    );
+    const config = await expand(configDir ? "${include('config.json')}" : {}, {
+      constants: {
+        basedir: configDir || process.cwd(),
+        installdir: resolve(__dirname, "..")
+      },
+      default: { recorders: {}, record: { dir: "/tmp" } }
+    });
 
     if (process.env.STATE_DIRECTORY) {
       config.record.dir = process.env.STATE_DIRECTORY;
