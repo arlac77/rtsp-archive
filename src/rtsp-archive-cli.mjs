@@ -19,7 +19,7 @@ program
         basedir: configDir || process.cwd(),
         installdir: resolve(__dirname, "..")
       },
-      default: { recorders: {}, record: { dir: "/tmp" } }
+      default: { recorders: {}, record: { dir: "${first(env.STATE_DIRECTORY,'/tmp')}" } }
     });
 
     if (process.env.STATE_DIRECTORY) {
