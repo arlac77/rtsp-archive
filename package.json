@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "commander": "^2.20.0",
-    "config-expander": "^10.2.3",
+    "config-expander": "^10.2.4",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
