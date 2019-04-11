@@ -64,7 +64,9 @@ export default {
       preferConst: true,
       compact: true
     }),
-    cleanup(),
+    cleanup({
+      extensions: ['js','mjs','jsx','tag']
+    }),
     executable()
   ],
   external,
