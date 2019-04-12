@@ -22,10 +22,6 @@ program
       default: { recorders: {}, record: { dir: "${first(env.STATE_DIRECTORY,'/tmp')}" } }
     });
 
-    if (process.env.STATE_DIRECTORY) {
-      config.record.dir = process.env.STATE_DIRECTORY;
-    }
-
     console.log(config);
 
     bonjour.find({ type: "rtsp" }, service => {
