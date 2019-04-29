@@ -89,7 +89,7 @@
     "backup": "etc/${name}/config.json",
     "install": "pacman/install.sh",
     "depends": {
-      "systemd": ">=241.0",
+      "systemd": ">=242.0",
       "ffmpeg": ">=4.1.2"
     },
     "content": {
