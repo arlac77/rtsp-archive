@@ -22,7 +22,7 @@
     "rtsp-archive": "bin/rtsp-archive"
   },
   "scripts": {
-    "cover": "c8 --temp-directory build/coverage ava && c8 report -r lcov --temp-directory build/coverage",
+    "cover": "c8 --temp-directory build/tmp ava && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "docs": "documentation readme src/rtsp-archive-cli.mjs --section=API",
     "lint": "documentation lint src/rtsp-archive-cli.mjs",
     "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg",
@@ -38,13 +38,13 @@
   },
   "devDependencies": {
     "ava": "^1.4.1",
-    "c8": "^4.1.3",
+    "c8": "^4.1.4",
     "documentation": "^10.1.0",
     "esm": "^3.2.22",
     "execa": "^1.0.0",
     "markdown-doctest": "^0.9.1",
     "npm-pkgbuild": "^5.2.9",
-    "rollup": "^1.11.0",
+    "rollup": "^1.11.2",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-executable": "^1.4.5",
