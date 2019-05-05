@@ -1,9 +1,9 @@
-import { expand } from "config-expander";
 import { version, description } from "../package.json";
 import { join, dirname, resolve } from "path";
 import fs from "fs";
 import { spawn } from "child_process";
 import program from "commander";
+import { expand, removeSensibleValues } from "config-expander";
 
 const bonjour = require("nbonjour").create();
 
@@ -22,7 +22,7 @@ program
       default: { recorders: {}, record: { dir: "${first(env.STATE_DIRECTORY,'/tmp')}" } }
     });
 
-    console.log(config);
+    console.log(removeSensibleValues(config));
 
     bonjour.find({ type: "rtsp" }, service => {
       console.log("Found an RTSP server", service);
