@@ -37,13 +37,14 @@
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
+    "@semantic-release/exec": "^3.3.3",
     "ava": "^1.4.1",
     "c8": "^4.1.4",
     "documentation": "^10.1.0",
     "esm": "^3.2.22",
     "execa": "^1.0.0",
     "markdown-doctest": "^0.9.1",
-    "npm-pkgbuild": "^5.2.9",
+    "npm-pkgbuild": "^5.3.2",
     "rollup": "^1.11.3",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-commonjs": "^9.3.4",
@@ -63,6 +64,18 @@
     "url": "https://github.com/arlac77/rtsp-archive/issues"
   },
   "homepage": "https://github.com/arlac77/rtsp-archive#readme",
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/exec",
+        {
+          "publishCmd": "npx npm-pkgbuild --pkgver ${nextRelease.version} --npm-dist --npm-modules pkgbuild pacman makepkg"
+        }
+      ]
+    ]
+  },
   "ava": {
     "babel": false,
     "compileEnhancements": false,
