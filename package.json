@@ -44,7 +44,7 @@
     "esm": "^3.2.22",
     "execa": "^1.0.0",
     "markdown-doctest": "^0.9.1",
-    "npm-pkgbuild": "^5.3.2",
+    "npm-pkgbuild": "^6.0.8",
     "rollup": "^1.11.3",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-commonjs": "^9.3.4",
