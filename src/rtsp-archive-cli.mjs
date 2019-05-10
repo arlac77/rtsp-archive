@@ -3,7 +3,8 @@ import { join, dirname, resolve } from "path";
 import fs from "fs";
 import { spawn } from "child_process";
 import program from "commander";
-import { expand, removeSensibleValues } from "config-expander";
+import { expand } from "config-expander";
+import { removeSensibleValues } from "remove-sensible-values";
 
 const bonjour = require("nbonjour").create();
 
