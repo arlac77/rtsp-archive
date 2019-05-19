@@ -1,5 +1,5 @@
+
 build
-coverage
 tests
 doc
 *.log
@@ -10,9 +10,8 @@ doc
 .vscode
 .markdown-doctest-setup.js
 rollup.config.js
-SUMMARY.md
 .DS_Store
-
+SUMMARY.md
 pacman
 systemd
 config
