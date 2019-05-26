@@ -1,12 +1,11 @@
 import { version, description } from "../package.json";
-import { join, dirname, resolve } from "path";
+import { join, resolve } from "path";
 import fs from "fs";
 import { spawn } from "child_process";
 import program from "commander";
 import { expand } from "config-expander";
+import nbonjour from "nbonjour";
 import { removeSensibleValues } from "remove-sensible-values";
-
-const bonjour = require("nbonjour").create();
 
 program
   .version(version)
@@ -25,6 +24,8 @@ program
 
     console.log(removeSensibleValues(config));
 
+    const bonjour = nbonjour.create();
+
     bonjour.find({ type: "rtsp" }, service => {
       console.log("Found an RTSP server", service);
 
@@ -39,7 +40,7 @@ program
         console.log("RECORDER", recorderName, encoding);
 
         if (encoding === undefined) {
-          console.log("ERROR unsupported encodinf", m[2]);
+          console.log("ERROR unsupported encoding", m[2]);
 
           return;
         }
