@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "commander": "^2.20.0",
-    "config-expander": "^11.0.0",
+    "config-expander": "^11.0.3",
     "nbonjour": "^3.6.3",
     "remove-sensible-values": "^1.0.2"
   },
