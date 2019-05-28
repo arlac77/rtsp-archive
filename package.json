@@ -31,6 +31,9 @@
     "pretest": "rollup -c",
     "test": "ava"
   },
+  "files": [
+    "bin"
+  ],
   "dependencies": {
     "commander": "^2.20.0",
     "config-expander": "^11.0.0",
