@@ -31,9 +31,6 @@
     "pretest": "rollup -c",
     "test": "ava"
   },
-  "files": [
-    "bin"
-  ],
   "dependencies": {
     "commander": "^2.20.0",
     "config-expander": "^11.0.3",
@@ -59,12 +56,15 @@
     "semantic-release": "^15.13.14"
   },
   "engines": {
-    "node": ">=10.15.3"
+    "node": ">=10.16.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/arlac77/rtsp-archive.git"
   },
+  "files": [
+    "bin"
+  ],
   "bugs": {
     "url": "https://github.com/arlac77/rtsp-archive/issues"
   },
