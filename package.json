@@ -4,7 +4,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "src/rtsp-archive-cli.mjs",
   "module": "src/rtsp-archive-cli.mjs",
   "description": "archive RTSP stream(s) with ffmpeg",
   "keywords": [
@@ -21,6 +20,7 @@
   "bin": {
     "rtsp-archive": "bin/rtsp-archive"
   },
+  "files": ["bin/*","config/*"],
   "scripts": {
     "cover": "c8 --temp-directory build/tmp ava && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "docs": "documentation readme src/rtsp-archive-cli.mjs --section=API",
