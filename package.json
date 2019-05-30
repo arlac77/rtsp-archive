@@ -20,9 +20,6 @@
   "bin": {
     "rtsp-archive": "bin/rtsp-archive"
   },
-  "files": [
-    "bin"
-  ],
   "scripts": {
     "cover": "c8 --temp-directory build/tmp ava && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "docs": "documentation readme src/rtsp-archive-cli.mjs --section=API",
@@ -49,7 +46,7 @@
     "execa": "^1.0.0",
     "markdown-doctest": "^0.9.1",
     "npm-pkgbuild": "^6.4.1",
-    "rollup": "^1.12.4",
+    "rollup": "^1.12.5",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-executable": "^1.4.5",
@@ -64,6 +61,9 @@
     "type": "git",
     "url": "https://github.com/arlac77/rtsp-archive.git"
   },
+  "files": [
+    "bin"
+  ],
   "bugs": {
     "url": "https://github.com/arlac77/rtsp-archive/issues"
   },
