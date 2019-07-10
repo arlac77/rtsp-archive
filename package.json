@@ -104,8 +104,8 @@
     "backup": "etc/${name}/config.json",
     "install": "pacman/install.sh",
     "depends": {
-      "systemd": ">=242.0",
-      "ffmpeg": ">=4.1.2"
+      "systemd": ">=242.32",
+      "ffmpeg": ">=4.1.3"
     },
     "content": {
       "/usr/lib/tmpfiles.d/${name}.conf": "pacman/tmpfiles.conf",
