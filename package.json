@@ -21,7 +21,7 @@
     "rtsp-archive": "bin/rtsp-archive"
   },
   "scripts": {
-    "cover": "c8 --temp-directory build/tmp ava && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
+    "cover": "c8 -x tests/** --temp-directory build/tmp ava && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "docs": "documentation readme src/rtsp-archive-cli.mjs --section=API",
     "lint": "documentation lint src/rtsp-archive-cli.mjs",
     "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg",
@@ -68,6 +68,20 @@
     "url": "https://github.com/arlac77/rtsp-archive/issues"
   },
   "homepage": "https://github.com/arlac77/rtsp-archive#readme",
+  "pacman": {
+    "installdir": "/services/${name}",
+    "groups": "home-automation",
+    "backup": "etc/${name}/config.json",
+    "install": "pacman/install.sh",
+    "depends": {
+      "systemd": ">=242.32",
+      "ffmpeg": ">=4.1.3"
+    },
+    "content": {
+      "/usr/lib/tmpfiles.d/${name}.conf": "pacman/tmpfiles.conf",
+      "/etc/${name}/config.json": "config/config.json"
+    }
+  },
   "release": {
     "plugins": [
       "@semantic-release/commit-analyzer",
@@ -96,20 +110,6 @@
   "template": {
     "repository": {
       "url": "https://github.com/arlac77/npm-package-template.git"
-    }
-  },
-  "pacman": {
-    "installdir": "/services/${name}",
-    "groups": "home-automation",
-    "backup": "etc/${name}/config.json",
-    "install": "pacman/install.sh",
-    "depends": {
-      "systemd": ">=242.32",
-      "ffmpeg": ">=4.1.3"
-    },
-    "content": {
-      "/usr/lib/tmpfiles.d/${name}.conf": "pacman/tmpfiles.conf",
-      "/etc/${name}/config.json": "config/config.json"
     }
   },
   "systemd": {
