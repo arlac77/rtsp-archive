@@ -21,7 +21,7 @@
     "rtsp-archive": "bin/rtsp-archive"
   },
   "scripts": {
-    "cover": "c8 -x tests/** --temp-directory build/tmp ava && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
+    "cover": "c8 -x 'tests/**/*.mjs' --temp-directory build/tmp ava && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "docs": "documentation readme src/rtsp-archive-cli.mjs --section=API",
     "lint": "documentation lint src/rtsp-archive-cli.mjs",
     "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg",
