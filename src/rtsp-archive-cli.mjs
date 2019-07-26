@@ -19,69 +19,17 @@ program
         basedir: configDir || process.cwd(),
         installdir: resolve(__dirname, "..")
       },
-      default: { recorders: {}, record: { dir: "${first(env.STATE_DIRECTORY,'/tmp')}" } }
+      default: {
+        recorders: {},
+        record: { dir: "${first(env.STATE_DIRECTORY,'/tmp')}" }
+      }
     });
 
     console.log(removeSensibleValues(config));
 
     const bonjour = nbonjour.create();
 
-    bonjour.find({ type: "rtsp" }, service => {
-      console.log("Found an RTSP server", service);
-
-      const m = service.fqdn.match(/^([^\s]+)\s+(.*)/);
-
-      if (m) {
-        const recorderName = m[1];
-        const videoType = m[2];
-
-        const encoding = videoEncoding(m[2]);
-
-        console.log("RECORDER", recorderName, encoding);
-
-        if (encoding === undefined) {
-          console.log("ERROR unsupported encoding", m[2]);
-
-          return;
-        }
-
-        let recorder = config.recorders[recorderName];
-        if (recorder === undefined) {
-          recorder = config.recorders[recorderName] = {
-            fileFormat: "fragment-%03d.mp4",
-            width: 640,
-            height: 480,
-            framerate: 15
-          };
-        }
-
-        if (recorder.videoTypes === undefined) {
-          recorder.videoTypes = {};
-        }
-
-        /*
-        for (const vT in recorder.videoTypes) {
-          if (vT === videoType) {
-            return;
-          }
-        }
-*/
-        for (const a of service.addresses) {
-          if (a.match(/^[0-9\.]+$/)) {
-            recorder.address = a;
-            break;
-          }
-        }
-
-        recorder.url = `${service.protocol}:${service.referer.address}/${
-          service.txt.ath
-        }`;
-        //recorder.url = "rtsp://10.0.3.2/mpeg4/1/media.amp";
-
-        recorder.port = service.port;
-        startRecording(config, recorderName);
-      }
-    });
+    startRecorders(config, bonjour);
 
     /*
     browser.on("serviceDown", service => {
@@ -100,7 +48,6 @@ program
       }
     });
 */
-    console.log(`waiting for services`);
   })
   .parse(process.argv);
 
@@ -118,10 +65,69 @@ function videoEncoding(type) {
   return undefined;
 }
 
-async function startRecording(config, recorderName) {
-  const recorder = config.recorders[recorderName];
+async function startRecorders(config, bonjour) {
+  bonjour.find({ type: "rtsp" }, service => {
+    console.log("Found an RTSP server", service);
 
-  console.log("START RECORDING", recorderName, recorder);
+    const m = service.fqdn.match(/^([^\s]+)\s+(.*)/);
+
+    if (m) {
+      const recorderName = m[1];
+      const videoType = m[2];
+
+      const encoding = videoEncoding(m[2]);
+
+      console.log("RECORDER", recorderName, encoding);
+
+      if (encoding === undefined) {
+        console.log("ERROR unsupported encoding", m[2]);
+
+        return;
+      }
+
+      let recorder = config.recorders[recorderName];
+      if (recorder === undefined) {
+        recorder = config.recorders[recorderName] = {
+          fileFormat: "fragment-%03d.mp4",
+          width: 640,
+          height: 480,
+          framerate: 15
+        };
+      }
+
+      recorder.name = recorderName;
+
+      if (recorder.videoTypes === undefined) {
+        recorder.videoTypes = {};
+      }
+
+      /*
+      for (const vT in recorder.videoTypes) {
+        if (vT === videoType) {
+          return;
+        }
+      }
+*/
+      for (const a of service.addresses) {
+        if (a.match(/^[0-9\.]+$/)) {
+          recorder.address = a;
+          break;
+        }
+      }
+
+      recorder.url = `${service.protocol}:${service.referer.address}/${
+        service.txt.ath
+      }`;
+      //recorder.url = "rtsp://10.0.3.2/mpeg4/1/media.amp";
+
+      recorder.port = service.port;
+      
+      startRecording(config, bonjour, recorder);
+    }
+  });
+}
+
+async function startRecording(config, bonjour, recorder) {
   if (recorder === undefined) {
     return;
   }
@@ -240,13 +246,11 @@ async function startRecording(config, recorderName) {
 
   recorder.child = spawn("ffmpeg", options, { stdio: "inherit" });
 
-  //console.log(recorder.child);
-
   recorder.child.on("exit", code => {
     console.log("EXIT", code);
     delete recorder.child;
     delete recorder.recordingType;
-    startRecording(config, recorderName);
+    startRecorders(config, bonjour);
   });
 
   /*
