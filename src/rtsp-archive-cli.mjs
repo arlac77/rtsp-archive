@@ -133,7 +133,7 @@ async function startRecording(config, bonjour, recorder) {
   }
 
   if (recorder.child !== undefined) {
-    console.log("ALREDY RUNNING", recorderName, recorder.child.pid);
+    console.log("ALREDY RUNNING", recorder.name, recorder.child.pid);
     return;
   }
 
@@ -155,7 +155,7 @@ async function startRecording(config, bonjour, recorder) {
     if (recorder.child) {
       recorder.child.kill();
     }
-    setTimeout(() => startRecording(config, recorderName), 1000);
+    setTimeout(() => startRecording(config, recorder.name), 1000);
     return;
   }
 */
@@ -171,7 +171,7 @@ async function startRecording(config, bonjour, recorder) {
 
   const dir = join(
     config.record.dir,
-    recorderName,
+    recorder.name,
     String(today.getFullYear()),
     nts(today.getMonth() + 1),
     nts(today.getDate())
