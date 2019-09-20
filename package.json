@@ -43,7 +43,7 @@
     "c8": "^5.0.4",
     "documentation": "^12.1.2",
     "esm": "^3.2.25",
-    "execa": "^2.0.3",
+    "execa": "^2.0.4",
     "markdown-doctest": "^0.9.1",
     "npm-pkgbuild": "^6.10.1",
     "rollup": "^1.21.3",
