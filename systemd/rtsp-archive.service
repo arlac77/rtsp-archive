@@ -1,6 +1,7 @@
 [Unit]
 Description={{description}}
 After=network-online.target
+Wants=network-online.target
 
 [Service]
 #Type=notify
