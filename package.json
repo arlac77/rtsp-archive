@@ -79,8 +79,8 @@
     "backup": "etc/${name}/config.json",
     "hooks": "pacman/install.sh",
     "depends": {
-      "systemd": ">=243.0",
-      "ffmpeg": ">=4.1.3"
+      "systemd": ">=243.51",
+      "ffmpeg": ">=4.2.1"
     },
     "content": {
       "/usr/lib/tmpfiles.d/${name}.conf": "pacman/tmpfiles.conf",
