@@ -74,6 +74,11 @@
     }
   },
   "pacman": {
+    "arch": [
+      "aarch64",
+      "armv7h",
+      "x86_64"
+    ],
     "installdir": "/services/${name}",
     "groups": "home-automation",
     "backup": "etc/${name}/config.json",
