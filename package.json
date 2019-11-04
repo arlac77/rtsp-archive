@@ -82,7 +82,7 @@
     "installdir": "/services/${name}",
     "groups": "home-automation",
     "backup": "etc/${name}/config.json",
-    "hooks": "pacman/install.sh",
+    "hooks": "pacman/hooks.sh",
     "depends": {
       "systemd": ">=243.51",
       "ffmpeg": ">=4.2.1"
