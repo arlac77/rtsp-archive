@@ -31,7 +31,7 @@
     "test": "ava"
   },
   "dependencies": {
-    "commander": "^4.0.0",
+    "commander": "^4.0.1",
     "config-expander": "^11.0.6",
     "nbonjour": "^3.6.3",
     "remove-sensible-values": "^1.0.2"
