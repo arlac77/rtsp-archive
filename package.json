@@ -47,7 +47,7 @@
     "execa": "^3.3.0",
     "markdown-doctest": "^1.0.0",
     "npm-pkgbuild": "^6.10.10",
-    "rollup": "^1.27.2",
+    "rollup": "^1.27.3",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-executable": "^1.5.1",
@@ -55,7 +55,7 @@
     "semantic-release": "^15.13.31"
   },
   "engines": {
-    "node": ">=12.12.0"
+    "node": ">=12.13.1"
   },
   "repository": {
     "type": "git",
