@@ -84,7 +84,7 @@
     "backup": "etc/${name}/config.json",
     "hooks": "pacman/hooks.sh",
     "depends": {
-      "systemd": ">=243.51",
+      "systemd": ">=244",
       "ffmpeg": ">=4.2.1"
     },
     "content": {
