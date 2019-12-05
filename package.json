@@ -4,6 +4,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "bin"
+  ],
   "module": "src/rtsp-archive-cli.mjs",
   "description": "archive RTSP stream(s) with ffmpeg",
   "keywords": [
@@ -38,6 +41,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-json": "^4.0.0",
+    "@rollup/plugin-node-resolve": "^6.0.0",
     "@semantic-release/exec": "^3.3.8",
     "ava": "^2.4.0",
     "builtin-modules": "^3.1.0",
@@ -51,7 +55,6 @@
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-executable": "^1.5.1",
-    "rollup-plugin-node-resolve": "^5.2.0",
     "semantic-release": "^15.13.31"
   },
   "engines": {
@@ -61,9 +64,6 @@
     "type": "git",
     "url": "https://github.com/arlac77/rtsp-archive.git"
   },
-  "files": [
-    "bin"
-  ],
   "bugs": {
     "url": "https://github.com/arlac77/rtsp-archive/issues"
   },
