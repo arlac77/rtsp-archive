@@ -4,4 +4,4 @@ MaxConnections=4
 FileDescriptorName=http.listen.socket
 
 [Install]
-RequiredBy=rtsp-archive.service
+RequiredBy={{name}}.service

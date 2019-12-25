@@ -4,10 +4,10 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-#Type=notify
-ExecStart={{installdir}}/bin/{{name}}
+Type=notify
+ExecStart=/usr/bin/node --title {{name}} {{installdir}}/bin/{{name}}-systemd
+ExecReload=/bin/kill -HUP $MAINPID
 TimeoutStartSec=20
-#Restart=always
 StandardOutput=syslog
 User={{name}}
 Group={{name}}
@@ -16,6 +16,8 @@ NoNewPrivileges=true
 RuntimeDirectory={{name}}
 StateDirectory={{name}}
 ConfigurationDirectory={{name}}
+NotifyAccess=all
+FileDescriptorStoreMax=2
 
 [Install]
 WantedBy=multi-user.target
