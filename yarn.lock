@@ -6009,7 +6009,7 @@ npm-pick-manifest@^3.0.0, npm-pick-manifest@^3.0.2:
     npm-package-arg "^6.0.0"
     semver "^5.4.1"
 
-npm-pkgbuild@^6.11.1:
+npm-pkgbuild@^6.11.2:
   version "6.11.2"
   resolved "https://registry.yarnpkg.com/npm-pkgbuild/-/npm-pkgbuild-6.11.2.tgz#9f04a3b6eb5bb741cc249ea796a9d3fb912127dd"
   integrity sha512-0cCxMs12QjpruZH4xbfArOA2iQC+NH2BPRZ90HGXwq5T98VYpPVJ+RBkObn48AkiG7Cjf1Z34HJLUr3LY5352A==
@@ -7507,6 +7507,11 @@ rollup-plugin-cleanup@^3.1.1:
   dependencies:
     js-cleanup "^1.0.1"
     rollup-pluginutils "^2.3.3"
+
+rollup-plugin-consts@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-consts/-/rollup-plugin-consts-1.0.1.tgz#f809981e59d4523f4831015bded7969231b7376f"
+  integrity sha512-DxGHhH4rw6k7BtlGT34tzq2F0SpNPOBOvEuGPQRgk1Ox9yZn1xYtZXhRjMXaZIRt+073IX8/AT/j70e4YUwUOg==
 
 rollup-plugin-executable@^1.5.2:
   version "1.5.2"

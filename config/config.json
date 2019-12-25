@@ -1,27 +1,27 @@
 {
-  "record": {
+  "recorder": {
     "dir": "/backup/camera",
     "duration": 60,
     "keepdays": 14,
     "segmented": {
       "format": "mp4",
       "length": 900
-    }
-  },
-  "recorders": {
-    "INSTAR1": {
-      "fileFormat": "-%03d.mp4",
-      "url": "rtsp://10.0.3.4:554/11",
-      "videoTypes": {
-        "H.264": {}
+    },
+    "recorders": {
+      "INSTAR1": {
+        "fileFormat": "-%03d.mp4",
+        "url": "rtsp://10.0.3.4:554/11",
+        "videoTypes": {
+          "H.264": {}
+        },
+        "mapping": "0:a:0"
       },
-      "mapping": "0:a:0"
-    },
-    "AXIS1": {
-      "fileFormat": "avi"
-    },
-    "AXIS2": {
-      "fileFormat": "-%03d.mp4"
+      "AXIS1": {
+        "fileFormat": "avi"
+      },
+      "AXIS2": {
+        "fileFormat": "-%03d.mp4"
+      }
     }
   }
 }

@@ -5,20 +5,22 @@ import nbonjour from "nbonjour";
 import { mergeAttributes, createAttributes } from "model-attributes";
 import { Service } from "@kronos-integration/service";
 
-export class RecorderService extends Service {
+export class ServiceRecorder extends Service {
+  static get configurationAttributes() {
+    return mergeAttributes(
+      Service.configurationAttributes,
+      createAttributes({
+        dir: {
+          type: "posix-path",
+          description: "recording base directory",
+          default: "/tmp"
+        }
+      })
+    );
+  }
 
-    static get configurationAttributes() {
-        return mergeAttributes(
-          Service.configurationAttributes,
-          createAttributes({
-            recordDir: {
-                type: 'string'
-            }    
-          })
-        );
-      }
-      
-    
+  recorder = {};
+
   async _start() {
     await super._start();
     this.bonjour = nbonjour.create();
@@ -83,20 +85,20 @@ export class RecorderService extends Service {
     if (recorder === undefined) {
       return;
     }
-  
+
     if (recorder.child !== undefined) {
       this.info("ALREDY RUNNING", recorder.name, recorder.child.pid);
       return;
     }
-  
+
     let videoType = "NONE";
-  
+
     for (const vT in recorder.videoTypes) {
       if (videoPriorities[vT] > videoPriorities[videoType]) {
         videoType = vT;
       }
     }
-  
+
     /*
     if (recorder.recordingType !== undefined) {
       if (recorder.recordingType === videoType) {
@@ -111,36 +113,36 @@ export class RecorderService extends Service {
       return;
     }
   */
-  
+
     recorder.recordingType = videoType;
-  
+
     const today = new Date();
-  
+
     function nts(n) {
       const s = "00" + n;
       return s.substring(s.length - 2);
     }
-  
+
     const dir = join(
-      this.recordDir,
+      this.dir,
       recorder.name,
       String(today.getFullYear()),
       nts(today.getMonth() + 1),
       nts(today.getDate())
     );
-  
+
     recorder.file = join(
       dir,
       `${nts(today.getHours())}-${nts(today.getMinutes())}-${nts(
         today.getSeconds()
       )}${recorder.fileFormat}`
     );
-  
+
     await fs.promises.mkdir(dir, { recursive: true, mode: "0755" });
-  
+
     //recorder.url = "rtsp://10.0.3.2/mpeg4/1/media.amp";
     //ffmpeg -i rtsp://10.0.3.2/mpeg4/1/media.amp -b 900k -vcodec copy -r 60 -y MyVdeoFFmpeg.avi
-  
+
     const options = [
       "-hide_banner",
       "-loglevel",
@@ -153,7 +155,7 @@ export class RecorderService extends Service {
       "copy",
       "-timestamp",
       "now",
-  
+
       "-map",
       "0",
       "-f",
@@ -163,25 +165,25 @@ export class RecorderService extends Service {
       "-segment_format",
       "mp4",
       recorder.file
-  
+
       /*
       "-y",
       recorder.file
       */
     ];
-  
+
     const properties = {
       //    width: "-w",
       //    height: "-h",
       //    framerate: "-r"
     };
-  
+
     Object.keys(properties).forEach(o => {
       if (recorder[o] !== undefined) {
         options.push(properties[o], recorder[o]);
       }
     });
-  
+
     /*
     if (recorder.user !== undefined) {
       options.push("-u", recorder.user, recorder.password);
@@ -193,18 +195,18 @@ export class RecorderService extends Service {
       }`;
     }
   */
-  
+
     this.info("ffmpeg", options);
-  
+
     recorder.child = spawn("ffmpeg", options, { stdio: "inherit" });
-  
+
     recorder.child.on("exit", code => {
       this.info("EXIT", code);
       delete recorder.child;
       delete recorder.recordingType;
       this.startRecorders();
     });
-  
+
     /*
     setTimeout(() => {
       if (recorder.child !== undefined) {
@@ -228,5 +230,3 @@ function videoEncoding(type) {
 
   return undefined;
 }
-
-
