@@ -2,9 +2,23 @@ import { join } from "path";
 import fs from "fs";
 import { spawn } from "child_process";
 import nbonjour from "nbonjour";
+import { mergeAttributes, createAttributes } from "model-attributes";
 import { Service } from "@kronos-integration/service";
 
 export class RecorderService extends Service {
+
+    static get configurationAttributes() {
+        return mergeAttributes(
+          Service.configurationAttributes,
+          createAttributes({
+            recordDir: {
+                type: 'string'
+            }    
+          })
+        );
+      }
+      
+    
   async _start() {
     await super._start();
     this.bonjour = nbonjour.create();
@@ -27,9 +41,9 @@ export class RecorderService extends Service {
           return;
         }
 
-        let recorder = config.recorders[recorderName];
+        let recorder = this.recorders[recorderName];
         if (recorder === undefined) {
-          recorder = config.recorders[recorderName] = {
+          recorder = this.recorders[recorderName] = {
             fileFormat: "fragment-%03d.mp4",
             width: 640,
             height: 480,
@@ -58,8 +72,6 @@ export class RecorderService extends Service {
         }
 
         recorder.url = `${service.protocol}:${service.referer.address}/${service.txt.ath}`;
-        //recorder.url = "rtsp://10.0.3.2/mpeg4/1/media.amp";
-
         recorder.port = service.port;
 
         this.startRecording(recorder);
@@ -110,7 +122,7 @@ export class RecorderService extends Service {
     }
   
     const dir = join(
-      config.record.dir,
+      this.recordDir,
       recorder.name,
       String(today.getFullYear()),
       nts(today.getMonth() + 1),
