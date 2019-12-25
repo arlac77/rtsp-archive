@@ -6,10 +6,10 @@ import { fileURLToPath } from "url";
 const here = dirname(fileURLToPath(import.meta.url));
 
 test("rtsp-archive", async t => {
-  const result = await execa(join(here, "..", "bin", "rtsp-archive"), [
+  const result = await execa("node", [join(here, "..", "bin", "rtsp-archive"),
     "-h"
   ]);
-  t.regex(result.stdout, /--config <dir>/);
+  t.regex(result.stdout, /--config <directory>/);
 });
 
 /*
