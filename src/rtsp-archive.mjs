@@ -3,7 +3,7 @@ import { ServiceRecorder } from "./service-recorder.mjs";
 
 export async function setup(sp) {
 
-  await sp.configureServices({
+  await sp.declareServices({
     recorder: {
       type: ServiceRecorder
     }
