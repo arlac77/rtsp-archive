@@ -5,7 +5,8 @@ export async function setup(sp) {
 
   await sp.declareServices({
     recorder: {
-      type: ServiceRecorder
+      type: ServiceRecorder,
+      autostart: true
     }
   });
 
