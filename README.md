@@ -1,6 +1,5 @@
 [![Build Status](https://secure.travis-ci.org/arlac77/rtsp-archive.png)](http://travis-ci.org/arlac77/rtsp-archive)
 [![codecov.io](http://codecov.io/github/arlac77/rtsp-archive/coverage.svg?branch=master)](http://codecov.io/github/arlac77/rtsp-archive?branch=master)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Coverage Status](https://coveralls.io/repos/arlac77/rtsp-archive/badge.svg)](https://coveralls.io/r/arlac77/rtsp-archive)
 [![downloads](http://img.shields.io/npm/dm/rtsp-archive.svg?style=flat-square)](https://npmjs.org/package/rtsp-archive)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/rtsp-archive.svg?style=flat-square)](https://github.com/arlac77/rtsp-archive/issues)
