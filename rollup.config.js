@@ -1,49 +1,46 @@
-import { name, version, description, main, module, bin } from "./package.json";
-
-import acornClassFields from "acorn-class-fields";
-
-import consts from "rollup-plugin-consts";
-import native from "rollup-plugin-native";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import executable from "rollup-plugin-executable";
-import json from "@rollup/plugin-json";
-import cleanup from "rollup-plugin-cleanup";
-import builtins from "builtin-modules";
-import pkg from "./package.json";
 
-const external = [...builtins];
-const extensions = ["js", "mjs", "jsx", "tag"];
+import executable from "rollup-plugin-executable";
+import native from "rollup-plugin-native";
+import cleanup from "rollup-plugin-cleanup";
+import consts from "rollup-plugin-consts";
+import acornClassFields from "acorn-class-fields";
+
+import builtins from "builtin-modules";
+import { name, version, description, main, module, bin } from "./package.json";
+
+const external = [...builtins, "bufferutil", "utf-8-validate"];
+
 const plugins = [
+  consts({
+    name,
+    version,
+    description
+  }),
   commonjs(),
   resolve(),
-  json({
-  //  include: "package.json",
-    preferConst: true,
-    compact: true
-  }),
+  native(),
   cleanup({
-    extensions
+    extensions: ["js", "mjs"]
   })
 ];
 
-const config = Object.keys(pkg.bin || {}).map(name => {
+const config = Object.keys(bin).map(name => {
   return {
     input: `src/${name}-cli.mjs`,
     output: {
       plugins: [executable()],
-      banner:
-        '#!/bin/sh\n":" //# comment; exec /usr/bin/env node --experimental-modules --experimental-wasm-modules "$0" "$@"',
-      file: pkg.bin[name]
+      file: bin[name]
     }
   };
 });
 
-if (pkg.module !== undefined && pkg.main !== undefined) {
+if (module !== undefined && main !== undefined) {
   config.push({
-    input: pkg.module,
+    input: module,
     output: {
-      file: pkg.main
+      file: main
     }
   });
 }
@@ -55,5 +52,5 @@ export default config.map(c => {
     format: "cjs",
     ...c.output
   };
-  return { plugins, external, ...c };
+  return { acornInjectPlugins: [acornClassFields], plugins, external, ...c };
 });

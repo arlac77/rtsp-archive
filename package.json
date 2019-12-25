@@ -42,9 +42,7 @@
     "@kronos-integration/service-http": "^9.0.23",
     "@kronos-integration/service-ldap": "^2.1.13",
     "commander": "^4.0.1",
-    "config-expander": "^11.0.7",
-    "nbonjour": "^3.6.3",
-    "remove-sensible-values": "^1.0.2"
+    "nbonjour": "^3.6.3"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.0",
