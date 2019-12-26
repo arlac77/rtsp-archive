@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "@kronos-integration/service": "^8.3.14",
-    "commander": "^4.0.1",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
