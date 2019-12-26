@@ -5,7 +5,7 @@
     "access": "public"
   },
   "files": [
-    "bin"
+    "bin/rtsp-archive-systemd"
   ],
   "module": "src/rtsp-archive-cli.mjs",
   "description": "archive RTSP stream(s) with ffmpeg",
