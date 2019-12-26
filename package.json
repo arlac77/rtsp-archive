@@ -100,7 +100,7 @@
     "backup": "etc/${name}/config.json",
     "hooks": "pacman/hooks.sh",
     "depends": {
-      "systemd": ">=244",
+      "systemd": ">=244.1",
       "ffmpeg": ">=4.2.1"
     },
     "content": {
