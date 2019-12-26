@@ -39,7 +39,7 @@ export class ServiceRecorder extends Service {
         this.trace(`RECORDER ${recorderName} ${encoding}`);
 
         if (encoding === undefined) {
-          this.info(`unsupported encoding ${m[2]}`);
+          this.info(`Unsupported encoding ${m[2]}`);
           return;
         }
 
@@ -160,6 +160,8 @@ export class ServiceRecorder extends Service {
       "0",
       "-f",
       "segment",
+      "-segment_atclocktime",
+      1,
       "-segment_time",
       "900",
       "-segment_format",
