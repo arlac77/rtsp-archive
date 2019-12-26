@@ -19,14 +19,14 @@ export class ServiceRecorder extends Service {
     );
   }
 
-  recorder = {};
+  recorders = {};
 
   async _start() {
     await super._start();
     this.bonjour = nbonjour.create();
 
     this.bonjour.find({ type: "rtsp" }, service => {
-      this.info("Found an RTSP server", service);
+      this.info(`Found an RTSP server ${service.fqdn}`);
 
       const m = service.fqdn.match(/^([^\s]+)\s+(.*)/);
 
@@ -39,7 +39,7 @@ export class ServiceRecorder extends Service {
         this.info("RECORDER", recorderName, encoding);
 
         if (encoding === undefined) {
-          this.error("ERROR unsupported encoding", m[2]);
+          this.error(`unsupported encoding ${m[2]}`);
           return;
         }
 
