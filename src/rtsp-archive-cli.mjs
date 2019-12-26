@@ -14,7 +14,7 @@ switch (args[0]) {
     console.log(`${description} (${version})
 usage:
  -h --help this help screen
- -c --config <dir> set config directory`);
+ -c --config <directory> set config directory`);
     process.exit(0);
     break;
 
