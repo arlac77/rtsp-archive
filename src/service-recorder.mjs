@@ -36,10 +36,10 @@ export class ServiceRecorder extends Service {
 
         const encoding = videoEncoding(m[2]);
 
-        this.info("RECORDER", recorderName, encoding);
+        this.trace(`RECORDER ${recorderName} ${encoding}`);
 
         if (encoding === undefined) {
-          this.error(`unsupported encoding ${m[2]}`);
+          this.info(`unsupported encoding ${m[2]}`);
           return;
         }
 
@@ -87,7 +87,7 @@ export class ServiceRecorder extends Service {
     }
 
     if (recorder.child !== undefined) {
-      this.info("ALREDY RUNNING", recorder.name, recorder.child.pid);
+      this.trace(`Already running ${recorder.name} ${recorder.child.pid}`);
       return;
     }
 
