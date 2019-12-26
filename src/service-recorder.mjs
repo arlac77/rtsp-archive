@@ -206,7 +206,7 @@ export class ServiceRecorder extends Service {
       this.trace(`exit ${code}`);
       delete recorder.child;
       delete recorder.recordingType;
-      this.startRecorders();
+      this.startRecording(recorder);
     });
 
     /*
