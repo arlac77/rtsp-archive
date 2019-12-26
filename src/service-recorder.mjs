@@ -196,12 +196,12 @@ export class ServiceRecorder extends Service {
     }
   */
 
-    this.info("ffmpeg", options);
+    this.trace(`ffmpeg ${JSON.stringify(options)}`);
 
     recorder.child = spawn("ffmpeg", options, { stdio: "inherit" });
 
     recorder.child.on("exit", code => {
-      this.info("EXIT", code);
+      this.trace(`exit ${code}`);
       delete recorder.child;
       delete recorder.recordingType;
       this.startRecorders();
