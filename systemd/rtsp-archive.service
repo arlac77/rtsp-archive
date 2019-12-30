@@ -17,10 +17,11 @@ RuntimeDirectory={{name}}
 StateDirectory={{name}}
 ConfigurationDirectory={{name}}
 NotifyAccess=all
-FileDescriptorStoreMax=2
+FileDescriptorStoreMax=5
 MemoryAccounting=true
 MemoryHigh=150M
 MemoryMax=200M
+OOMPolicy=stop
 
 [Install]
 WantedBy=multi-user.target
