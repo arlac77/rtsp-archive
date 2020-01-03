@@ -5,13 +5,15 @@
     "access": "public"
   },
   "files": [
+    "bin/rtsp-archive-systemd",
     "bin/rtsp-archive-systemd"
   ],
   "module": "src/rtsp-archive-cli.mjs",
   "description": "archive RTSP stream(s) with ffmpeg",
   "keywords": [
     "rtsp",
-    "ffmpeg"
+    "ffmpeg",
+    "kronos-integration"
   ],
   "contributors": [
     {
