@@ -107,12 +107,17 @@
     "hooks": "pacman/hooks.sh",
     "depends": {
       "systemd": ">=244.1",
-      "ffmpeg": ">=4.2.1"
+      "ffmpeg": ">=4.2.1",
+      "nginx-mainline": ">=1.17.7"
     },
     "content": {
       "/usr/lib/tmpfiles.d/${name}.conf": "pacman/tmpfiles.conf",
       "/etc/${name}/config.json": "config/config.json"
-    }
+    },
+    "additional-content": [
+      "npm-dist",
+      "npm-dependencies"
+    ]
   },
   "release": {
     "plugins": [
