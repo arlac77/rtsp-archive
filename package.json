@@ -46,8 +46,8 @@
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^11.0.0",
-    "@rollup/plugin-node-resolve": "^6.0.0",
+    "@rollup/plugin-commonjs": "^11.0.1",
+    "@rollup/plugin-node-resolve": "^6.1.0",
     "@semantic-release/exec": "^3.3.8",
     "acorn-class-fields": "https://github.com/arlac77/acorn-class-fields.git",
     "ava": "^2.4.0",
@@ -57,7 +57,7 @@
     "esm": "^3.2.25",
     "execa": "^4.0.0",
     "npm-pkgbuild": "^6.11.2",
-    "rollup": "^1.27.14",
+    "rollup": "^1.28.0",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-consts": "^1.0.1",
     "rollup-plugin-executable": "^1.5.2",
@@ -96,27 +96,27 @@
     }
   },
   "pacman": {
-    "arch": [
-      "aarch64",
-      "armv7h",
-      "x86_64"
+    "additional-content": [
+      "npm-dist",
+      "npm-dependencies"
     ],
-    "installdir": "/services/${name}",
-    "groups": "home-automation",
     "backup": "etc/${name}/config.json",
-    "hooks": "pacman/hooks.sh",
+    "content": {
+      "/usr/lib/tmpfiles.d/${name}.conf": "pacman/tmpfiles.conf",
+      "/etc/${name}/config.json": "config/config.json"
+    },
     "depends": {
       "systemd": ">=244.1",
       "ffmpeg": ">=4.2.1",
       "nginx-mainline": ">=1.17.7"
     },
-    "content": {
-      "/usr/lib/tmpfiles.d/${name}.conf": "pacman/tmpfiles.conf",
-      "/etc/${name}/config.json": "config/config.json"
-    },
-    "additional-content": [
-      "npm-dist",
-      "npm-dependencies"
+    "groups": "home-automation",
+    "hooks": "pacman/hooks.sh",
+    "installdir": "/services/${name}",
+    "arch": [
+      "aarch64",
+      "armv7h",
+      "x86_64"
     ]
   },
   "release": {
