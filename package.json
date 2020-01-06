@@ -56,7 +56,7 @@
     "documentation": "^12.1.4",
     "esm": "^3.2.25",
     "execa": "^4.0.0",
-    "npm-pkgbuild": "^6.11.2",
+    "npm-pkgbuild": "^6.11.3",
     "rollup": "^1.28.0",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-consts": "^1.0.1",
