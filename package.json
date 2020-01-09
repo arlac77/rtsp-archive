@@ -39,11 +39,11 @@
   },
   "dependencies": {
     "@kronos-integration/service": "^8.3.15",
-    "@kronos-integration/service-admin": "^3.0.10",
-    "@kronos-integration/service-authenticator": "^1.0.15",
+    "@kronos-integration/service-admin": "^3.0.12",
+    "@kronos-integration/service-authenticator": "^1.0.16",
     "@kronos-integration/service-health-check": "^5.0.12",
-    "@kronos-integration/service-http": "^10.0.4",
-    "@kronos-integration/service-ldap": "^2.1.14",
+    "@kronos-integration/service-http": "^10.0.5",
+    "@kronos-integration/service-ldap": "^2.1.15",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
