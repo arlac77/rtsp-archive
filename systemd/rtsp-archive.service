@@ -23,6 +23,12 @@ MemoryHigh=150M
 MemoryMax=200M
 OOMPolicy=stop
 CacheDirectory={{name}}
+PrivateDevices=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectSystem=full
+RestrictSUIDSGID=true
 
 [Install]
 WantedBy=multi-user.target
