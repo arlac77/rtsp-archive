@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.1",
+    "@rollup/plugin-json": "^4.0.1",
     "@rollup/plugin-node-resolve": "^7.0.0",
     "@semantic-release/exec": "^4.0.0",
     "acorn-class-fields": "https://github.com/arlac77/acorn-class-fields.git",
@@ -57,13 +58,14 @@
     "documentation": "^12.1.4",
     "esm": "^3.2.25",
     "execa": "^4.0.0",
+    "markdown-doctest": "^1.0.0",
     "npm-pkgbuild": "^6.11.4",
     "rollup": "^1.29.1",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-consts": "^1.0.1",
     "rollup-plugin-executable": "^1.5.2",
     "rollup-plugin-native": "^1.2.2",
-    "semantic-release": "^16.0.1"
+    "semantic-release": "^16.0.2"
   },
   "optionalDependencies": {
     "@kronos-integration/service-systemd": "^2.2.11"
@@ -147,7 +149,7 @@
   },
   "template": {
     "repository": {
-      "url": "https://github.com/arlac77/npm-package-template-kronos-app.git"
+      "url": "https://github.com/arlac77/npm-package-template.git"
     }
   }
 }
