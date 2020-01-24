@@ -5,7 +5,6 @@
     "access": "public"
   },
   "files": [
-    "bin/rtsp-archive-systemd",
     "bin/rtsp-archive-systemd"
   ],
   "module": "src/rtsp-archive-cli.mjs",
@@ -32,9 +31,7 @@
     "docs": "documentation readme src/rtsp-archive-cli.mjs --section=API",
     "lint": "documentation lint src/rtsp-archive-cli.mjs",
     "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg",
-    "posttest": "npm run prepare && markdown-doctest",
     "prepare": "rollup -c",
-    "pretest": "rollup -c",
     "test": "ava"
   },
   "dependencies": {
