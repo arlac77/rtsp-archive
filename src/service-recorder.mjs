@@ -120,7 +120,7 @@ export class ServiceRecorder extends Service {
 
     function nts(n) {
       const s = "00" + n;
-      return s.substring(s.length - 2);
+      return s.slice(s.length - 2);
     }
 
     const dir = join(
