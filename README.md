@@ -1,7 +1,7 @@
-[![downloads](http://img.shields.io/npm/dm/rtsp-archive.svg?style=flat-square)](https://npmjs.org/package/rtsp-archive)
 [![npm](https://img.shields.io/npm/v/rtsp-archive.svg)](https://www.npmjs.com/package/rtsp-archive)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![minified size](https://badgen.net/bundlephobia/min/rtsp-archive)](https://bundlephobia.com/result?p=rtsp-archive)
+[![downloads](http://img.shields.io/npm/dm/rtsp-archive.svg?style=flat-square)](https://npmjs.org/package/rtsp-archive)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/rtsp-archive.svg?style=flat-square)](https://github.com/arlac77/rtsp-archive/issues)
 [![Build Status](https://secure.travis-ci.org/arlac77/rtsp-archive.png)](http://travis-ci.org/arlac77/rtsp-archive)
 [![codecov.io](http://codecov.io/github/arlac77/rtsp-archive/coverage.svg?branch=master)](http://codecov.io/github/arlac77/rtsp-archive?branch=master)
