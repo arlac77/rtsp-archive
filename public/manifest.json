@@ -1,0 +1,10 @@
+{
+  "name": "rtsp-archive",
+  "description": "archive RTSP stream(s) with ffmpeg",
+  "icons": [
+    {
+      "src": "facicon.ico",
+      "sizes": "16x16"
+    }
+  ]
+}

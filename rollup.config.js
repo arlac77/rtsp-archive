@@ -1,3 +1,8 @@
+import copy from "rollup-plugin-copy";
+import dev from "rollup-plugin-dev";
+import { terser } from "rollup-plugin-terser";
+
+import svelte from "rollup-plugin-svelte";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 

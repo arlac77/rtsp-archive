@@ -1,10 +1,12 @@
+.DS_Store
 node_modules
+public/bundle.*
+public/global.css
+
 build
 dist
 *.log
 *.dump
-.DS_Store
 .test
 .tmp
-
 bin
