@@ -40,7 +40,7 @@
     "@kronos-integration/service-authenticator": "^1.0.16",
     "@kronos-integration/service-health-check": "^5.0.12",
     "@kronos-integration/service-http": "^10.0.5",
-    "@kronos-integration/service-ldap": "^2.1.15",
+    "@kronos-integration/service-ldap": "^2.1.16",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
@@ -55,12 +55,12 @@
     "esm": "^3.2.25",
     "execa": "^4.0.0",
     "npm-pkgbuild": "^6.11.4",
-    "rollup": "^1.30.1",
+    "rollup": "^1.31.0",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-consts": "^1.0.1",
     "rollup-plugin-executable": "^1.5.2",
-    "rollup-plugin-native": "^1.2.6",
-    "semantic-release": "^17.0.0"
+    "rollup-plugin-native": "^1.2.7",
+    "semantic-release": "^17.0.2"
   },
   "optionalDependencies": {
     "@kronos-integration/service-systemd": "^2.2.11"
