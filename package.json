@@ -40,7 +40,7 @@
     "@kronos-integration/service-authenticator": "^1.0.17",
     "@kronos-integration/service-health-check": "^5.0.14",
     "@kronos-integration/service-http": "^10.0.6",
-    "@kronos-integration/service-ldap": "^2.1.16",
+    "@kronos-integration/service-ldap": "^2.1.17",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
@@ -63,7 +63,7 @@
     "semantic-release": "^17.0.2"
   },
   "optionalDependencies": {
-    "@kronos-integration/service-systemd": "^2.2.11"
+    "@kronos-integration/service-systemd": "^2.2.12"
   },
   "engines": {
     "node": ">=13.7.0"
