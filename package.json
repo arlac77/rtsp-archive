@@ -48,11 +48,10 @@
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@semantic-release/exec": "^5.0.0",
     "acorn-class-fields": "https://github.com/arlac77/acorn-class-fields.git",
-    "ava": "^2.4.0",
+    "ava": "^3.3.0",
     "builtin-modules": "^3.1.0",
     "c8": "^7.1.0",
     "documentation": "^12.1.4",
-    "esm": "^3.2.25",
     "execa": "^4.0.0",
     "npm-pkgbuild": "^6.11.5",
     "rollup": "^1.31.0",
@@ -127,19 +126,6 @@
           "publishCmd": "npx npm-pkgbuild --pkgver ${nextRelease.version} --npm-dist --npm-modules pkgbuild pacman makepkg"
         }
       ]
-    ]
-  },
-  "ava": {
-    "babel": false,
-    "compileEnhancements": false,
-    "files": [
-      "tests/*-test.mjs"
-    ],
-    "require": [
-      "esm"
-    ],
-    "extensions": [
-      "mjs"
     ]
   },
   "template": {
