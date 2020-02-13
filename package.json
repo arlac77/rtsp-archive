@@ -32,7 +32,7 @@
     "lint": "documentation lint src/rtsp-archive-cli.mjs",
     "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg",
     "prepare": "rollup -c",
-    "test": "ava --timeout 2m"
+    "test": "ava --node-arguments '--experimental-modules' --timeout 2m"
   },
   "dependencies": {
     "@kronos-integration/service": "^8.3.16",
