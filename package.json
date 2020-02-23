@@ -27,9 +27,9 @@
     "rtsp-archive-systemd": "bin/rtsp-archive-systemd"
   },
   "scripts": {
+    "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg",
     "prepare": "rollup -c",
     "test": "ava --node-arguments '--experimental-modules' --timeout 2m",
-    "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg",
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "docs": "documentation readme src/rtsp-archive-cli.mjs --section=API",
     "lint": "documentation lint src/rtsp-archive-cli.mjs"
@@ -48,7 +48,7 @@
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@semantic-release/exec": "^5.0.0",
     "acorn-class-fields": "https://github.com/arlac77/acorn-class-fields.git",
-    "ava": "^3.3.0",
+    "ava": "^3.4.0",
     "builtin-modules": "^3.1.0",
     "c8": "^7.1.0",
     "documentation": "^12.1.4",
