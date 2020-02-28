@@ -129,8 +129,6 @@
     ]
   },
   "template": {
-    "repository": {
-      "url": "https://github.com/arlac77/npm-package-template-kronos-app.git"
-    }
+    "inheritFrom": "arlac77/template-kronos-app"
   }
 }
