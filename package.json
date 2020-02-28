@@ -27,12 +27,12 @@
     "rtsp-archive-systemd": "bin/rtsp-archive-systemd"
   },
   "scripts": {
-    "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg",
     "prepare": "rollup -c",
     "test": "ava --node-arguments '--experimental-modules' --timeout 2m",
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "docs": "documentation readme src/rtsp-archive-cli.mjs --section=API",
-    "lint": "documentation lint src/rtsp-archive-cli.mjs"
+    "lint": "documentation lint src/rtsp-archive-cli.mjs",
+    "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg"
   },
   "dependencies": {
     "@kronos-integration/service": "^8.3.16",
@@ -54,7 +54,7 @@
     "documentation": "^12.1.4",
     "execa": "^4.0.0",
     "npm-pkgbuild": "^6.11.5",
-    "rollup": "^1.31.1",
+    "rollup": "^1.31.2",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-consts": "^1.0.1",
     "rollup-plugin-executable": "^1.5.2",
