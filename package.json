@@ -109,7 +109,7 @@
     },
     "depends": {
       "systemd": ">=244.1",
-      "ffmpeg": ">=4.2.1",
+      "ffmpeg": ">=4.2.2",
       "nginx-mainline": ">=1.17.7"
     },
     "groups": "home-automation",
