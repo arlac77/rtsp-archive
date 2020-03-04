@@ -35,10 +35,10 @@
     "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg"
   },
   "dependencies": {
-    "@kronos-integration/service": "^8.3.16",
-    "@kronos-integration/service-admin": "^3.0.13",
+    "@kronos-integration/service": "^8.3.17",
+    "@kronos-integration/service-admin": "^3.0.14",
     "@kronos-integration/service-authenticator": "^1.0.17",
-    "@kronos-integration/service-health-check": "^5.0.14",
+    "@kronos-integration/service-health-check": "^5.0.15",
     "@kronos-integration/service-http": "^10.0.6",
     "@kronos-integration/service-ldap": "^2.1.17",
     "nbonjour": "^3.6.3"
@@ -129,6 +129,9 @@
     ]
   },
   "template": {
-    "inheritFrom": "arlac77/template-kronos-app"
+    "inheritFrom": [
+      "arlac77/template-kronos-app",
+      "arlac77/template-github"
+    ]
   }
 }
