@@ -53,7 +53,7 @@
     "c8": "^7.1.0",
     "documentation": "^12.1.4",
     "execa": "^4.0.0",
-    "npm-pkgbuild": "^6.11.5",
+    "npm-pkgbuild": "^6.11.6",
     "rollup": "^2.0.2",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-consts": "^1.0.1",
@@ -65,7 +65,7 @@
     "@kronos-integration/service-systemd": "^2.2.12"
   },
   "engines": {
-    "node": ">=13.8.0"
+    "node": ">=13.10.1"
   },
   "os": [
     "linux",
