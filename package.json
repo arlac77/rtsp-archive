@@ -51,14 +51,14 @@
     "ava": "^3.5.2",
     "builtin-modules": "^3.1.0",
     "c8": "^7.1.0",
-    "documentation": "^12.1.4",
+    "documentation": "^12.2.0",
     "execa": "^4.0.0",
     "npm-pkgbuild": "^6.11.6",
-    "rollup": "^2.3.0",
+    "rollup": "^2.3.1",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-consts": "^1.0.1",
-    "rollup-plugin-executable": "^1.5.2",
-    "rollup-plugin-native": "^1.2.9",
+    "rollup-plugin-executable": "^1.5.3",
+    "rollup-plugin-native": "^1.2.11",
     "semantic-release": "^17.0.4"
   },
   "optionalDependencies": {
