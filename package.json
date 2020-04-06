@@ -110,9 +110,9 @@
       "/etc/${name}/config.json": "config/config.json"
     },
     "depends": {
-      "systemd": ">=244.1",
+      "systemd": ">=245.4",
       "ffmpeg": ">=4.2.2",
-      "nginx-mainline": ">=1.17.7"
+      "nginx-mainline": ">=1.17.9"
     },
     "groups": "home-automation",
     "hooks": "pacman/hooks.sh",
