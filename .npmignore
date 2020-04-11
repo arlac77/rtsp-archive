@@ -10,5 +10,5 @@ doc
 pacman
 systemd
 config
-rollup.config.js
 .github
+rollup.config.mjs
