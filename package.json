@@ -115,7 +115,10 @@
     },
     "groups": "home-automation",
     "hooks": "pacman/hooks.sh",
-    "installdir": "/services/${name}"
+    "installdir": "/services/${name}",
+    "dependes": {
+      "nginx-mainline": ">=1.17.9"
+    }
   },
   "release": {
     "plugins": [
