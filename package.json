@@ -35,7 +35,7 @@
     "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg"
   },
   "dependencies": {
-    "@kronos-integration/service": "^8.3.22",
+    "@kronos-integration/service": "^8.3.23",
     "@kronos-integration/service-admin": "^3.0.18",
     "@kronos-integration/service-authenticator": "^1.0.19",
     "@kronos-integration/service-health-check": "^5.0.19",
@@ -63,7 +63,7 @@
     "semantic-release": "^17.0.4"
   },
   "optionalDependencies": {
-    "@kronos-integration/service-systemd": "^2.2.12"
+    "@kronos-integration/service-systemd": "^2.2.13"
   },
   "engines": {
     "node": ">=13.13.0"
