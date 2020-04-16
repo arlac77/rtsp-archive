@@ -60,7 +60,7 @@
     "rollup-plugin-consts": "^1.0.1",
     "rollup-plugin-executable": "^1.5.3",
     "rollup-plugin-native": "^1.2.13",
-    "semantic-release": "^17.0.4"
+    "semantic-release": "^17.0.6"
   },
   "optionalDependencies": {
     "@kronos-integration/service-systemd": "^2.2.13"
