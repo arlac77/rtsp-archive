@@ -5,10 +5,10 @@ doc
 *.tmp
 .test
 .tmp
+rollup.config.*
 .travis.yml
 .vscode
 pacman
 systemd
 config
 .github
-rollup.config.mjs
