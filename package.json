@@ -106,7 +106,12 @@
     "backup": "etc/${name}/config.json",
     "content": {
       "/usr/lib/tmpfiles.d/${name}.conf": "pacman/tmpfiles.conf",
-      "/etc/${name}/config.json": "config/config.json"
+      "/etc/${name}/config.json": "config/config.json",
+      "/usr/lib/sysusers.d/${name}.conf": "pacman/sysusers.conf",
+      "${installdir}/": {
+        "base": "public"
+      },
+      "/etc/nginx/config.d/${name}.conf": "pacman/nginx.conf"
     },
     "depends": {
       "systemd": ">=245.4",
@@ -115,10 +120,7 @@
     },
     "groups": "home-automation",
     "hooks": "pacman/hooks.sh",
-    "installdir": "/services/${name}",
-    "dependes": {
-      "nginx-mainline": ">=1.17.9"
-    }
+    "installdir": "/services/${name}"
   },
   "release": {
     "plugins": [
