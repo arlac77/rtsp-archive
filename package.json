@@ -23,8 +23,8 @@
   ],
   "license": "BSD-2-Clause",
   "bin": {
-    "rtsp-archive": "bin/rtsp-archive",
-    "rtsp-archive-systemd": "bin/rtsp-archive-systemd"
+    "rtsp-archive": "src/rtsp-archive-cli.mjs",
+    "rtsp-archive-systemd": "bin/rtsp-archive-systemd-cli.mjs"
   },
   "scripts": {
     "prepare": "rollup -c",
@@ -63,7 +63,7 @@
     "semantic-release": "^17.0.6"
   },
   "optionalDependencies": {
-    "@kronos-integration/service-systemd": "^2.2.13"
+    "@kronos-integration/service-systemd": "^2.3.0"
   },
   "engines": {
     "node": ">=13.13.0"
