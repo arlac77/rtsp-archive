@@ -89,10 +89,6 @@
       "armv7h",
       "x86_64"
     ],
-    "additional-content": [
-      "npm-dist",
-      "npm-dependencies"
-    ],
     "backup": "etc/${name}/config.json",
     "content": {
       "/usr/lib/tmpfiles.d/${name}.conf": "pacman/tmpfiles.conf",
@@ -108,7 +104,14 @@
     "groups": "home-automation",
     "hooks": "pacman/hooks.sh",
     "installdir": "/services/${name}",
-    "group": "services"
+    "group": "services",
+    "content-provider": {
+      "systemd": {
+        "units": {
+          "${name}": "systemd/${name}*"
+        }
+      }
+    }
   },
   "release": {
     "plugins": [
