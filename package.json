@@ -48,7 +48,7 @@
     "c8": "^7.1.0",
     "documentation": "^12.3.0",
     "execa": "^4.0.0",
-    "npm-pkgbuild": "^6.11.9",
+    "npm-pkgbuild": "^6.11.16",
     "rollup": "^2.6.1",
     "semantic-release": "^17.0.6"
   },
