@@ -1,8 +1,3 @@
-
-pre_install() {
-	useradd -U -l -M -r -s /usr/bin/nologin -d /var/lib/{{name}} -G http -c "{{description}}" {{name}}
-}
-
 post_install() {
 	systemctl daemon-reload
 	systemctl enable {{name}}
@@ -11,7 +6,6 @@ post_install() {
 }
 
 pre_upgrade() {
-	usermod -G http {{name}}
 	systemctl stop {{name}}.socket
 	systemctl stop {{name}}
 }
@@ -30,6 +24,4 @@ pre_remove() {
 
 post_remove() {
 	systemctl daemon-reload
-	userdel {{name}}
-	groupdel {{name}}
 }
