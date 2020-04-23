@@ -36,7 +36,7 @@
     "@kronos-integration/service-admin": "^3.0.20",
     "@kronos-integration/service-authenticator": "^1.0.22",
     "@kronos-integration/service-health-check": "^5.0.21",
-    "@kronos-integration/service-http": "^10.0.11",
+    "@kronos-integration/service-http": "^10.1.0",
     "@kronos-integration/service-ldap": "^2.1.22",
     "nbonjour": "^3.6.3"
   },
