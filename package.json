@@ -21,7 +21,7 @@
   "license": "BSD-2-Clause",
   "bin": {
     "rtsp-archive": "src/rtsp-archive-cli.mjs",
-    "rtsp-archive-systemd": "src/rtsp-archive-systemd-cli.mjs"
+    "rtsp-archive-systemd": "bin/rtsp-archive-systemd-cli.mjs"
   },
   "scripts": {
     "test": "ava --timeout 2m",
