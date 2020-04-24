@@ -73,6 +73,7 @@
   },
   "homepage": "https://github.com/arlac77/rtsp-archive#readme",
   "config": {
+    "base": "/services/${name}",
     "socket": "/run/${name}/http/socket"
   },
   "systemd": {
