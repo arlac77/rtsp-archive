@@ -29,19 +29,19 @@
     "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg"
   },
   "dependencies": {
-    "@kronos-integration/service": "^8.3.24",
-    "@kronos-integration/service-admin": "^3.0.20",
-    "@kronos-integration/service-authenticator": "^1.0.22",
-    "@kronos-integration/service-health-check": "^5.0.21",
-    "@kronos-integration/service-http": "^10.1.0",
-    "@kronos-integration/service-ldap": "^2.1.22",
+    "@kronos-integration/service": "^8.3.25",
+    "@kronos-integration/service-admin": "^3.0.21",
+    "@kronos-integration/service-authenticator": "^1.0.23",
+    "@kronos-integration/service-health-check": "^5.0.22",
+    "@kronos-integration/service-http": "^10.1.1",
+    "@kronos-integration/service-ldap": "^2.1.23",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/release-notes-generator": "^9.0.1",
-    "ava": "^3.8.0",
+    "ava": "^3.8.1",
     "c8": "^7.1.0",
     "documentation": "^12.3.0",
     "execa": "^4.0.0",
