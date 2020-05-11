@@ -46,7 +46,6 @@
     "documentation": "^13.0.0",
     "execa": "^4.0.0",
     "npm-pkgbuild": "^6.11.19",
-    "rollup": "^2.6.1",
     "semantic-release": "^17.0.7"
   },
   "optionalDependencies": {
