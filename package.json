@@ -29,12 +29,12 @@
     "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg"
   },
   "dependencies": {
-    "@kronos-integration/service": "^8.3.29",
-    "@kronos-integration/service-admin": "^3.0.25",
-    "@kronos-integration/service-authenticator": "^1.0.26",
-    "@kronos-integration/service-health-check": "^5.0.26",
-    "@kronos-integration/service-http": "^10.1.5",
-    "@kronos-integration/service-ldap": "^2.1.25",
+    "@kronos-integration/service": "^8.4.0",
+    "@kronos-integration/service-admin": "^3.0.26",
+    "@kronos-integration/service-authenticator": "^1.0.27",
+    "@kronos-integration/service-health-check": "^5.0.27",
+    "@kronos-integration/service-http": "^10.1.6",
+    "@kronos-integration/service-ldap": "^2.1.26",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
