@@ -29,6 +29,7 @@
     "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg"
   },
   "dependencies": {
+    "@kronos-integration/interceptor-decode-json": "^2.1.9",
     "@kronos-integration/service": "^8.5.0",
     "@kronos-integration/service-admin": "^3.0.27",
     "@kronos-integration/service-authenticator": "^1.0.28",
