@@ -47,7 +47,7 @@
     "documentation": "^13.0.0",
     "execa": "^4.0.0",
     "npm-pkgbuild": "^6.11.19",
-    "semantic-release": "^17.0.7"
+    "semantic-release": "^17.0.8"
   },
   "optionalDependencies": {
     "@kronos-integration/service-systemd": "^2.3.5"
