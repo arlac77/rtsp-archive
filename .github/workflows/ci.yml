@@ -8,6 +8,7 @@ jobs:
         node-version:
           - '14.2'
           - 14.3.0
+          - 14.4.0
     steps:
       - uses: actions/checkout@v2
       - name: Cache node modules
