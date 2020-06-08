@@ -7,9 +7,9 @@
   "module": "src/rtsp-archive-cli.mjs",
   "description": "archive RTSP stream(s) with ffmpeg",
   "keywords": [
-    "rtsp",
     "ffmpeg",
     "kronos-integration",
+    "rtsp",
     "systemd"
   ],
   "contributors": [
