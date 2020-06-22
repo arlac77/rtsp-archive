@@ -4,15 +4,12 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": [
-    "bin/rtsp-archive-systemd"
-  ],
   "module": "src/rtsp-archive-cli.mjs",
   "description": "archive RTSP stream(s) with ffmpeg",
   "keywords": [
-    "rtsp",
     "ffmpeg",
     "kronos-integration",
+    "rtsp",
     "systemd"
   ],
   "contributors": [
@@ -23,8 +20,7 @@
   ],
   "license": "BSD-2-Clause",
   "bin": {
-    "rtsp-archive": "src/rtsp-archive-cli.mjs",
-    "rtsp-archive-systemd": "bin/rtsp-archive-systemd-cli.mjs"
+    "rtsp-archive": "./src/rtsp-archive-cli.mjs"
   },
   "scripts": {
     "test": "ava --timeout 2m",
@@ -32,31 +28,30 @@
     "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg"
   },
   "dependencies": {
-    "@kronos-integration/service": "^8.3.23",
-    "@kronos-integration/service-admin": "^3.0.19",
-    "@kronos-integration/service-authenticator": "^1.0.21",
-    "@kronos-integration/service-health-check": "^5.0.20",
-    "@kronos-integration/service-http": "^10.0.10",
-    "@kronos-integration/service-ldap": "^2.1.21",
+    "@kronos-integration/interceptor-decode-json": "^2.1.10",
+    "@kronos-integration/service": "^8.5.14",
+    "@kronos-integration/service-admin": "^3.1.8",
+    "@kronos-integration/service-authenticator": "^1.1.0",
+    "@kronos-integration/service-health-check": "^5.0.35",
+    "@kronos-integration/service-http": "^10.1.20",
+    "@kronos-integration/service-ldap": "^2.1.37",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/release-notes-generator": "^9.0.1",
-    "ava": "^3.7.1",
-    "c8": "^7.1.0",
-    "documentation": "^12.3.0",
-    "execa": "^4.0.0",
-    "npm-pkgbuild": "^6.11.16",
-    "rollup": "^2.6.1",
-    "semantic-release": "^17.0.7"
+    "ava": "^3.9.0",
+    "c8": "^7.2.0",
+    "execa": "^4.0.2",
+    "npm-pkgbuild": "^6.12.1",
+    "semantic-release": "^17.0.8"
   },
   "optionalDependencies": {
-    "@kronos-integration/service-systemd": "^2.3.0"
+    "@kronos-integration/service-systemd": "^2.3.6"
   },
   "engines": {
-    "node": ">=13.13.0"
+    "node": ">=14.4.0"
   },
   "os": [
     "linux",
@@ -76,6 +71,7 @@
   },
   "homepage": "https://github.com/arlac77/rtsp-archive#readme",
   "config": {
+    "base": "/services/${name}",
     "socket": "/run/${name}/http/socket"
   },
   "systemd": {
@@ -97,9 +93,9 @@
       "/etc/nginx/config.d/${name}.conf": "pacman/nginx.conf"
     },
     "depends": {
-      "systemd": ">=245.4",
-      "ffmpeg": ">=4.2.2",
-      "nginx-mainline": ">=1.17.10"
+      "systemd": ">=245.6",
+      "ffmpeg": ">=4.2.3",
+      "nginx-mainline": ">=1.19.0"
     },
     "groups": "home-automation",
     "hooks": "pacman/hooks.sh",

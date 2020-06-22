@@ -1,44 +1,64 @@
 import { readFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import setup from "./rtsp-archive.mjs";
 import { StandaloneServiceProvider } from "@kronos-integration/service";
-import { setup } from "./rtsp-archive.mjs";
-
-const { version, description } = JSON.parse(
-  readFileSync(
-    join(dirname(fileURLToPath(import.meta.url)), "..", "package.json"),
-    { encoding: "utf8" }
-  )
-);
 
 const args = process.argv.slice(2);
 
-let config;
-
 switch (args[0]) {
   case "--version":
-    console.log(version);
-    process.exit(0);
+    {
+      const { version } = info();
+      console.log(version);
+      process.exit(0);
+    }
+    break;
   case "--help":
   case "-h":
-    console.log(`${description} (${version})
+    {
+      const { description, version } = info();
+      console.log(`${description} (${version});
 usage:
  -h --help this help screen
  -c --config <directory> set config directory`);
-    process.exit(0);
+      process.exit(0);
+    }
     break;
 
   case "--config":
   case "-c":
-    config = JSON.parse(
-      readFileSync(join(args[1], "config.json"), { encoding: "utf8" })
-    );
-
+    process.env.CONFIGURATION_DIRECTORY = args[1];
     break;
 }
 
-try {
-  setup(new StandaloneServiceProvider(config));
-} catch (error) {
-  console.log(error);
+initialize();
+
+function info() {
+  return JSON.parse(
+    readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "..", "package.json"),
+      { encoding: "utf8" }
+    )
+  );
+}
+
+async function initialize() {
+  try {
+    let serviceProvider;
+    try {
+      const m = await import("@kronos-integration/service-systemd");
+      serviceProvider = new m.default();
+    } catch (e) {
+      serviceProvider = new StandaloneServiceProvider(
+        JSON.parse(
+          readFileSync(join(args[1], "config.json"), { encoding: "utf8" })
+        )
+      );
+    }
+
+    await setup(serviceProvider);
+  } catch (error) {
+    console.error(error);
+  }
 }

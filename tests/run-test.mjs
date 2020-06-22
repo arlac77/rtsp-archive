@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 const here = dirname(fileURLToPath(import.meta.url));
 
 test("rtsp-archive", async t => {
-  const result = await execa("node", [join(here, "..", "bin", "rtsp-archive"),
+  const result = await execa("node", [join(here, "..", "src", "rtsp-archive-cli.mjs"),
     "-h"
   ]);
   t.regex(result.stdout, /--config <directory>/);
