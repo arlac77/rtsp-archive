@@ -180,9 +180,9 @@ export class ServiceRecorder extends Service {
       //    framerate: "-r"
     };
 
-    Object.keys(properties).forEach(o => {
-      if (recorder[o] !== undefined) {
-        options.push(properties[o], recorder[o]);
+    Object.entries(properties).forEach(([k,v]) => {
+      if (recorder[k] !== undefined) {
+        options.push(v, recorder[k]);
       }
     });
 
