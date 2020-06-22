@@ -16,13 +16,11 @@ export class ServiceRecorder extends Service {
           default: "/tmp"
         },
         recorders: {
-          description: "well known recorders",
-        } 
+          description: "well known recorders"
+        }
       })
     );
   }
-
-  recorders = {};
 
   async _start() {
     console.log(this.recorders);
@@ -85,9 +83,9 @@ export class ServiceRecorder extends Service {
       }
     });
 
-    Object.entries(this.recorders).forEach(([name,recorder]) => {
-      console.log(name,recorder.url);
-      if(recorder.url) {
+    Object.entries(this.recorders).forEach(([name, recorder]) => {
+      console.log(name, recorder.url);
+      if (recorder.url) {
         this.startRecording(recorder);
       }
     });
@@ -192,7 +190,7 @@ export class ServiceRecorder extends Service {
       //    framerate: "-r"
     };
 
-    Object.entries(properties).forEach(([k,v]) => {
+    Object.entries(properties).forEach(([k, v]) => {
       if (recorder[k] !== undefined) {
         options.push(v, recorder[k]);
       }
@@ -230,8 +228,9 @@ export class ServiceRecorder extends Service {
   }
 }
 
-function msecsBeforeMidnight(){
-  const mid = new Date(), ts = mid.getTime();
+function msecsBeforeMidnight() {
+  const mid = new Date(),
+    ts = mid.getTime();
   mid.setHours(24, 0, 0, 0);
   return Math.floor(mid - ts);
 }
