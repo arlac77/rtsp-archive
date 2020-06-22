@@ -46,7 +46,7 @@ export class ServiceRecorder extends Service {
         let recorder = this.recorders[recorderName];
         if (recorder === undefined) {
           recorder = this.recorders[recorderName] = {
-            fileFormat: "fragment-%03d.mp4",
+            fileFormat: "-%03d.mp4",
             width: 640,
             height: 480,
             framerate: 15
