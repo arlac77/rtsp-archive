@@ -209,14 +209,19 @@ export class ServiceRecorder extends Service {
       this.startRecording(recorder);
     });
 
-    /*
+    // restart ad midnight
     setTimeout(() => {
       if (recorder.child !== undefined) {
         recorder.child.kill("SIGTERM");
       }
-    }, (config.record.duration + 5) * 1000);
-    */
+    }, msecsBeforeMidnight() /*(config.record.duration + 5) * 1000*/);
   }
+}
+
+function msecsBeforeMidnight(){
+  const mid = new Date(), ts = mid.getTime();
+  mid.setHours(24, 0, 0, 0);
+  return Math.floor(mid - ts);
 }
 
 const videoPriorities = {
