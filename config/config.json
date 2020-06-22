@@ -14,7 +14,7 @@
         "videoTypes": {
           "H.264": {}
         },
-        "mapping": "0:a:0"
+        "mapping": ["0", "-0:a:0"]
       },
       "AXIS1": {
         "fileFormat": "avi"

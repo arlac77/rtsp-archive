@@ -84,7 +84,7 @@ export class ServiceRecorder extends Service {
     });
 
     Object.entries(this.recorders).forEach(([name, recorder]) => {
-      console.log(name, recorder.url);
+      recorder.name = name;
       if (recorder.url) {
         this.startRecording(recorder);
       }
@@ -153,6 +153,10 @@ export class ServiceRecorder extends Service {
     //recorder.url = "rtsp://10.0.3.2/mpeg4/1/media.amp";
     //ffmpeg -i rtsp://10.0.3.2/mpeg4/1/media.amp -b 900k -vcodec copy -r 60 -y MyVdeoFFmpeg.avi
 
+    const mapping = recorder.mapping
+      ? recorder.mapping.map(m => ["-map", m])
+      : ["-map", 0];
+
     const options = [
       "-hide_banner",
       "-loglevel",
@@ -165,9 +169,7 @@ export class ServiceRecorder extends Service {
       "copy",
       "-timestamp",
       "now",
-
-      "-map",
-      "0",
+      ...mapping.flat(),
       "-f",
       "segment",
       "-segment_atclocktime",
