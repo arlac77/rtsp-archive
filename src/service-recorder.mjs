@@ -16,6 +16,7 @@ export class ServiceRecorder extends Service {
           default: "/tmp"
         },
         recorders: {
+          description: "well known recorders",
         } 
       })
     );
@@ -24,6 +25,8 @@ export class ServiceRecorder extends Service {
   recorders = {};
 
   async _start() {
+    console.log(this.recorders);
+
     await super._start();
     this.bonjour = nbonjour.create();
 
