@@ -14,7 +14,9 @@ export class ServiceRecorder extends Service {
           type: "posix-path",
           description: "recording base directory",
           default: "/tmp"
-        }
+        },
+        recorders: {
+        } 
       })
     );
   }
@@ -76,6 +78,13 @@ export class ServiceRecorder extends Service {
         recorder.url = `${service.protocol}:${service.referer.address}/${service.txt.ath}`;
         recorder.port = service.port;
 
+        this.startRecording(recorder);
+      }
+    });
+
+    Object.entries(this.recorders).forEach(([name,recorder]) => {
+      console.log(name,recorder.url);
+      if(recorder.url) {
         this.startRecording(recorder);
       }
     });
