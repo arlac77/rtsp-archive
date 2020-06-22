@@ -23,8 +23,6 @@ export class ServiceRecorder extends Service {
   }
 
   async _start() {
-    console.log(this.recorders);
-
     await super._start();
     this.bonjour = nbonjour.create();
 
