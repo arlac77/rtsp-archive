@@ -210,13 +210,25 @@ export class ServiceRecorder extends Service {
 
     this.trace(`ffmpeg ${JSON.stringify(options)}`);
 
+    if(recorder.restartDelay === undefined) {
+      recorder.restartDelay = 10000;
+    }
+
+    recorder.startTime = Date.now();
     recorder.child = spawn("ffmpeg", options, { stdio: "inherit" });
 
     recorder.child.on("exit", code => {
       this.trace(`exit ${code}`);
       delete recorder.child;
       delete recorder.recordingType;
-      this.startRecording(recorder);
+
+      if(Date.now() - recorder.startTime < recorder.restartDelay) {
+        recorder.startTime = 0;
+        setTimeout(() => this.startRecording(recorder), recorder.restartDelay);
+      }
+      else {
+        this.startRecording(recorder);
+      }
     });
 
     // restart ad midnight
