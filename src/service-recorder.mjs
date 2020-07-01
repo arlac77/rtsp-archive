@@ -224,6 +224,7 @@ export class ServiceRecorder extends Service {
 
       if(Date.now() - recorder.startTime < recorder.restartDelay) {
         recorder.startTime = 0;
+        this.trace(`wait ${recorder.restartDelay / 1000}s`);
         setTimeout(() => this.startRecording(recorder), recorder.restartDelay);
       }
       else {
