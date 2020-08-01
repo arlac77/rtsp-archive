@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@kronos-integration/interceptor-decode-json": "^2.1.13",
-    "@kronos-integration/service": "^9.2.2",
+    "@kronos-integration/service": "^9.2.3",
     "@kronos-integration/service-admin": "^3.1.14",
     "@kronos-integration/service-authenticator": "^1.1.7",
     "@kronos-integration/service-health-check": "^5.0.41",
@@ -95,7 +95,7 @@
     "depends": {
       "systemd": ">=245.6",
       "ffmpeg": ">=4.2.3",
-      "nginx-mainline": ">=1.19.0"
+      "nginx-mainline": ">=1.19.1"
     },
     "groups": "home-automation",
     "hooks": "pacman/hooks.sh",
