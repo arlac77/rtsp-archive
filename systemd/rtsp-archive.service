@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=notify
-ExecStart=/usr/bin/node --title {{name}} {{installdir}}/src/{{name}}-cli.mjs
+ExecStart=/usr/bin/node  --trace-uncaught --trace-warnings --title {{name}} {{installdir}}/src/{{name}}-cli.mjs
 ExecReload=/bin/kill -HUP $MAINPID
 RestartSec=10
 TimeoutStartSec=20
