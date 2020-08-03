@@ -41,7 +41,7 @@
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/release-notes-generator": "^9.0.1",
-    "ava": "^3.11.0",
+    "ava": "^3.11.1",
     "c8": "^7.2.0",
     "execa": "^4.0.2",
     "npm-pkgbuild": "^6.12.1",
