@@ -29,29 +29,29 @@
   },
   "dependencies": {
     "@kronos-integration/interceptor-decode-json": "^2.1.13",
-    "@kronos-integration/service": "^9.2.3",
-    "@kronos-integration/service-admin": "^3.1.14",
-    "@kronos-integration/service-authenticator": "^1.1.7",
-    "@kronos-integration/service-health-check": "^5.0.41",
-    "@kronos-integration/service-http": "^10.1.27",
-    "@kronos-integration/service-ldap": "^2.1.45",
+    "@kronos-integration/service": "^9.2.5",
+    "@kronos-integration/service-admin": "^3.1.16",
+    "@kronos-integration/service-authenticator": "^1.1.8",
+    "@kronos-integration/service-health-check": "^5.0.42",
+    "@kronos-integration/service-http": "^10.1.28",
+    "@kronos-integration/service-ldap": "^2.1.46",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/release-notes-generator": "^9.0.1",
-    "ava": "^3.11.0",
+    "ava": "^3.11.1",
     "c8": "^7.2.0",
     "execa": "^4.0.2",
     "npm-pkgbuild": "^6.12.1",
     "semantic-release": "^17.1.1"
   },
   "optionalDependencies": {
-    "@kronos-integration/service-systemd": "^2.3.10"
+    "@kronos-integration/service-systemd": "^2.3.11"
   },
   "engines": {
-    "node": ">=14.7.0"
+    "node": ">=14.8.0"
   },
   "os": [
     "linux",
