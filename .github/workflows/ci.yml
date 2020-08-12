@@ -6,7 +6,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 14.7.0
+          - 14.8.0
     steps:
       - uses: actions/checkout@v2
       - name: checkout
@@ -31,3 +31,10 @@ jobs:
       - run: npm install
       - run: npm run build --if-present
       - run: npm run cover --if-present
+      - name: Release
+        uses: actions/setup-node@v1
+      - run: npx semantic-release
+        env:
+          CI: 'true'
+          NPM_TOKEN: '${{ secrets.NPM_TOKEN }}'
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
