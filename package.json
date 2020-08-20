@@ -33,7 +33,7 @@
     "@kronos-integration/service-admin": "^3.1.16",
     "@kronos-integration/service-authenticator": "^1.1.8",
     "@kronos-integration/service-health-check": "^5.0.42",
-    "@kronos-integration/service-http": "^10.1.28",
+    "@kronos-integration/service-http": "^10.2.0",
     "@kronos-integration/service-ldap": "^2.1.46",
     "nbonjour": "^3.6.3"
   },
@@ -44,7 +44,7 @@
     "ava": "^3.11.1",
     "c8": "^7.2.0",
     "execa": "^4.0.2",
-    "npm-pkgbuild": "^6.12.5",
+    "npm-pkgbuild": "^6.12.6",
     "semantic-release": "^17.1.1"
   },
   "optionalDependencies": {
