@@ -93,9 +93,9 @@
       "/etc/nginx/config.d/${name}.conf": "pacman/nginx.conf"
     },
     "depends": {
-      "systemd": ">=245.6",
+      "systemd": ">=246.2",
       "ffmpeg": ">=4.2.3",
-      "nginx-mainline": ">=1.19.1"
+      "nginx-mainline": ">=1.19.2"
     },
     "groups": "home-automation",
     "hooks": "pacman/hooks.sh",
