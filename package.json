@@ -28,13 +28,13 @@
     "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg"
   },
   "dependencies": {
-    "@kronos-integration/interceptor-decode-json": "^2.1.13",
-    "@kronos-integration/service": "^9.2.7",
-    "@kronos-integration/service-admin": "^3.1.17",
-    "@kronos-integration/service-authenticator": "^1.1.10",
-    "@kronos-integration/service-health-check": "^5.0.43",
-    "@kronos-integration/service-http": "^10.2.1",
-    "@kronos-integration/service-ldap": "^2.1.47",
+    "@kronos-integration/interceptor-decode-json": "^2.1.15",
+    "@kronos-integration/service": "^9.2.8",
+    "@kronos-integration/service-admin": "^3.1.19",
+    "@kronos-integration/service-authenticator": "^1.1.12",
+    "@kronos-integration/service-health-check": "^5.0.45",
+    "@kronos-integration/service-http": "^10.2.3",
+    "@kronos-integration/service-ldap": "^2.1.49",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
@@ -48,10 +48,10 @@
     "semantic-release": "^17.1.1"
   },
   "optionalDependencies": {
-    "@kronos-integration/service-systemd": "^2.3.11"
+    "@kronos-integration/service-systemd": "^2.3.12"
   },
   "engines": {
-    "node": ">=14.8.0"
+    "node": ">=14.9.0"
   },
   "os": [
     "linux",
@@ -93,7 +93,7 @@
       "/etc/nginx/config.d/${name}.conf": "pacman/nginx.conf"
     },
     "depends": {
-      "systemd": ">=246.2",
+      "systemd": ">=246.3",
       "ffmpeg": ">=4.2.3",
       "nginx-mainline": ">=1.19.2"
     },
