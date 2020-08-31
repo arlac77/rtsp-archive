@@ -1,9 +1,9 @@
 [Socket]
+FileDescriptorName=http.listen.socket
 ListenStream={{socket}}
 MaxConnections=4
-FileDescriptorName=http.listen.socket
-SocketUser=http
 SocketGroup=http
+SocketUser=http
 
 [Install]
 RequiredBy={{name}}.service
