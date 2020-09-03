@@ -57,15 +57,28 @@
     "linux",
     "darwin"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/arlac77/rtsp-archive.git"
-  },
   "cpu": [
     "arm",
     "arm64",
     "x64"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arlac77/rtsp-archive.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arlac77/rtsp-archive/issues"
+  },
+  "homepage": "https://github.com/arlac77/rtsp-archive#readme",
+  "config": {
+    "base": "/services/${name}",
+    "socket": "/run/${name}/http/socket"
+  },
+  "systemd": {
+    "units": {
+      "${name}": "systemd/${name}*"
+    }
+  },
   "pacman": {
     "arch": [
       "aarch64",
@@ -94,19 +107,6 @@
           "${name}": "systemd/${name}*"
         }
       }
-    }
-  },
-  "bugs": {
-    "url": "https://github.com/arlac77/rtsp-archive/issues"
-  },
-  "homepage": "https://github.com/arlac77/rtsp-archive#readme",
-  "config": {
-    "base": "/services/${name}",
-    "socket": "/run/${name}/http/socket"
-  },
-  "systemd": {
-    "units": {
-      "${name}": "systemd/${name}*"
     }
   },
   "release": {
