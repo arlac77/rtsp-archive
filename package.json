@@ -123,9 +123,6 @@
     ]
   },
   "template": {
-    "inheritFrom": [
-      "arlac77/template-kronos-app",
-      "arlac77/template-github"
-    ]
+    "inheritFrom": "arlac77/template-kronos-app"
   }
 }
