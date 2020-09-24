@@ -1,5 +1,5 @@
 import { join } from "path";
-import fs from "fs";
+import { mkdir } from "fs/promises";
 import { spawn } from "child_process";
 import nbonjour from "nbonjour";
 import { mergeAttributes, createAttributes } from "model-attributes";
@@ -146,7 +146,7 @@ export class ServiceRecorder extends Service {
       )}${recorder.fileFormat}`
     );
 
-    await fs.promises.mkdir(dir, { recursive: true, mode: "0755" });
+    await mkdir(dir, { recursive: true, mode: "0755" });
 
     //recorder.url = "rtsp://10.0.3.2/mpeg4/1/media.amp";
     //ffmpeg -i rtsp://10.0.3.2/mpeg4/1/media.amp -b 900k -vcodec copy -r 60 -y MyVdeoFFmpeg.avi
@@ -210,7 +210,7 @@ export class ServiceRecorder extends Service {
 
     this.trace(`ffmpeg ${JSON.stringify(options)}`);
 
-    if(recorder.restartDelay === undefined) {
+    if (recorder.restartDelay === undefined) {
       recorder.restartDelay = 10000;
     }
 
@@ -222,12 +222,11 @@ export class ServiceRecorder extends Service {
       delete recorder.child;
       delete recorder.recordingType;
 
-      if(Date.now() - recorder.startTime < recorder.restartDelay) {
+      if (Date.now() - recorder.startTime < recorder.restartDelay) {
         recorder.startTime = 0;
         this.trace(`wait ${recorder.restartDelay / 1000}s`);
         setTimeout(() => this.startRecording(recorder), recorder.restartDelay);
-      }
-      else {
+      } else {
         this.startRecording(recorder);
       }
     });
