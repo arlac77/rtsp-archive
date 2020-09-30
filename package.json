@@ -52,7 +52,7 @@
     "@kronos-integration/service-systemd": "^2.3.16"
   },
   "engines": {
-    "node": ">=14.12.0"
+    "node": ">=14.13.0"
   },
   "os": [
     "linux",
@@ -96,7 +96,7 @@
     "depends": {
       "systemd": ">=246.6",
       "ffmpeg": ">=4.2.3",
-      "nginx-mainline": ">=1.19.2"
+      "nginx-mainline": ">=1.19.3"
     },
     "groups": "home-automation",
     "hooks": "pacman/hooks.sh",
