@@ -30,12 +30,12 @@
   },
   "dependencies": {
     "@kronos-integration/interceptor-decode-json": "^2.1.22",
-    "@kronos-integration/service": "^9.2.14",
-    "@kronos-integration/service-admin": "^3.1.26",
-    "@kronos-integration/service-authenticator": "^1.2.0",
-    "@kronos-integration/service-health-check": "^5.0.51",
-    "@kronos-integration/service-http": "^10.2.12",
-    "@kronos-integration/service-ldap": "^2.1.56",
+    "@kronos-integration/service": "^9.2.15",
+    "@kronos-integration/service-admin": "^3.1.27",
+    "@kronos-integration/service-authenticator": "^1.2.2",
+    "@kronos-integration/service-health-check": "^5.0.53",
+    "@kronos-integration/service-http": "^10.2.14",
+    "@kronos-integration/service-ldap": "^2.1.58",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
@@ -49,7 +49,7 @@
     "semantic-release": "^17.1.2"
   },
   "optionalDependencies": {
-    "@kronos-integration/service-systemd": "^2.3.16"
+    "@kronos-integration/service-systemd": "^2.4.1"
   },
   "engines": {
     "node": ">=14.13.0"
