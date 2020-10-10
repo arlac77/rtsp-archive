@@ -1,6 +1,5 @@
 import { readFileSync } from "fs";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
+import { join } from "path";
 import setup from "./rtsp-archive.mjs";
 import { StandaloneServiceProvider } from "@kronos-integration/service";
 
@@ -36,10 +35,9 @@ initialize();
 
 function info() {
   return JSON.parse(
-    readFileSync(
-      join(dirname(fileURLToPath(import.meta.url)), "..", "package.json"),
-      { encoding: "utf8" }
-    )
+    readFileSync(new URL("../package.json", import.meta.url).pathname, {
+      encoding: "utf8"
+    })
   );
 }
 
