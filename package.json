@@ -31,10 +31,10 @@
   "dependencies": {
     "@kronos-integration/interceptor-decode-json": "^2.1.32",
     "@kronos-integration/service": "^9.2.33",
-    "@kronos-integration/service-admin": "^3.1.39",
-    "@kronos-integration/service-authenticator": "^1.4.5",
-    "@kronos-integration/service-health-check": "^5.0.70",
-    "@kronos-integration/service-http": "^10.4.9",
+    "@kronos-integration/service-admin": "^3.1.40",
+    "@kronos-integration/service-authenticator": "^1.4.6",
+    "@kronos-integration/service-health-check": "^5.0.71",
+    "@kronos-integration/service-http": "^10.5.0",
     "@kronos-integration/service-ldap": "^4.0.0",
     "nbonjour": "^3.6.3"
   },
@@ -45,7 +45,7 @@
     "ava": "^3.13.0",
     "c8": "^7.3.1",
     "execa": "^5.0.0",
-    "npm-pkgbuild": "^6.12.13",
+    "npm-pkgbuild": "^6.12.16",
     "semantic-release": "^17.3.0"
   },
   "optionalDependencies": {
