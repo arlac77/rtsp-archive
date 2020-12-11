@@ -94,7 +94,7 @@
       "/etc/nginx/config.d/${name}.conf": "pacman/nginx.conf"
     },
     "depends": {
-      "systemd": ">=246.6",
+      "systemd": ">=247.1",
       "ffmpeg": ">=4.2.3",
       "nginx-mainline": ">=1.19.3"
     },
