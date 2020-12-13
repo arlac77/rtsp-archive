@@ -4,7 +4,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "module": "src/rtsp-archive-cli.mjs",
   "description": "archive RTSP stream(s) with ffmpeg",
   "keywords": [
     "ffmpeg",
@@ -36,6 +35,7 @@
     "@kronos-integration/service-health-check": "^5.0.75",
     "@kronos-integration/service-http": "^10.6.3",
     "@kronos-integration/service-ldap": "^4.0.3",
+    "@kronos-integration/service-systemd": "^2.4.4",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
