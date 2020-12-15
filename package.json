@@ -35,7 +35,6 @@
     "@kronos-integration/service-health-check": "^5.0.79",
     "@kronos-integration/service-http": "^10.6.9",
     "@kronos-integration/service-ldap": "^4.0.6",
-    "@kronos-integration/service-systemd": "^2.4.6",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
