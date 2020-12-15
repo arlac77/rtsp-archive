@@ -30,11 +30,11 @@
   "dependencies": {
     "@kronos-integration/interceptor-decode-json": "^2.1.35",
     "@kronos-integration/service": "^10.0.8",
-    "@kronos-integration/service-admin": "^3.3.7",
-    "@kronos-integration/service-authenticator": "^1.4.13",
-    "@kronos-integration/service-health-check": "^5.0.78",
-    "@kronos-integration/service-http": "^10.6.7",
-    "@kronos-integration/service-ldap": "^4.0.5",
+    "@kronos-integration/service-admin": "^3.3.8",
+    "@kronos-integration/service-authenticator": "^1.4.14",
+    "@kronos-integration/service-health-check": "^5.0.79",
+    "@kronos-integration/service-http": "^10.6.9",
+    "@kronos-integration/service-ldap": "^4.0.6",
     "@kronos-integration/service-systemd": "^2.4.5",
     "nbonjour": "^3.6.3"
   },
