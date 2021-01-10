@@ -43,7 +43,6 @@ MemoryAccounting=true
 MemoryHigh=40M
 MemoryMax=80M
 StandardError=journal
-StandardOutput=syslog
 SystemCallErrorNumber=EPERM
 
 [Install]
