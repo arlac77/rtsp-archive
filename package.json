@@ -44,7 +44,7 @@
     "ava": "^3.15.0",
     "c8": "^7.3.1",
     "execa": "^5.0.0",
-    "npm-pkgbuild": "^6.12.18",
+    "npm-pkgbuild": "^6.12.19",
     "semantic-release": "^17.3.1"
   },
   "optionalDependencies": {
@@ -95,7 +95,7 @@
     "depends": {
       "systemd": ">=247.2",
       "ffmpeg": ">=4.2.3",
-      "nginx-mainline": ">=1.19.3"
+      "nginx-mainline": ">=1.19.6"
     },
     "groups": "home-automation",
     "hooks": "pacman/hooks.sh",
