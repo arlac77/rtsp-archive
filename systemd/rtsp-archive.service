@@ -12,7 +12,7 @@ TimeoutStartSec=20
 TimeoutStopSec=25
 Restart=on-failure
 NotifyAccess=all
-FileDescriptorStoreMax=5
+FileDescriptorStoreMax=4
 OOMPolicy=stop
 User={{name}}
 Group={{name}}
@@ -42,7 +42,6 @@ IOWeight=20
 MemoryAccounting=true
 MemoryHigh=40M
 MemoryMax=80M
-StandardError=journal
 SystemCallErrorNumber=EPERM
 
 [Install]
