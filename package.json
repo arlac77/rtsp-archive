@@ -44,7 +44,7 @@
     "ava": "^3.15.0",
     "c8": "^7.3.1",
     "execa": "^5.0.0",
-    "npm-pkgbuild": "^6.12.19",
+    "npm-pkgbuild": "^6.12.20",
     "semantic-release": "^17.3.3"
   },
   "optionalDependencies": {
