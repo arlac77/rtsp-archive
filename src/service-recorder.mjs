@@ -8,7 +8,6 @@ import { Service } from "@kronos-integration/service";
 export class ServiceRecorder extends Service {
   static get configurationAttributes() {
     return mergeAttributes(
-      Service.configurationAttributes,
       createAttributes({
         dir: {
           type: "posix-path",
@@ -18,7 +17,8 @@ export class ServiceRecorder extends Service {
         recorders: {
           description: "well known recorders"
         }
-      })
+      }),
+      Service.configurationAttributes
     );
   }
 

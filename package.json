@@ -28,34 +28,33 @@
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m && c8 report -r lcov -o build/coverage --temp-directory build/tmp"
   },
   "dependencies": {
-    "@kronos-integration/interceptor-decode-json": "^2.1.35",
-    "@kronos-integration/service": "^10.1.1",
-    "@kronos-integration/service-admin": "^3.3.10",
-    "@kronos-integration/service-authenticator": "^1.4.16",
-    "@kronos-integration/service-health": "^5.0.82",
-    "@kronos-integration/service-http": "^10.6.18",
-    "@kronos-integration/service-ldap": "^4.0.8",
+    "@kronos-integration/interceptor-decode-json": "^2.1.39",
+    "@kronos-integration/service": "^10.3.13",
+    "@kronos-integration/service-admin": "^3.4.10",
+    "@kronos-integration/service-authenticator": "^1.5.5",
+    "@kronos-integration/service-health": "^5.0.96",
+    "@kronos-integration/service-http": "^10.6.35",
+    "@kronos-integration/service-ldap": "^4.0.21",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/release-notes-generator": "^9.0.1",
-    "ava": "^3.14.0",
+    "ava": "^3.15.0",
     "c8": "^7.3.1",
     "execa": "^5.0.0",
-    "npm-pkgbuild": "^6.12.16",
-    "semantic-release": "^17.3.0"
+    "npm-pkgbuild": "^6.12.22",
+    "semantic-release": "^17.3.7"
   },
   "optionalDependencies": {
-    "@kronos-integration/service-systemd": "^2.4.6"
+    "@kronos-integration/service-systemd": "^2.4.9"
   },
   "engines": {
-    "node": ">=14.15.2"
+    "node": ">=14.15.4"
   },
   "os": [
-    "linux",
-    "darwin"
+    "linux"
   ],
   "cpu": [
     "arm",
@@ -93,9 +92,9 @@
       "/etc/nginx/config.d/${name}.conf": "pacman/nginx.conf"
     },
     "depends": {
-      "systemd": ">=247.1",
+      "systemd": ">=247.2",
       "ffmpeg": ">=4.2.3",
-      "nginx-mainline": ">=1.19.3"
+      "nginx-mainline": ">=1.19.6"
     },
     "groups": "home-automation",
     "hooks": "pacman/hooks.sh",
