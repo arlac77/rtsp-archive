@@ -51,7 +51,7 @@
     "@kronos-integration/service-systemd": "^2.4.9"
   },
   "engines": {
-    "node": ">=14.15.4"
+    "node": ">=14.15.5"
   },
   "os": [
     "linux"
