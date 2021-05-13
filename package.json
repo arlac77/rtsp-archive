@@ -94,7 +94,7 @@
     "depends": {
       "systemd": ">=248",
       "ffmpeg": ">=4.2.3",
-      "nginx-mainline": ">=1.19.8"
+      "nginx-mainline": ">=1.19.10"
     },
     "groups": "home-automation",
     "hooks": "pacman/hooks.sh",
