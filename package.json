@@ -89,7 +89,8 @@
       "/usr/lib/tmpfiles.d/${name}.conf": "pacman/tmpfiles.conf",
       "/etc/${name}/config.json": "config/config.json",
       "/usr/lib/sysusers.d/${name}.conf": "pacman/sysusers.conf",
-      "/etc/nginx/config.d/${name}.conf": "pacman/nginx.conf"
+      "/etc/nginx/config.d/${name}.conf": "pacman/nginx.conf",
+      "/etc/nginx/sites/common/${name}.conf": "pacman/nginx.conf"
     },
     "depends": {
       "systemd": ">=248",
