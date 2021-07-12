@@ -28,13 +28,13 @@
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m && c8 report -r lcov -o build/coverage --temp-directory build/tmp"
   },
   "dependencies": {
-    "@kronos-integration/interceptor-decode-json": "^2.1.47",
-    "@kronos-integration/service": "^10.4.1",
-    "@kronos-integration/service-admin": "^3.4.30",
-    "@kronos-integration/service-authenticator": "^1.5.27",
-    "@kronos-integration/service-health": "^5.0.116",
-    "@kronos-integration/service-http": "^10.6.59",
-    "@kronos-integration/service-ldap": "^4.0.45",
+    "@kronos-integration/interceptor-decode-json": "^2.1.48",
+    "@kronos-integration/service": "^10.4.2",
+    "@kronos-integration/service-admin": "^3.4.31",
+    "@kronos-integration/service-authenticator": "^1.5.28",
+    "@kronos-integration/service-health": "^5.0.117",
+    "@kronos-integration/service-http": "^10.6.60",
+    "@kronos-integration/service-ldap": "^4.0.46",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
