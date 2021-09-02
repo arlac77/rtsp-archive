@@ -44,7 +44,7 @@
     "ava": "^3.15.0",
     "c8": "^7.3.1",
     "execa": "^5.1.1",
-    "npm-pkgbuild": "^6.12.47",
+    "npm-pkgbuild": "^6.12.48",
     "semantic-release": "^17.4.7"
   },
   "optionalDependencies": {
@@ -93,7 +93,7 @@
       "/etc/nginx/sites/common/${name}.conf": "pacman/nginx.conf"
     },
     "depends": {
-      "systemd": ">=249.1",
+      "systemd": ">=249.4",
       "ffmpeg": ">=4.2.3",
       "nginx-mainline": ">=1.21.1"
     },
