@@ -1,5 +1,5 @@
 import test from "ava";
-import execa from "execa";
+import { execa } from "execa";
 
 test("rtsp-archive cli", async t => {
   const result = await execa("node", [
