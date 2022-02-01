@@ -44,7 +44,7 @@
     "ava": "^4.0.1",
     "c8": "^7.3.1",
     "execa": "^6.0.0",
-    "npm-pkgbuild": "^7.23.6",
+    "npm-pkgbuild": "^7.25.1",
     "semantic-release": "^19.0.2"
   },
   "optionalDependencies": {
@@ -73,16 +73,18 @@
     "base": "/services/${name}",
     "socket": "/run/${name}/http/socket"
   },
-  "pacman": {
+  "pkg": {
+    "group": "services",
+    "hooks": "pkg/hooks.sh",
     "backup": "etc/${name}/config.json",
+    "installdir": "/services/${name}",
     "content": {
-      "/usr/lib/tmpfiles.d/${name}.conf": "pkg/tmpfiles.conf",
-      "/etc/${name}/config.json": "config/config.json",
-      "/usr/lib/sysusers.d/${name}.conf": "pkg/sysusers.conf",
-      "/etc/nginx/sites/common/${name}.conf": "pkg/nginx.conf",
-      "/usr/lib/systemd/system": {
+      "/usr/lib/systemd/system/": {
         "base": "systemd"
       },
+      "/usr/lib/tmpfiles.d/${name}.conf": "pkg/tmpfiles.conf",
+      "/usr/lib/sysusers.d/${name}.conf": "pkg/sysusers.conf",
+      "/etc/${name}/config.json": "config/config.json",
       "${installdir}/": [
         {
           "type": "npm-pack"
@@ -90,19 +92,12 @@
         {
           "type": "node-modules"
         }
-      ]
+      ],
+      "/etc/nginx/sites/common/${name}.conf": "pkg/nginx.conf"
     },
     "depends": {
-      "systemd": ">=250.3",
-      "ffmpeg": ">=4.2.3",
-      "nginx-mainline": ">=1.21.4"
-    },
-    "groups": "home-automation",
-    "hooks": "pkg/hooks.sh",
-    "installdir": "/services/${name}",
-    "group": "services",
-    "output": {
-      "arch": {}
+      "nginx-mainline": ">=1.21.4",
+      "systemd": ">=250.3"
     }
   },
   "release": {
@@ -117,7 +112,13 @@
           "publishCmd": "npx npm-pkgbuild --pkgver ${nextRelease.version} --npm-dist --npm-modules pkgbuild pacman makepkg"
         }
       ],
-      "@semantic-release/npm"
+      "@semantic-release/npm",
+      [
+        "@semantic-release/exec",
+        {
+          "publishCmd": "npx npm-pkgbuild"
+        }
+      ]
     ]
   },
   "template": {
