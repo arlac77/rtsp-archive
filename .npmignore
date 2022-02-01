@@ -5,9 +5,9 @@ doc
 *.tmp
 .test
 .tmp
-rollup.config.*
 .vscode
 pacman
 systemd
 config
 .github
+pkg
