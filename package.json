@@ -73,11 +73,17 @@
     "base": "/services/${name}",
     "socket": "/run/${name}/http/socket"
   },
+  "pacman": {
+    "hooks": "pacman/hooks.sh",
+    "installdir": "/services/rtsp-archive/frontend",
+    "content": {
+      "/etc/nginx/sites/common/${name}.conf": "pacman/nginx.conf"
+    },
+    "depends": {
+      "nginx-mainline": ">=1.21.4"
+    }
+  },
   "pkg": {
-    "group": "services",
-    "hooks": "pkg/hooks.sh",
-    "backup": "etc/${name}/config.json",
-    "installdir": "/services/${name}",
     "content": {
       "/usr/lib/systemd/system/": {
         "base": "systemd"
@@ -95,10 +101,15 @@
       ],
       "/etc/nginx/sites/common/${name}.conf": "pkg/nginx.conf"
     },
+    "hooks": "pkg/hooks.sh",
+    "backup": "etc/${name}/config.json",
+    "groups": "services",
     "depends": {
       "nginx-mainline": ">=1.21.4",
       "systemd": ">=250.3"
-    }
+    },
+    "group": "services",
+    "installdir": "/services/${name}"
   },
   "release": {
     "plugins": [
