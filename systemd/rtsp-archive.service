@@ -16,6 +16,7 @@ FileDescriptorStoreMax=4
 OOMPolicy=stop
 User={{name}}
 Group={{name}}
+DynamicUser=true
 SupplementaryGroups=http
 CapabilityBoundingSet=~CAP_SYS_BOOT
 NoNewPrivileges=true
