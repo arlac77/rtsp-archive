@@ -48,7 +48,8 @@
     "semantic-release": "^19.0.2"
   },
   "optionalDependencies": {
-    "@kronos-integration/service-systemd": "^2.5.4"
+    "@kronos-integration/service-systemd": "^2.5.4",
+    "mf-hosting": "github:arlac77/mf-hosting"
   },
   "engines": {
     "node": ">=16.14.2"
@@ -89,7 +90,11 @@
           "type": "node-modules"
         }
       ],
-      "/etc/nginx/sites/common/${name}.conf": "pkg/nginx.conf"
+      "/etc/nginx/sites/common/${name}.conf": "pkg/nginx.conf",
+      "${systemd.unit.dir}": {
+        "base": "systemd"
+      },
+      "${tmpfiles.config.dir}${name}.conf": "pkg/tmpfiles.conf"
     },
     "hooks": "pkg/hooks.sh",
     "backup": "etc/${name}/config.json",
