@@ -76,21 +76,7 @@
   },
   "pkg": {
     "content": {
-      "/usr/lib/systemd/system/": {
-        "base": "systemd"
-      },
-      "/usr/lib/tmpfiles.d/${name}.conf": "pkg/tmpfiles.conf",
-      "/usr/lib/sysusers.d/${name}.conf": "pkg/sysusers.conf",
-      "/etc/${name}/config.json": "config/config.json",
-      "${installdir}/": [
-        {
-          "type": "npm-pack"
-        },
-        {
-          "type": "node-modules"
-        }
-      ],
-      "/etc/nginx/sites/common/${name}.conf": "pkg/nginx.conf",
+      "${sysusers.config.dir}${name}.conf": "pkg/sysusers.conf",
       "${systemd.unit.dir}": {
         "base": "systemd"
       },
@@ -107,27 +93,18 @@
       "${nginx.sites.dir}${name}.conf": "pkg/nginx.conf"
     },
     "hooks": "pkg/hooks.sh",
-    "backup": "etc/${name}/config.json",
+    "backup": "${config.dir}config.json",
     "groups": "services",
     "depends": {
       "nginx-mainline": ">=1.21.4",
       "systemd": ">=250.4"
-    },
-    "group": "services",
-    "installdir": "/services/${name}"
+    }
   },
   "release": {
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
       "@semantic-release/github",
-      [
-        "@semantic-release/exec",
-        {
-          "verifyConditionsCmd": "which makepkg",
-          "publishCmd": "npx npm-pkgbuild --pkgver ${nextRelease.version} --npm-dist --npm-modules pkgbuild pacman makepkg"
-        }
-      ],
       "@semantic-release/npm",
       [
         "@semantic-release/exec",
