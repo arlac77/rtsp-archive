@@ -94,7 +94,17 @@
       "${systemd.unit.dir}": {
         "base": "systemd"
       },
-      "${tmpfiles.config.dir}${name}.conf": "pkg/tmpfiles.conf"
+      "${tmpfiles.config.dir}${name}.conf": "pkg/tmpfiles.conf",
+      "${config.dir}config.json": "config/config.json",
+      "${install.dir}": [
+        {
+          "type": "npm-pack"
+        },
+        {
+          "type": "node-modules"
+        }
+      ],
+      "${nginx.sites.dir}${name}.conf": "pkg/nginx.conf"
     },
     "hooks": "pkg/hooks.sh",
     "backup": "etc/${name}/config.json",
