@@ -70,18 +70,14 @@
     "url": "https://github.com/arlac77/rtsp-archive/issues"
   },
   "homepage": "https://github.com/arlac77/rtsp-archive#readme",
-  "config": {
-    "base": "/services/${name}",
-    "socket": "/run/${name}/http/socket"
-  },
   "pkg": {
     "content": {
+      "${systemd.config.dir}${name}.service": "pkg/${name}.service",
+      "${systemd.config.dir}${name}.socket": "pkg/${name}.socket",
       "${sysusers.config.dir}${name}.conf": "pkg/sysusers.conf",
-      "${systemd.unit.dir}": {
-        "base": "systemd"
-      },
       "${tmpfiles.config.dir}${name}.conf": "pkg/tmpfiles.conf",
       "${config.dir}config.json": "config/config.json",
+      "${nginx.sites.dir}${name}.conf": "pkg/nginx.conf",
       "${install.dir}": [
         {
           "type": "npm-pack"
@@ -89,12 +85,12 @@
         {
           "type": "node-modules"
         }
-      ],
-      "${nginx.sites.dir}${name}.conf": "pkg/nginx.conf"
+      ]
     },
     "hooks": "pkg/hooks.sh",
     "backup": "${config.dir}config.json",
     "groups": "services",
+    "http.base.path": "/services/${name}",
     "depends": {
       "nginx-mainline": ">=1.21.4",
       "systemd": ">=250.4"
