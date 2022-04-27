@@ -44,7 +44,7 @@
     "ava": "^4.2.0",
     "c8": "^7.3.1",
     "execa": "^6.1.0",
-    "npm-pkgbuild": "^9.0.4",
+    "npm-pkgbuild": "^10.0.0",
     "semantic-release": "^19.0.2"
   },
   "optionalDependencies": {
@@ -115,5 +115,8 @@
       "arlac77/template-arlac77-github",
       "arlac77/template-kronos-app"
     ]
+  },
+  "pkgbuild": {
+    "content": {}
   }
 }
