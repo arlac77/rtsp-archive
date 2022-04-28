@@ -44,7 +44,7 @@
     "ava": "^4.2.0",
     "c8": "^7.3.1",
     "execa": "^6.1.0",
-    "npm-pkgbuild": "^9.0.4",
+    "npm-pkgbuild": "^10.0.0",
     "semantic-release": "^19.0.2"
   },
   "optionalDependencies": {
@@ -70,6 +70,50 @@
     "url": "https://github.com/arlac77/rtsp-archive/issues"
   },
   "homepage": "https://github.com/arlac77/rtsp-archive#readme",
+  "pkgbuild": {
+    "groups": "services",
+    "hooks": "pkg/hooks.sh",
+    "backup": "${config.dir}config.json",
+    "content": {
+      "${install.dir}": [
+        {
+          "type": "npm-pack"
+        },
+        {
+          "type": "node-modules"
+        }
+      ],
+      "${systemd.unit.dir}${name}.service": "pkg/${name}.service",
+      "${systemd.unit.dir}${name}.socket": "pkg/${name}.socket",
+      "${tmpfiles.config.dir}${name}.conf": "pkg/tmpfiles.conf",
+      "${config.dir}config.json": "config/config.json",
+      "${nginx.sites.dir}${name}.conf": "pkg/nginx.conf"
+    },
+    "depends": {
+      "nginx-mainline": ">=1.21.4",
+      "systemd": ">=250.4"
+    }
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/exec",
+        {
+          "publishCmd": "npx npm-pkgbuild"
+        }
+      ]
+    ]
+  },
+  "template": {
+    "inheritFrom": [
+      "arlac77/template-arlac77-github",
+      "arlac77/template-kronos-app"
+    ]
+  },
   "pkg": {
     "content": {
       "${systemd.unit.dir}${name}.service": "pkg/${name}.service",
@@ -95,25 +139,5 @@
       "systemd": ">=250.4"
     },
     "http.base.path": "/services/${name}"
-  },
-  "release": {
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/github",
-      "@semantic-release/npm",
-      [
-        "@semantic-release/exec",
-        {
-          "publishCmd": "npx npm-pkgbuild"
-        }
-      ]
-    ]
-  },
-  "template": {
-    "inheritFrom": [
-      "arlac77/template-arlac77-github",
-      "arlac77/template-kronos-app"
-    ]
   }
 }
