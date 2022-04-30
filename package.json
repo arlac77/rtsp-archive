@@ -92,7 +92,7 @@
     "groups": "services",
     "depends": {
       "nginx-mainline": ">=1.21.4",
-      "systemd": ">=250.4"
+      "systemd": ">=250.5"
     },
     "http.base.path": "/services/${name}"
   },
