@@ -11,4 +11,3 @@ systemd
 config
 .github
 pkg
-jsconfig.json
