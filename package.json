@@ -89,12 +89,7 @@
     },
     "hooks": "pkg/hooks.sh",
     "backup": "${config.dir}config.json",
-    "groups": "services",
-    "depends": {
-      "nginx-mainline": ">=1.21.4",
-      "systemd": ">=251.0"
-    },
-    "http.base.path": "/services/${name}"
+    "groups": "services"
   },
   "release": {
     "plugins": [
@@ -107,14 +102,8 @@
           "publishCmd": "npx npm-pkgbuild --available --verbose"
         }
       ],
-      "@semantic-release/github",
-      [
-        "@semantic-release/exec",
-        {
-          "publishCmd": "npx npm-pkgbuild"
-        }
-      ]
-    ]
+      "@semantic-release/github"
+     ]
   },
   "template": {
     "inheritFrom": [
