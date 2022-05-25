@@ -44,7 +44,7 @@
     "ava": "^4.2.0",
     "c8": "^7.3.1",
     "execa": "^6.1.0",
-    "npm-pkgbuild": "^10.7.6",
+    "npm-pkgbuild": "^10.7.7",
     "semantic-release": "^19.0.2"
   },
   "optionalDependencies": {
@@ -92,7 +92,7 @@
     "groups": "services",
     "depends": {
       "nginx-mainline": ">=1.21.4",
-      "systemd": ">=251.0"
+      "systemd": ">=251"
     },
     "http.base.path": "/services/${name}"
   },
