@@ -29,11 +29,11 @@
   },
   "dependencies": {
     "@kronos-integration/interceptor-decode-json": "^2.1.65",
-    "@kronos-integration/service": "^10.4.22",
+    "@kronos-integration/service": "^10.4.23",
     "@kronos-integration/service-admin": "^3.4.59",
-    "@kronos-integration/service-authenticator": "^1.6.26",
-    "@kronos-integration/service-health": "^5.0.153",
-    "@kronos-integration/service-http": "^10.6.114",
+    "@kronos-integration/service-authenticator": "^1.6.27",
+    "@kronos-integration/service-health": "^5.0.154",
+    "@kronos-integration/service-http": "^10.6.115",
     "@kronos-integration/service-ldap": "^4.0.88",
     "nbonjour": "^3.6.3"
   },
