@@ -88,8 +88,7 @@
       ]
     },
     "hooks": "pkg/hooks.sh",
-    "backup": "${config.dir}config.json",
-    "groups": "services"
+    "backup": "${config.dir}config.json"
   },
   "release": {
     "plugins": [
