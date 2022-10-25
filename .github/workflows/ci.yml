@@ -61,7 +61,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: build/coverage/lcov.info
           parallel-finished: true
-  test:
+  test-node:
     strategy:
       matrix:
         node-version:
