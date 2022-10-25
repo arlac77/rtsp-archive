@@ -1,7 +1,7 @@
 name: CI
 'on': push
 jobs:
-  test:
+  test-node:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -26,7 +26,7 @@ jobs:
         continue-on-error: true
   release:
     needs:
-      - test
+      - test-node
     runs-on: ubuntu-latest
     steps:
       - name: Dependencies
@@ -52,7 +52,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PKGBUILD_PUBLISH: ${{ secrets.PKGBUILD_PUBLISH }}
   finish:
-    needs: test
+    needs: test-node
     runs-on: ubuntu-latest
     steps:
       - name: Coveralls Finished
