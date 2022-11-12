@@ -6,7 +6,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 18.11.0
+          - 18.12.1
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.5.1
@@ -60,8 +60,3 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: build/coverage/lcov.info
           parallel-finished: true
-  test-node:
-    strategy:
-      matrix:
-        node-version:
-          - -16
