@@ -3,6 +3,7 @@ name: Update package lock
   schedule:
     - cron: 18 16 * * *
     - cron: '--overwrite-- 13,18 16 * * *'
+    - cron: 13,18 16 * * *
 jobs:
   update_package_lock:
     runs-on: ubuntu-latest
