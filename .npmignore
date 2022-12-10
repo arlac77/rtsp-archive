@@ -8,3 +8,4 @@ pacman
 config
 .github
 pkg
+dist
