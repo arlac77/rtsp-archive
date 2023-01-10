@@ -64,7 +64,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/arlac77/rtsp-archive.git"
+    "url": "https://github.com/arlac77/rtsp-archive"
   },
   "bugs": {
     "url": "https://github.com/arlac77/rtsp-archive/issues"
