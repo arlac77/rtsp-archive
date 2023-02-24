@@ -85,8 +85,7 @@
         }
       ]
     },
-    "hooks": "pkg/hooks.sh",
-    "backup": "${config.dir}config.json"
+    "kronos": true
   },
   "release": {
     "plugins": [
