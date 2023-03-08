@@ -52,7 +52,7 @@
     "mf-hosting": "^1.10.8"
   },
   "engines": {
-    "node": ">=18.14.2"
+    "node": ">=18.15.0"
   },
   "os": [
     "linux"
