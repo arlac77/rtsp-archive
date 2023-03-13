@@ -73,7 +73,6 @@
   "pkgbuild": {
     "content": {
       "${systemd.unit.dir}${name}.service": "pkg/${name}.service",
-      "${sysusers.config.dir}${name}.conf": "pkg/sysusers.conf",
       "${tmpfiles.config.dir}${name}.conf": "pkg/tmpfiles.conf",
       "${config.dir}config.json": "config/config.json",
       "${install.dir}": [
@@ -85,7 +84,6 @@
         }
       ]
     },
-    "backup": "${config.dir}config.json",
     "kronos": true
   },
   "release": {
