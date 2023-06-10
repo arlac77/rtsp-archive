@@ -45,7 +45,7 @@
     "c8": "^7.3.1",
     "execa": "^7.1.1",
     "npm-pkgbuild": "^11.8.6",
-    "semantic-release": "^21.0.3s"
+    "semantic-release": "^21.0.5"
   },
   "optionalDependencies": {
     "@kronos-integration/service-systemd": "^2.5.6",
