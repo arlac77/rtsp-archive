@@ -38,7 +38,7 @@
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
-    "@semantic-release/commit-analyzer": "^10.0.3",
+    "@semantic-release/commit-analyzer": "^10.0.4",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/release-notes-generator": "^11.0.7",
     "ava": "^5.3.1",
