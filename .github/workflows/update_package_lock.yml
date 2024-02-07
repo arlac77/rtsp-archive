@@ -5,6 +5,7 @@ name: Update package lock
   push:
     paths:
       - package.json
+  workflow_dispatch: null
 jobs:
   update_package_lock:
     runs-on: ubuntu-latest
