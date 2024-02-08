@@ -20,7 +20,7 @@
   ],
   "license": "BSD-2-Clause",
   "bin": {
-    "rtsp-archive": "./src/rtsp-archive-cli.mjs"
+    "rtsp-archive": "src/rtsp-archive-cli.mjs"
   },
   "scripts": {
     "package": "npm-pkgbuild --npm-dist --npm-modules pkgbuild pacman makepkg",
