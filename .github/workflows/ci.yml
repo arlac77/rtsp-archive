@@ -8,6 +8,8 @@ on:
     branches:
       - master
       - next
+permissions:
+  contents: read
 jobs:
   test-node:
     runs-on: ubuntu-latest
@@ -36,6 +38,11 @@ jobs:
     needs:
       - test-node
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
     steps:
       - name: Dependencies
         run: >
@@ -60,11 +67,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PKGEXT: .pkg.tar.xz
           PKGBUILD_PUBLISH: ${{ secrets.PKGBUILD_PUBLISH }}
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-      id-token: write
   finish:
     needs:
       - test-node
@@ -76,5 +78,3 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: build/coverage/lcov.info
           parallel-finished: true
-permissions:
-  contents: read
