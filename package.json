@@ -54,7 +54,7 @@
     "mf-hosting": "^2.1.1"
   },
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=22.2.0"
   },
   "os": [
     "linux"
@@ -84,7 +84,8 @@
         {
           "type": "node-modules"
         }
-      ]
+      ],
+      "kronos": true
     },
     "kronos": true
   },
