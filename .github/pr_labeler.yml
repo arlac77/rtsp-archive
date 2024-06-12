@@ -36,3 +36,5 @@ systemd:
   - "**/*.path"
   - "**/*.socket"
   - "**/*.timer"
+lint:
+  - .stylelintrc.json
