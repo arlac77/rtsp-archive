@@ -44,7 +44,11 @@ jobs:
   release:
     needs:
       - test-node
-    runs-on: ubuntu-latest
+    runs-on:
+      - self-hosted
+      - linux
+      - ARM64
+      - ubuntu-latest
     permissions:
       contents: write
       issues: write
