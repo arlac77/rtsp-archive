@@ -33,6 +33,8 @@ jobs:
           cache: npm
           cache-dependency-path: package-lock.json
       - run: npm ci
+      - name: null
+        run: npm ci
       - run: npm run cover --if-present
       - name: Coveralls Parallel
         uses: coverallsapp/github-action@v2
