@@ -26,7 +26,8 @@ jobs:
           - 22.5.1
           - 22.6.0
     steps:
-      - uses: actions/checkout@v4.1.7
+      - name: checkout
+        uses: actions/checkout@v4.1.7
       - uses: actions/setup-node@v4.0.3
         with:
           node-version: ${{ matrix.node-version }}
@@ -73,7 +74,8 @@ jobs:
           sudo apt-get install -f ./pacman-utils_5.2.2-3_amd64.deb
 
           fi
-      - uses: actions/checkout@v4.1.7
+      - name: checkout
+        uses: actions/checkout@v4.1.7
       - uses: actions/setup-node@v4.0.3
         with:
           node-version: 22.6.0
