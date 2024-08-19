@@ -60,7 +60,7 @@ jobs:
       pull-requests: write
       id-token: write
     steps:
-      - name: Dependencies
+      - name: install dependencies
         run: >
           if [ ! -f /usr/bin/pacman ]
 
