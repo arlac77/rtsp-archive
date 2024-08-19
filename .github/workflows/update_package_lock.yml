@@ -5,7 +5,7 @@ on:
       - package.json
   schedule:
     - cron: 13 8 * * 6
-  workflow_dispatch:
+  workflow_dispatch: null
 jobs:
   update_package_lock:
     runs-on: ubuntu-latest
