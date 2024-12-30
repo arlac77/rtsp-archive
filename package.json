@@ -1,9 +1,9 @@
 {
   "name": "rtsp-archive",
-  "version": "0.0.0-semantic-release",
+  "version": "4.3.1",
   "publishConfig": {
     "access": "public",
-    "provenance": true
+    "provenance": false
   },
   "description": "archive RTSP stream(s) with ffmpeg",
   "keywords": [
