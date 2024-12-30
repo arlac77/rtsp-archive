@@ -1,6 +1,6 @@
 {
   "name": "rtsp-archive",
-  "version": "4.3.1",
+  "version": "0.0.0-semantic-release",
   "publishConfig": {
     "access": "public",
     "provenance": false
