@@ -85,8 +85,7 @@
         {
           "type": "node-modules"
         }
-      ],
-      "kronos": true
+      ]
     },
     "kronos": true
   },
