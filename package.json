@@ -39,15 +39,15 @@
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
-    "@semantic-release/commit-analyzer": "^13.0.0",
+    "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/exec": "^7.0.3",
     "@semantic-release/github": "^11.0.1",
-    "@semantic-release/release-notes-generator": "^14.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.3",
     "ava": "^6.1.3",
     "c8": "^10.0.0",
     "execa": "^9.5.2",
     "npm-pkgbuild": "^15.6.2",
-    "semantic-release": "^24.1.2"
+    "semantic-release": "^24.2.3"
   },
   "optionalDependencies": {
     "@kronos-integration/service-systemd": "^2.6.3",
