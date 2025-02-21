@@ -78,16 +78,16 @@
       "${systemd.unit.dir}${name}.service": "pkg/${name}.service",
       "${tmpfiles.config.dir}${name}.conf": "pkg/tmpfiles.conf",
       "${config.dir}config.json": "config/config.json",
-      "${install.dir}": [
-        {
-          "type": "npm-pack"
-        },
-        {
-          "type": "node-modules"
-        }
-      ]
+      "${install.dir}": {
+        "type": "npm-pack"
+      },
+      "${install.dir}/node_modules": {
+        "type": "node-modules"
+      }
     },
-    "depdens": ["ffmpeg"],
+    "depdens": [
+      "ffmpeg"
+    ],
     "kronos": true
   },
   "release": {
