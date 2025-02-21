@@ -174,8 +174,9 @@ export class ServiceRecorder extends Service {
       1,
       "-segment_time",
       "900",
-      "-segment_format",
-      "mp4",
+      "-movflags", "+faststart",
+    //  "-segment_format",
+    //  "mp4",
       recorder.file
 
       /*
