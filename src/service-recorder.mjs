@@ -1,6 +1,6 @@
-import { join } from "path";
-import { mkdir } from "fs/promises";
-import { spawn } from "child_process";
+import { join } from "node:path";
+import { mkdir } from "node:fs/promises";
+import { spawn } from "node:child_process";
 import nbonjour from "nbonjour";
 import { mergeAttributes, createAttributes } from "model-attributes";
 import { Service } from "@kronos-integration/service";

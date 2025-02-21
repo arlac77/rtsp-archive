@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { readFileSync } from "fs";
-import { join } from "path";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import initialize from "./initialize.mjs";
 import { StandaloneServiceProvider } from "@kronos-integration/service";
 
