@@ -1,25 +1,22 @@
-#!/usr/bin/env node
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import initialize from "./initialize.mjs";
+import pkg from "../package.json" with { type: "json" };
 import { StandaloneServiceProvider } from "@kronos-integration/service";
 
 const args = process.argv.slice(2);
-const opt = { encoding: "utf8" };
 
 switch (args[0]) {
   case "--version":
     {
-      const { version } = info();
-      console.log(version);
+      console.log(pkg.version);
       process.exit(0);
     }
     break;
   case "--help":
   case "-h":
     {
-      const { description, version } = info();
-      console.log(`${description} (${version});
+      console.log(`${pkg.description} (${pkg.version});
 usage:
  -h --help this help screen
  -c --config <directory> set config directory`);
@@ -35,13 +32,6 @@ usage:
 
 initializeServiceProvider();
 
-
-function info() {
-  return JSON.parse(
-    readFileSync(new URL("../package.json", import.meta.url).pathname, opt)
-  );
-}
-
 async function initializeServiceProvider() {
   try {
     let serviceProvider;
@@ -51,7 +41,7 @@ async function initializeServiceProvider() {
     } catch (e) {
       serviceProvider = new StandaloneServiceProvider(
         JSON.parse(
-          readFileSync(join(args[1], "config.json"), opt)
+          readFileSync(join(args[1], "config.json"), "utf8")
         )
       );
     }
