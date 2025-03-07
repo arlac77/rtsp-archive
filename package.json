@@ -47,7 +47,7 @@
     "execa": "^9.5.2",
     "npm-pkgbuild": "^17.0.1",
     "semantic-release": "^24.2.3",
-    "mf-hosting": "^2.8.9"
+    "mf-hosting": "^2.8.10"
   },
   "optionalDependencies": {
     "@kronos-integration/service-systemd": "^2.6.3"
