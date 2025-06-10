@@ -3,7 +3,7 @@ import { execa } from "execa";
 
 test("rtsp-archive cli", async t => {
   const result = await execa("node", [
-    new URL("../src/rtsp-archive-cli.mjs", import.meta.url).pathnme,
+    new URL("../src/rtsp-archive-cli.mjs", import.meta.url).pathname,
     "-h"
   ]);
   t.regex(result.stdout, /--config <directory>/);
