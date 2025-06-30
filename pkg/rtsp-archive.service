@@ -42,6 +42,7 @@ LockPersonality=true
 RestrictRealtime=true
 RestrictSUIDSGID=true
 CPUWeight=20
+EnvironmentFile=-/etc/conf.d/{{name}}
 IOWeight=20
 MemoryAccounting=true
 MemoryHigh=40M
