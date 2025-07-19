@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@kronos-integration/interceptor-decode-json": "^3.0.1",
-    "@kronos-integration/service": "^11.2.17",
+    "@kronos-integration/service": "^12.0.3",
     "@kronos-integration/service-admin": "^3.4.76",
     "@kronos-integration/service-authenticator": "^1.6.69",
     "@kronos-integration/service-health": "^5.1.11",
