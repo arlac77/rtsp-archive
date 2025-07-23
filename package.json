@@ -28,32 +28,32 @@
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m && c8 report -r lcov -o build/coverage --temp-directory build/tmp"
   },
   "dependencies": {
-    "@kronos-integration/interceptor-decode-json": "^2.1.79",
-    "@kronos-integration/service": "^11.2.8",
-    "@kronos-integration/service-admin": "^3.4.72",
-    "@kronos-integration/service-authenticator": "^1.6.63",
-    "@kronos-integration/service-health": "^5.1.6",
-    "@kronos-integration/service-http": "^10.9.26",
-    "@kronos-integration/service-ldap": "^4.0.138",
+    "@kronos-integration/interceptor-decode-json": "^3.0.6",
+    "@kronos-integration/service": "^13.1.3",
+    "@kronos-integration/service-admin": "^3.4.81",
+    "@kronos-integration/service-authenticator": "^3.0.1",
+    "@kronos-integration/service-health": "^7.0.1",
+    "@kronos-integration/service-http": "^13.0.1",
+    "@kronos-integration/service-ldap": "^5.0.1",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/exec": "^7.1.0",
-    "@semantic-release/github": "6.3.0",
+    "@semantic-release/github": "^11.0.3",
     "@semantic-release/release-notes-generator": "^14.0.3",
-    "ava": "^6.1.3",
+    "ava": "^6.4.1",
     "c8": "^10.0.0",
-    "execa": "^9.5.3",
-    "mf-hosting": "^2.8.12",
-    "npm-pkgbuild": "^18.2.7",
-    "semantic-release": "^24.2.4"
+    "execa": "^9.6.0",
+    "mf-hosting": "^2.8.14",
+    "npm-pkgbuild": "^18.2.14",
+    "semantic-release": "^24.2.7"
   },
   "optionalDependencies": {
-    "@kronos-integration/service-systemd": "^2.6.3"
+    "@kronos-integration/service-systemd": "^3.0.2"
   },
   "engines": {
-    "node": ">=22.16.0"
+    "node": ">=24.4.1"
   },
   "os": [
     "linux",
