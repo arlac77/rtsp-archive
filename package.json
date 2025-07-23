@@ -30,7 +30,7 @@
   "dependencies": {
     "@kronos-integration/interceptor-decode-json": "^3.0.6",
     "@kronos-integration/service": "^13.1.3",
-    "@kronos-integration/service-admin": "^3.4.79",
+    "@kronos-integration/service-admin": "^3.4.81",
     "@kronos-integration/service-authenticator": "^3.0.1",
     "@kronos-integration/service-health": "^7.0.1",
     "@kronos-integration/service-http": "^13.0.1",
@@ -40,20 +40,20 @@
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/exec": "^7.1.0",
-    "@semantic-release/github": "11.0.3",
+    "@semantic-release/github": "^11.0.3",
     "@semantic-release/release-notes-generator": "^14.0.3",
-    "ava": "^6.1.3",
+    "ava": "^6.4.1",
     "c8": "^10.0.0",
     "execa": "^9.6.0",
     "mf-hosting": "^2.8.14",
-    "npm-pkgbuild": "^18.2.7",
-    "semantic-release": "^24.2.4"
+    "npm-pkgbuild": "^18.2.14",
+    "semantic-release": "^24.2.7"
   },
   "optionalDependencies": {
     "@kronos-integration/service-systemd": "^3.0.2"
   },
   "engines": {
-    "node": ">=22.16.0"
+    "node": ">=24.4.1"
   },
   "os": [
     "linux",
