@@ -40,20 +40,20 @@
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/exec": "^7.1.0",
-    "@semantic-release/github": "^11.0.4",
+    "@semantic-release/github": "^11.0.5",
     "@semantic-release/release-notes-generator": "^14.0.3",
     "ava": "^6.4.1",
     "c8": "^10.0.0",
     "execa": "^9.6.0",
     "mf-hosting": "^2.8.16",
-    "npm-pkgbuild": "^18.2.23",
+    "npm-pkgbuild": "^18.2.24",
     "semantic-release": "^24.2.7"
   },
   "optionalDependencies": {
     "@kronos-integration/service-systemd": "^3.0.3"
   },
   "engines": {
-    "node": ">=24.5.0"
+    "node": ">=24.6.0"
   },
   "os": [
     "linux",
