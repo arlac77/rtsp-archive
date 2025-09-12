@@ -46,7 +46,7 @@
     "c8": "^10.0.0",
     "execa": "^9.6.0",
     "mf-hosting": "^2.8.17",
-    "npm-pkgbuild": "^18.2.29",
+    "npm-pkgbuild": "^18.2.30",
     "semantic-release": "^24.2.7"
   },
   "optionalDependencies": {
