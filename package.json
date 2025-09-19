@@ -45,7 +45,7 @@
     "ava": "^6.4.1",
     "c8": "^10.0.0",
     "execa": "^9.6.0",
-    "mf-hosting": "^2.8.17",
+    "mf-hosting": "^2.9.0",
     "npm-pkgbuild": "^18.2.30",
     "semantic-release": "^24.2.7"
   },
