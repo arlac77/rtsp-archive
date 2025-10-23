@@ -10,6 +10,7 @@ on:
       - next
 permissions:
   contents: read
+  id-token: write
 jobs:
   test-node:
     runs-on: ubuntu-latest
@@ -20,6 +21,7 @@ jobs:
           - 22.18.0
           - 22.19.0
           - 22.20.0
+          - 22.21.0
           - 24.5.0
           - 24.6.0
           - 24.7.0
