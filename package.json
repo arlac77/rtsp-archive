@@ -32,7 +32,7 @@
     "@kronos-integration/service": "^14.0.0",
     "@kronos-integration/service-admin": "^4.0.0",
     "@kronos-integration/service-authenticator": "^3.0.21",
-    "@kronos-integration/service-health": "^7.0.44",
+    "@kronos-integration/service-health": "^8.0.0",
     "@kronos-integration/service-http": "^14.0.0",
     "@kronos-integration/service-ldap": "^6.0.0",
     "nbonjour": "^3.6.3"
@@ -40,7 +40,7 @@
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/exec": "^7.1.0",
-    "@semantic-release/github": "^12.0.0",
+    "@semantic-release/github": "^12.0.1",
     "@semantic-release/release-notes-generator": "^14.1.0",
     "ava": "^6.4.1",
     "c8": "^10.0.0",
