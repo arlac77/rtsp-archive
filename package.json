@@ -142,5 +142,6 @@
       "arlac77/template-arlac77-github",
       "arlac77/template-kronos-app"
     ]
-  }
+  },
+  "packageManager": "npm@11.6.3+sha512.4085a763162e0e3acd19a4e9d23ad3aa0978e501ccf947dd7233c12a689ae0bb0190763c4ef12366990056b34eec438903ffed38fde4fbd722a17c2a7407ee92"
 }
