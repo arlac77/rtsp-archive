@@ -53,16 +53,14 @@
     "@kronos-integration/service-systemd": "^4.0.0"
   },
   "engines": {
-    "node": ">=24.11.0"
+    "node": ">=24.11.1"
   },
   "os": [
     "linux",
     "darwin"
   ],
   "cpu": [
-    "arm",
-    "arm64",
-    "x64"
+    "arm64"
   ],
   "repository": {
     "type": "git",
@@ -85,7 +83,7 @@
       }
     },
     "depdens": [
-      "ffmpeg"
+      "ffmpeg>=8.0"
     ],
     "kronos": true
   },
