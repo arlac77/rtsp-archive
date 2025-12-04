@@ -31,9 +31,9 @@
     "@kronos-integration/interceptor-decode-json": "^3.0.25",
     "@kronos-integration/service": "^14.0.7",
     "@kronos-integration/service-admin": "^4.0.5",
-    "@kronos-integration/service-authenticator": "^4.0.4",
+    "@kronos-integration/service-authenticator": "^4.0.5",
     "@kronos-integration/service-health": "^8.0.8",
-    "@kronos-integration/service-http": "^14.0.7",
+    "@kronos-integration/service-http": "^14.0.8",
     "@kronos-integration/service-ldap": "^6.0.11",
     "nbonjour": "^3.6.3"
   },
@@ -50,7 +50,7 @@
     "semantic-release": "^25.0.2"
   },
   "optionalDependencies": {
-    "@kronos-integration/service-systemd": "^4.0.0"
+    "@kronos-integration/service-systemd": "^4.0.1"
   },
   "engines": {
     "node": ">=24.11.1"
