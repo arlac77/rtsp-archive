@@ -46,13 +46,13 @@
     "ava": "^6.4.1",
     "c8": "^10.0.0",
     "execa": "^9.6.0",
-    "mf-hosting": "^2.9.5",
+    "mf-hosting": "^2.9.7",
     "npm-pkgbuild": "^19.0.8",
     "semantic-release": "^25.0.2"
   },
   "optionalDependencies": {
     "@kronos-integration/service-systemd": "^4.2.1",
-    "mf-hosting": "^2.9.5"
+    "mf-hosting": "^2.9.7"
   },
   "engines": {
     "node": ">=24.11.1"
