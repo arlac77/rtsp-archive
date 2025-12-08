@@ -19,7 +19,7 @@ jobs:
       - name: remove lock
         run: rm package-lock.json
       - name: install playwright
-        run: npx playwright install
+        run: npx playwright install --with-deps
       - name: test
         run: npm install-test
         env:
