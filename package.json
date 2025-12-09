@@ -51,7 +51,7 @@
     "semantic-release": "^25.0.2"
   },
   "optionalDependencies": {
-    "@kronos-integration/service-systemd": "^4.2.1",
+    "@kronos-integration/service-systemd": "^4.2.3",
     "mf-hosting": "^2.9.7"
   },
   "engines": {
