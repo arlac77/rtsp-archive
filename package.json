@@ -32,7 +32,7 @@
     "@kronos-integration/interceptor-decode-json": "^4.0.2",
     "@kronos-integration/service": "^15.2.3",
     "@kronos-integration/service-admin": "^4.0.12",
-    "@kronos-integration/service-authenticator": "^4.1.7",
+    "@kronos-integration/service-authenticator": "^4.1.0",
     "@kronos-integration/service-health": "^8.0.14",
     "@kronos-integration/service-http": "^14.0.25",
     "@kronos-integration/service-ldap": "^6.0.12",
