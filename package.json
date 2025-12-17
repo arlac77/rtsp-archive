@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@kronos-integration/interceptor-decode-json": "^4.0.2",
-    "@kronos-integration/service": "^15.4.0",
+    "@kronos-integration/service": "^15.4.1",
     "@kronos-integration/service-admin": "^4.0.13",
     "@kronos-integration/service-authenticator": "^4.1.0",
     "@kronos-integration/service-health": "^8.0.17",
@@ -51,7 +51,7 @@
     "semantic-release": "^25.0.2"
   },
   "optionalDependencies": {
-    "@kronos-integration/service-systemd": "^4.2.3"
+    "@kronos-integration/service-systemd": "^5.0.0"
   },
   "engines": {
     "node": ">=24.12.0"
