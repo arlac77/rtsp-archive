@@ -34,7 +34,7 @@
     "@kronos-integration/service-admin": "^4.0.13",
     "@kronos-integration/service-authenticator": "^4.1.9",
     "@kronos-integration/service-health": "^8.0.18",
-    "@kronos-integration/service-http": "^14.0.28",
+    "@kronos-integration/service-http": "^14.0.29",
     "@kronos-integration/service-ldap": "^6.0.12",
     "nbonjour": "^3.6.3"
   },
@@ -46,7 +46,7 @@
     "ava": "^6.4.1",
     "c8": "^10.0.0",
     "execa": "^9.6.0",
-    "mf-hosting": "^2.9.12",
+    "mf-hosting": "^2.9.13",
     "npm-pkgbuild": "^19.1.2",
     "semantic-release": "^25.0.2"
   },
