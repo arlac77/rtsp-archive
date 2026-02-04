@@ -35,7 +35,7 @@
     "@kronos-integration/service-authenticator": "^4.1.12",
     "@kronos-integration/service-health": "^8.0.32",
     "@kronos-integration/service-http": "^14.0.33",
-    "@kronos-integration/service-ldap": "^6.1.0",
+    "@kronos-integration/service-ldap": "^6.1.1",
     "nbonjour": "^3.6.3"
   },
   "devDependencies": {
