@@ -5,7 +5,7 @@ After=network-online.target
 
 [Service]
 Type=notify
-ExecStart=/usr/bin/node --trace-uncaught --trace-warnings --title {{name}} {{install.dir}}src/{{name}}-cli.mjs
+ExecStart=/usr/bin/node --trace-uncaught --trace-warnings --title {{name}} {{install_dir}}src/{{name}}-cli.mjs
 ExecReload=/bin/kill -HUP $MAINPID
 EnvironmentFile=-/etc/conf.d/{{name}}
 RestartSec=60

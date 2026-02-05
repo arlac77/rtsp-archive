@@ -54,7 +54,7 @@
     "@kronos-integration/service-systemd": "^5.0.0"
   },
   "engines": {
-    "node": ">=24.12.0"
+    "node": ">=24.13.0"
   },
   "os": [
     "linux",
@@ -74,13 +74,13 @@
   "homepage": "https://github.com/arlac77/rtsp-archive#readme",
   "pkgbuild": {
     "content": {
-      "${systemd.unit.dir}${name}.service": "pkg/${name}.service",
-      "${tmpfiles.config.dir}${name}.conf": "pkg/tmpfiles.conf",
-      "${config.dir}config.json": "config/config.json",
-      "${install.dir}": {
+      "${systemd_unit_dir}${name}.service": "pkg/${name}.service",
+      "${tmpfiles_config_dir}${name}.conf": "pkg/tmpfiles.conf",
+      "${config_dir}config.json": "config/config.json",
+      "${install_dir}": {
         "type": "npm-pack"
       },
-      "${install.dir}/node_modules": {
+      "${install_dir}/node_modules": {
         "type": "node-modules"
       }
     },
